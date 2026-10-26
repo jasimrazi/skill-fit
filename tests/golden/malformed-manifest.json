@@ -1,0 +1,26 @@
+{
+  "project": "malformed-manifest",
+  "manifests": [
+    "requirements.txt"
+  ],
+  "stack": [
+    {
+      "name": "requests",
+      "version": ">=2.31.0",
+      "source_file": "requirements.txt",
+      "dev": false
+    }
+  ],
+  "commands": {},
+  "infra": [],
+  "architecture": [],
+  "entry_points": [],
+  "dir_purposes": {
+    "src": "source code"
+  },
+  "avoid": [],
+  "hash": "0e6d82479e5e42a977dadbdffa28df3bcf833698",
+  "warnings": [
+    "package.json: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)"
+  ]
+}

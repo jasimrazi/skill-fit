@@ -1,0 +1,70 @@
+{
+  "project": "my-monorepo",
+  "manifests": [
+    "package.json",
+    "packages/utils/package.json",
+    "packages/ui/package.json",
+    "apps/web/package.json",
+    "apps/api/package.json"
+  ],
+  "stack": [
+    {
+      "name": "turbo",
+      "version": "^1.13.0",
+      "source_file": "package.json",
+      "dev": true
+    },
+    {
+      "name": "utils",
+      "version": "0.1.0",
+      "source_file": "packages/utils/package.json",
+      "dev": false
+    },
+    {
+      "name": "ui",
+      "version": "0.1.0",
+      "source_file": "packages/ui/package.json",
+      "dev": false
+    },
+    {
+      "name": "web",
+      "version": "0.1.0",
+      "source_file": "apps/web/package.json",
+      "dev": false
+    },
+    {
+      "name": "api",
+      "version": "0.1.0",
+      "source_file": "apps/api/package.json",
+      "dev": false
+    }
+  ],
+  "commands": {
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "dev": "turbo run dev --parallel"
+  },
+  "infra": [],
+  "architecture": [
+    {
+      "hint": "monorepo",
+      "confidence": 0.85,
+      "evidence": [
+        "package.json workspaces field",
+        "workspace patterns: apps/*, packages/*",
+        "top-level dirs: apps, packages"
+      ]
+    }
+  ],
+  "entry_points": [],
+  "dir_purposes": {
+    "apps": "monorepo applications",
+    "packages": "monorepo packages",
+    "api": "API layer",
+    "web": "web application"
+  },
+  "avoid": [],
+  "hash": "4de2453ce9488acb2b5942b01992c7a21ae5e47d",
+  "warnings": []
+}

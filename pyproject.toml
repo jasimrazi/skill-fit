@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=42"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "skill-fit"
+version = "0.1.0"
+description = "Agent skill that scans your repo, writes a compact project map into CLAUDE.md/AGENTS.md, and audits idle skill token cost."
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = [
+    "agent-skills",
+    "claude-code",
+    "claude-md",
+    "agents-md",
+    "context-engineering",
+    "token-optimization",
+    "project-map",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "ruff>=0.4",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["skill*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py38"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]

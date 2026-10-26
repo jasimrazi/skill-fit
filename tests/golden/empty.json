@@ -1,0 +1,13 @@
+{
+  "project": "empty",
+  "manifests": [],
+  "stack": [],
+  "commands": {},
+  "infra": [],
+  "architecture": [],
+  "entry_points": [],
+  "dir_purposes": {},
+  "avoid": [],
+  "hash": "adc83b19e793491b1c6ea0fd8b46cd9f32e592fc",
+  "warnings": []
+}

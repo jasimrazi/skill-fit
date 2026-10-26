@@ -1,0 +1,65 @@
+{
+  "project": "flutter_app",
+  "manifests": [
+    "pubspec.yaml"
+  ],
+  "stack": [
+    {
+      "name": "flutter",
+      "version": "sdk",
+      "source_file": "pubspec.yaml",
+      "dev": false
+    },
+    {
+      "name": "http",
+      "version": "^1.2.0",
+      "source_file": "pubspec.yaml",
+      "dev": false
+    },
+    {
+      "name": "provider",
+      "version": "^6.1.0",
+      "source_file": "pubspec.yaml",
+      "dev": false
+    },
+    {
+      "name": "shared_preferences",
+      "version": "^2.2.0",
+      "source_file": "pubspec.yaml",
+      "dev": false
+    },
+    {
+      "name": "flutter_test",
+      "version": "",
+      "source_file": "pubspec.yaml",
+      "dev": true
+    },
+    {
+      "name": "flutter_lints",
+      "version": "^3.0.0",
+      "source_file": "pubspec.yaml",
+      "dev": true
+    }
+  ],
+  "commands": {},
+  "infra": [],
+  "architecture": [
+    {
+      "hint": "mobile_cross_platform",
+      "confidence": 0.9,
+      "evidence": [
+        "flutter SDK dependency in pubspec.yaml"
+      ]
+    }
+  ],
+  "entry_points": [],
+  "dir_purposes": {
+    "android": "Android platform code",
+    "ios": "iOS platform code",
+    "lib": "library code",
+    "test": "test suite"
+  },
+  "avoid": [],
+  "hash": "2b2aae7b91e0dd043bb05139ec4802033392c93d",
+  "warnings": []
+}

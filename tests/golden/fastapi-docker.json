@@ -1,0 +1,88 @@
+{
+  "project": "fastapi-docker",
+  "manifests": [
+    "requirements.txt"
+  ],
+  "stack": [
+    {
+      "name": "fastapi",
+      "version": ">=0.110.0",
+      "source_file": "requirements.txt",
+      "dev": false
+    },
+    {
+      "name": "uvicorn",
+      "version": "",
+      "source_file": "requirements.txt",
+      "dev": false
+    },
+    {
+      "name": "sqlalchemy",
+      "version": ">=2.0.0",
+      "source_file": "requirements.txt",
+      "dev": false
+    },
+    {
+      "name": "pydantic",
+      "version": ">=2.0.0",
+      "source_file": "requirements.txt",
+      "dev": false
+    },
+    {
+      "name": "alembic",
+      "version": ">=1.13.0",
+      "source_file": "requirements.txt",
+      "dev": false
+    },
+    {
+      "name": "pytest",
+      "version": ">=7.4",
+      "source_file": "requirements.txt",
+      "dev": false
+    },
+    {
+      "name": "httpx",
+      "version": ">=0.27.0",
+      "source_file": "requirements.txt",
+      "dev": false
+    },
+    {
+      "name": "pytest-asyncio",
+      "version": ">=0.23.0",
+      "source_file": "requirements.txt",
+      "dev": false
+    }
+  ],
+  "commands": {
+    "build": "make build",
+    "test": "make test",
+    "lint": "make lint",
+    "run": "make run"
+  },
+  "infra": [
+    "docker-compose",
+    "docker"
+  ],
+  "architecture": [
+    {
+      "hint": "api_server",
+      "confidence": 0.75,
+      "evidence": [
+        "fastapi in deps"
+      ]
+    },
+    {
+      "hint": "containerized",
+      "confidence": 0.85,
+      "evidence": [
+        "Dockerfile present",
+        "docker-compose file present"
+      ]
+    }
+  ],
+  "entry_points": [],
+  "dir_purposes": {},
+  "avoid": [],
+  "hash": "0ccbec060597b355401b6d1673a1a60f16042074",
+  "warnings": []
+}

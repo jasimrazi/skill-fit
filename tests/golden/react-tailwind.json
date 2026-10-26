@@ -1,0 +1,77 @@
+{
+  "project": "react-tailwind-app",
+  "manifests": [
+    "package.json"
+  ],
+  "stack": [
+    {
+      "name": "react",
+      "version": "^18.2.0",
+      "source_file": "package.json",
+      "dev": false
+    },
+    {
+      "name": "react-dom",
+      "version": "^18.2.0",
+      "source_file": "package.json",
+      "dev": false
+    },
+    {
+      "name": "tailwindcss",
+      "version": "^3.4.0",
+      "source_file": "package.json",
+      "dev": false
+    },
+    {
+      "name": "vite",
+      "version": "^5.0.0",
+      "source_file": "package.json",
+      "dev": true
+    },
+    {
+      "name": "eslint",
+      "version": "^8.57.0",
+      "source_file": "package.json",
+      "dev": true
+    },
+    {
+      "name": "vitest",
+      "version": "^1.0.0",
+      "source_file": "package.json",
+      "dev": true
+    },
+    {
+      "name": "@vitejs/plugin-react",
+      "version": "^4.2.0",
+      "source_file": "package.json",
+      "dev": true
+    }
+  ],
+  "commands": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "test": "vitest run"
+  },
+  "infra": [
+    "github_actions"
+  ],
+  "architecture": [
+    {
+      "hint": "spa",
+      "confidence": 0.75,
+      "evidence": [
+        "react in deps",
+        "@vitejs/plugin-react in devDeps"
+      ]
+    }
+  ],
+  "entry_points": [],
+  "dir_purposes": {
+    "public": "static assets",
+    "src": "source code"
+  },
+  "avoid": [],
+  "hash": "471e2161bdb14a670f05ef2f195e56d05d331e4b",
+  "warnings": []
+}
