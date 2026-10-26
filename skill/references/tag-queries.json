@@ -1,0 +1,138 @@
+{
+  "version": "1.0.0",
+  "tags": {
+    "react": {
+      "layer": "framework",
+      "queries": [
+        "react best practices",
+        "react performance"
+      ]
+    },
+    "next": {
+      "layer": "framework",
+      "queries": [
+        "nextjs best practices",
+        "nextjs app router"
+      ]
+    },
+    "vue": {
+      "layer": "framework",
+      "queries": [
+        "vue best practices",
+        "vue composition api"
+      ]
+    },
+    "tailwindcss": {
+      "layer": "styling",
+      "queries": [
+        "tailwind css patterns",
+        "tailwind best practices"
+      ]
+    },
+    "tailwind": {
+      "layer": "styling",
+      "queries": [
+        "tailwind css patterns",
+        "tailwind best practices"
+      ]
+    },
+    "fastapi": {
+      "layer": "backend",
+      "queries": [
+        "fastapi best practices",
+        "fastapi patterns"
+      ]
+    },
+    "django": {
+      "layer": "backend",
+      "queries": [
+        "django best practices",
+        "django security"
+      ]
+    },
+    "flask": {
+      "layer": "backend",
+      "queries": [
+        "flask patterns",
+        "flask best practices"
+      ]
+    },
+    "express": {
+      "layer": "backend",
+      "queries": [
+        "express best practices",
+        "nodejs api patterns"
+      ]
+    },
+    "prisma": {
+      "layer": "orm",
+      "queries": [
+        "prisma orm best practices",
+        "prisma schema design"
+      ]
+    },
+    "docker": {
+      "layer": "infra",
+      "queries": [
+        "docker best practices",
+        "docker container optimization"
+      ]
+    },
+    "docker-compose": {
+      "layer": "infra",
+      "queries": [
+        "docker-compose patterns",
+        "docker best practices"
+      ]
+    },
+    "flutter": {
+      "layer": "framework",
+      "queries": [
+        "flutter best practices",
+        "flutter state management"
+      ]
+    },
+    "pytest": {
+      "layer": "testing",
+      "queries": [
+        "pytest best practices",
+        "python testing patterns"
+      ]
+    },
+    "typescript": {
+      "layer": "language",
+      "queries": [
+        "typescript best practices",
+        "typescript strict types"
+      ]
+    },
+    "postgres": {
+      "layer": "database",
+      "queries": [
+        "postgres optimization",
+        "postgresql schema design"
+      ]
+    },
+    "postgresql": {
+      "layer": "database",
+      "queries": [
+        "postgres optimization",
+        "postgresql schema design"
+      ]
+    },
+    "github-actions": {
+      "layer": "ci",
+      "queries": [
+        "github actions best practices",
+        "ci cd workflow automation"
+      ]
+    },
+    "github_actions": {
+      "layer": "ci",
+      "queries": [
+        "github actions best practices",
+        "ci cd workflow automation"
+      ]
+    }
+  }
+}

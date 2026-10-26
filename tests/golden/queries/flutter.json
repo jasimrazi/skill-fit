@@ -1,0 +1,28 @@
+{
+  "queries": [
+    "flutter best practices",
+    "flutter state management"
+  ],
+  "query_details": [
+    {
+      "query": "flutter best practices",
+      "tag": "flutter",
+      "layer": "framework"
+    },
+    {
+      "query": "flutter state management",
+      "tag": "flutter",
+      "layer": "framework"
+    }
+  ],
+  "tags_matched": [
+    "flutter"
+  ],
+  "no_coverage": [
+    "flutter_lints",
+    "flutter_test",
+    "http",
+    "provider",
+    "shared_preferences"
+  ]
+}

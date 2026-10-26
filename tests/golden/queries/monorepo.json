@@ -1,0 +1,12 @@
+{
+  "queries": [],
+  "query_details": [],
+  "tags_matched": [],
+  "no_coverage": [
+    "api",
+    "turbo",
+    "ui",
+    "utils",
+    "web"
+  ]
+}

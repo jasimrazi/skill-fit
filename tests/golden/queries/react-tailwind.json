@@ -1,0 +1,54 @@
+{
+  "queries": [
+    "react best practices",
+    "react performance",
+    "tailwind css patterns",
+    "tailwind best practices",
+    "github actions best practices",
+    "ci cd workflow automation"
+  ],
+  "query_details": [
+    {
+      "query": "react best practices",
+      "tag": "react",
+      "layer": "framework"
+    },
+    {
+      "query": "react performance",
+      "tag": "react",
+      "layer": "framework"
+    },
+    {
+      "query": "tailwind css patterns",
+      "tag": "tailwindcss",
+      "layer": "styling"
+    },
+    {
+      "query": "tailwind best practices",
+      "tag": "tailwindcss",
+      "layer": "styling"
+    },
+    {
+      "query": "github actions best practices",
+      "tag": "github_actions",
+      "layer": "ci"
+    },
+    {
+      "query": "ci cd workflow automation",
+      "tag": "github_actions",
+      "layer": "ci"
+    }
+  ],
+  "tags_matched": [
+    "react",
+    "tailwindcss",
+    "github_actions"
+  ],
+  "no_coverage": [
+    "@vitejs/plugin-react",
+    "eslint",
+    "react-dom",
+    "vite",
+    "vitest"
+  ]
+}

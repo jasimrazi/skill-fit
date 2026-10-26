@@ -1,0 +1,62 @@
+{
+  "queries": [
+    "fastapi best practices",
+    "fastapi patterns",
+    "pytest best practices",
+    "python testing patterns",
+    "docker-compose patterns",
+    "docker best practices",
+    "docker container optimization"
+  ],
+  "query_details": [
+    {
+      "query": "fastapi best practices",
+      "tag": "fastapi",
+      "layer": "backend"
+    },
+    {
+      "query": "fastapi patterns",
+      "tag": "fastapi",
+      "layer": "backend"
+    },
+    {
+      "query": "pytest best practices",
+      "tag": "pytest",
+      "layer": "testing"
+    },
+    {
+      "query": "python testing patterns",
+      "tag": "pytest",
+      "layer": "testing"
+    },
+    {
+      "query": "docker-compose patterns",
+      "tag": "docker-compose",
+      "layer": "infra"
+    },
+    {
+      "query": "docker best practices",
+      "tag": "docker-compose",
+      "layer": "infra"
+    },
+    {
+      "query": "docker container optimization",
+      "tag": "docker",
+      "layer": "infra"
+    }
+  ],
+  "tags_matched": [
+    "fastapi",
+    "pytest",
+    "docker-compose",
+    "docker"
+  ],
+  "no_coverage": [
+    "alembic",
+    "httpx",
+    "pydantic",
+    "pytest-asyncio",
+    "sqlalchemy",
+    "uvicorn"
+  ]
+}

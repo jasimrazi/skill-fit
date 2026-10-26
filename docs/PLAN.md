@@ -30,3 +30,20 @@
 - Self-audit: `audit.py` passes on `skill/` with 0 flags and ~39 idle tokens
 - `docs/DESIGN.md`: ASSUMPTIONS, Decisions (budget, hints, trust gate), Self-Audit results
 - `README.md`: project guide and before/after benchmark table
+
+## Live Skill Matching Extension
+
+### Phase 0: Verification Spike (Blocking) ✅
+- Verified `npx skills find` output shape and non-interactive execution
+- Verified `npx skills add` commit SHA pinning syntax (`#<sha>` / `@<sha>`)
+- Verified `skills.sh/api/search` unauthenticated public endpoint vs 401 on detail endpoint
+- Captured GitHub unauthenticated 403 rate-limit response and headers
+- Fixtures committed under `tests/fixtures/registry/`
+
+### Phase 1: Tag-to-Query Table ✅
+- `skill/references/tag-queries.json` seeded with 19 tags across 8 layers
+- `skill/scripts/queries.py` building deduplicated, deterministic, <= 10 query list from scan data
+- `no_coverage` list tracking unrecognized tags
+- Golden tests: all 6 existing fixtures verified against `tests/golden/queries/`
+- Full test suite: 31 passed (0 failures)
+
