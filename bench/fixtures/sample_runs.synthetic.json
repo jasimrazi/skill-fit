@@ -1,0 +1,845 @@
+{
+ "_note": "SYNTHETIC DATA generated to demo bench/stats.py. These are not measurements of skill-fit or of any model. Never quote numbers computed from this file.",
+ "runs": [
+  {
+   "task": "add-endpoint",
+   "cond": "baseline",
+   "rep": 1,
+   "tokens": 49623,
+   "success": true
+  },
+  {
+   "task": "add-endpoint",
+   "cond": "baseline",
+   "rep": 2,
+   "tokens": 52016,
+   "success": true
+  },
+  {
+   "task": "add-endpoint",
+   "cond": "baseline",
+   "rep": 3,
+   "tokens": 52074,
+   "success": true
+  },
+  {
+   "task": "add-endpoint",
+   "cond": "map_only",
+   "rep": 1,
+   "tokens": 44482,
+   "success": true
+  },
+  {
+   "task": "add-endpoint",
+   "cond": "map_only",
+   "rep": 2,
+   "tokens": 40607,
+   "success": true
+  },
+  {
+   "task": "add-endpoint",
+   "cond": "map_only",
+   "rep": 3,
+   "tokens": 41224,
+   "success": true
+  },
+  {
+   "task": "add-endpoint",
+   "cond": "prune_only",
+   "rep": 1,
+   "tokens": 51052,
+   "success": true
+  },
+  {
+   "task": "add-endpoint",
+   "cond": "prune_only",
+   "rep": 2,
+   "tokens": 50782,
+   "success": true
+  },
+  {
+   "task": "add-endpoint",
+   "cond": "prune_only",
+   "rep": 3,
+   "tokens": 52155,
+   "success": true
+  },
+  {
+   "task": "add-endpoint",
+   "cond": "both",
+   "rep": 1,
+   "tokens": 40793,
+   "success": true
+  },
+  {
+   "task": "add-endpoint",
+   "cond": "both",
+   "rep": 2,
+   "tokens": 41682,
+   "success": true
+  },
+  {
+   "task": "add-endpoint",
+   "cond": "both",
+   "rep": 3,
+   "tokens": 41865,
+   "success": true
+  },
+  {
+   "task": "add-endpoint",
+   "cond": "cheap_but_wrong",
+   "rep": 1,
+   "tokens": 24105,
+   "success": true
+  },
+  {
+   "task": "add-endpoint",
+   "cond": "cheap_but_wrong",
+   "rep": 2,
+   "tokens": 23643,
+   "success": true
+  },
+  {
+   "task": "add-endpoint",
+   "cond": "cheap_but_wrong",
+   "rep": 3,
+   "tokens": 22670,
+   "success": false
+  },
+  {
+   "task": "fix-failing-test",
+   "cond": "baseline",
+   "rep": 1,
+   "tokens": 38521,
+   "success": true
+  },
+  {
+   "task": "fix-failing-test",
+   "cond": "baseline",
+   "rep": 2,
+   "tokens": 36225,
+   "success": true
+  },
+  {
+   "task": "fix-failing-test",
+   "cond": "baseline",
+   "rep": 3,
+   "tokens": 39444,
+   "success": true
+  },
+  {
+   "task": "fix-failing-test",
+   "cond": "map_only",
+   "rep": 1,
+   "tokens": 30972,
+   "success": true
+  },
+  {
+   "task": "fix-failing-test",
+   "cond": "map_only",
+   "rep": 2,
+   "tokens": 32337,
+   "success": true
+  },
+  {
+   "task": "fix-failing-test",
+   "cond": "map_only",
+   "rep": 3,
+   "tokens": 31852,
+   "success": true
+  },
+  {
+   "task": "fix-failing-test",
+   "cond": "prune_only",
+   "rep": 1,
+   "tokens": 37653,
+   "success": true
+  },
+  {
+   "task": "fix-failing-test",
+   "cond": "prune_only",
+   "rep": 2,
+   "tokens": 35578,
+   "success": true
+  },
+  {
+   "task": "fix-failing-test",
+   "cond": "prune_only",
+   "rep": 3,
+   "tokens": 35761,
+   "success": true
+  },
+  {
+   "task": "fix-failing-test",
+   "cond": "both",
+   "rep": 1,
+   "tokens": 31347,
+   "success": true
+  },
+  {
+   "task": "fix-failing-test",
+   "cond": "both",
+   "rep": 2,
+   "tokens": 31167,
+   "success": true
+  },
+  {
+   "task": "fix-failing-test",
+   "cond": "both",
+   "rep": 3,
+   "tokens": 30725,
+   "success": true
+  },
+  {
+   "task": "fix-failing-test",
+   "cond": "cheap_but_wrong",
+   "rep": 1,
+   "tokens": 18125,
+   "success": true
+  },
+  {
+   "task": "fix-failing-test",
+   "cond": "cheap_but_wrong",
+   "rep": 2,
+   "tokens": 17128,
+   "success": true
+  },
+  {
+   "task": "fix-failing-test",
+   "cond": "cheap_but_wrong",
+   "rep": 3,
+   "tokens": 16231,
+   "success": false
+  },
+  {
+   "task": "explain-auth-flow",
+   "cond": "baseline",
+   "rep": 1,
+   "tokens": 59832,
+   "success": true
+  },
+  {
+   "task": "explain-auth-flow",
+   "cond": "baseline",
+   "rep": 2,
+   "tokens": 61421,
+   "success": true
+  },
+  {
+   "task": "explain-auth-flow",
+   "cond": "baseline",
+   "rep": 3,
+   "tokens": 59478,
+   "success": true
+  },
+  {
+   "task": "explain-auth-flow",
+   "cond": "map_only",
+   "rep": 1,
+   "tokens": 49765,
+   "success": true
+  },
+  {
+   "task": "explain-auth-flow",
+   "cond": "map_only",
+   "rep": 2,
+   "tokens": 52280,
+   "success": true
+  },
+  {
+   "task": "explain-auth-flow",
+   "cond": "map_only",
+   "rep": 3,
+   "tokens": 51244,
+   "success": true
+  },
+  {
+   "task": "explain-auth-flow",
+   "cond": "prune_only",
+   "rep": 1,
+   "tokens": 59720,
+   "success": true
+  },
+  {
+   "task": "explain-auth-flow",
+   "cond": "prune_only",
+   "rep": 2,
+   "tokens": 55795,
+   "success": true
+  },
+  {
+   "task": "explain-auth-flow",
+   "cond": "prune_only",
+   "rep": 3,
+   "tokens": 60667,
+   "success": true
+  },
+  {
+   "task": "explain-auth-flow",
+   "cond": "both",
+   "rep": 1,
+   "tokens": 46801,
+   "success": true
+  },
+  {
+   "task": "explain-auth-flow",
+   "cond": "both",
+   "rep": 2,
+   "tokens": 47136,
+   "success": true
+  },
+  {
+   "task": "explain-auth-flow",
+   "cond": "both",
+   "rep": 3,
+   "tokens": 47002,
+   "success": true
+  },
+  {
+   "task": "explain-auth-flow",
+   "cond": "cheap_but_wrong",
+   "rep": 1,
+   "tokens": 27732,
+   "success": true
+  },
+  {
+   "task": "explain-auth-flow",
+   "cond": "cheap_but_wrong",
+   "rep": 2,
+   "tokens": 27445,
+   "success": true
+  },
+  {
+   "task": "explain-auth-flow",
+   "cond": "cheap_but_wrong",
+   "rep": 3,
+   "tokens": 26187,
+   "success": false
+  },
+  {
+   "task": "add-pagination",
+   "cond": "baseline",
+   "rep": 1,
+   "tokens": 47036,
+   "success": true
+  },
+  {
+   "task": "add-pagination",
+   "cond": "baseline",
+   "rep": 2,
+   "tokens": 48411,
+   "success": true
+  },
+  {
+   "task": "add-pagination",
+   "cond": "baseline",
+   "rep": 3,
+   "tokens": 47565,
+   "success": true
+  },
+  {
+   "task": "add-pagination",
+   "cond": "map_only",
+   "rep": 1,
+   "tokens": 38499,
+   "success": true
+  },
+  {
+   "task": "add-pagination",
+   "cond": "map_only",
+   "rep": 2,
+   "tokens": 40467,
+   "success": true
+  },
+  {
+   "task": "add-pagination",
+   "cond": "map_only",
+   "rep": 3,
+   "tokens": 37424,
+   "success": true
+  },
+  {
+   "task": "add-pagination",
+   "cond": "prune_only",
+   "rep": 1,
+   "tokens": 45152,
+   "success": true
+  },
+  {
+   "task": "add-pagination",
+   "cond": "prune_only",
+   "rep": 2,
+   "tokens": 47922,
+   "success": true
+  },
+  {
+   "task": "add-pagination",
+   "cond": "prune_only",
+   "rep": 3,
+   "tokens": 45476,
+   "success": true
+  },
+  {
+   "task": "add-pagination",
+   "cond": "both",
+   "rep": 1,
+   "tokens": 36739,
+   "success": true
+  },
+  {
+   "task": "add-pagination",
+   "cond": "both",
+   "rep": 2,
+   "tokens": 34572,
+   "success": true
+  },
+  {
+   "task": "add-pagination",
+   "cond": "both",
+   "rep": 3,
+   "tokens": 35448,
+   "success": true
+  },
+  {
+   "task": "add-pagination",
+   "cond": "cheap_but_wrong",
+   "rep": 1,
+   "tokens": 20208,
+   "success": true
+  },
+  {
+   "task": "add-pagination",
+   "cond": "cheap_but_wrong",
+   "rep": 2,
+   "tokens": 20005,
+   "success": true
+  },
+  {
+   "task": "add-pagination",
+   "cond": "cheap_but_wrong",
+   "rep": 3,
+   "tokens": 21669,
+   "success": false
+  },
+  {
+   "task": "rename-module",
+   "cond": "baseline",
+   "rep": 1,
+   "tokens": 30346,
+   "success": true
+  },
+  {
+   "task": "rename-module",
+   "cond": "baseline",
+   "rep": 2,
+   "tokens": 27617,
+   "success": true
+  },
+  {
+   "task": "rename-module",
+   "cond": "baseline",
+   "rep": 3,
+   "tokens": 29426,
+   "success": true
+  },
+  {
+   "task": "rename-module",
+   "cond": "map_only",
+   "rep": 1,
+   "tokens": 23695,
+   "success": true
+  },
+  {
+   "task": "rename-module",
+   "cond": "map_only",
+   "rep": 2,
+   "tokens": 23729,
+   "success": true
+  },
+  {
+   "task": "rename-module",
+   "cond": "map_only",
+   "rep": 3,
+   "tokens": 23006,
+   "success": true
+  },
+  {
+   "task": "rename-module",
+   "cond": "prune_only",
+   "rep": 1,
+   "tokens": 29433,
+   "success": true
+  },
+  {
+   "task": "rename-module",
+   "cond": "prune_only",
+   "rep": 2,
+   "tokens": 28558,
+   "success": true
+  },
+  {
+   "task": "rename-module",
+   "cond": "prune_only",
+   "rep": 3,
+   "tokens": 27984,
+   "success": true
+  },
+  {
+   "task": "rename-module",
+   "cond": "both",
+   "rep": 1,
+   "tokens": 22537,
+   "success": true
+  },
+  {
+   "task": "rename-module",
+   "cond": "both",
+   "rep": 2,
+   "tokens": 23786,
+   "success": true
+  },
+  {
+   "task": "rename-module",
+   "cond": "both",
+   "rep": 3,
+   "tokens": 23943,
+   "success": true
+  },
+  {
+   "task": "rename-module",
+   "cond": "cheap_but_wrong",
+   "rep": 1,
+   "tokens": 13121,
+   "success": true
+  },
+  {
+   "task": "rename-module",
+   "cond": "cheap_but_wrong",
+   "rep": 2,
+   "tokens": 13144,
+   "success": true
+  },
+  {
+   "task": "rename-module",
+   "cond": "cheap_but_wrong",
+   "rep": 3,
+   "tokens": 13316,
+   "success": false
+  },
+  {
+   "task": "write-migration",
+   "cond": "baseline",
+   "rep": 1,
+   "tokens": 53730,
+   "success": true
+  },
+  {
+   "task": "write-migration",
+   "cond": "baseline",
+   "rep": 2,
+   "tokens": 56979,
+   "success": true
+  },
+  {
+   "task": "write-migration",
+   "cond": "baseline",
+   "rep": 3,
+   "tokens": 55013,
+   "success": true
+  },
+  {
+   "task": "write-migration",
+   "cond": "map_only",
+   "rep": 1,
+   "tokens": 44986,
+   "success": true
+  },
+  {
+   "task": "write-migration",
+   "cond": "map_only",
+   "rep": 2,
+   "tokens": 47181,
+   "success": true
+  },
+  {
+   "task": "write-migration",
+   "cond": "map_only",
+   "rep": 3,
+   "tokens": 44738,
+   "success": true
+  },
+  {
+   "task": "write-migration",
+   "cond": "prune_only",
+   "rep": 1,
+   "tokens": 52034,
+   "success": true
+  },
+  {
+   "task": "write-migration",
+   "cond": "prune_only",
+   "rep": 2,
+   "tokens": 51871,
+   "success": true
+  },
+  {
+   "task": "write-migration",
+   "cond": "prune_only",
+   "rep": 3,
+   "tokens": 50361,
+   "success": true
+  },
+  {
+   "task": "write-migration",
+   "cond": "both",
+   "rep": 1,
+   "tokens": 43701,
+   "success": true
+  },
+  {
+   "task": "write-migration",
+   "cond": "both",
+   "rep": 2,
+   "tokens": 43401,
+   "success": true
+  },
+  {
+   "task": "write-migration",
+   "cond": "both",
+   "rep": 3,
+   "tokens": 42685,
+   "success": true
+  },
+  {
+   "task": "write-migration",
+   "cond": "cheap_but_wrong",
+   "rep": 1,
+   "tokens": 24818,
+   "success": true
+  },
+  {
+   "task": "write-migration",
+   "cond": "cheap_but_wrong",
+   "rep": 2,
+   "tokens": 24719,
+   "success": true
+  },
+  {
+   "task": "write-migration",
+   "cond": "cheap_but_wrong",
+   "rep": 3,
+   "tokens": 26002,
+   "success": false
+  },
+  {
+   "task": "debug-timeout",
+   "cond": "baseline",
+   "rep": 1,
+   "tokens": 68956,
+   "success": true
+  },
+  {
+   "task": "debug-timeout",
+   "cond": "baseline",
+   "rep": 2,
+   "tokens": 70877,
+   "success": true
+  },
+  {
+   "task": "debug-timeout",
+   "cond": "baseline",
+   "rep": 3,
+   "tokens": 71096,
+   "success": true
+  },
+  {
+   "task": "debug-timeout",
+   "cond": "map_only",
+   "rep": 1,
+   "tokens": 60499,
+   "success": true
+  },
+  {
+   "task": "debug-timeout",
+   "cond": "map_only",
+   "rep": 2,
+   "tokens": 60372,
+   "success": true
+  },
+  {
+   "task": "debug-timeout",
+   "cond": "map_only",
+   "rep": 3,
+   "tokens": 58624,
+   "success": true
+  },
+  {
+   "task": "debug-timeout",
+   "cond": "prune_only",
+   "rep": 1,
+   "tokens": 72236,
+   "success": true
+  },
+  {
+   "task": "debug-timeout",
+   "cond": "prune_only",
+   "rep": 2,
+   "tokens": 71609,
+   "success": true
+  },
+  {
+   "task": "debug-timeout",
+   "cond": "prune_only",
+   "rep": 3,
+   "tokens": 67355,
+   "success": true
+  },
+  {
+   "task": "debug-timeout",
+   "cond": "both",
+   "rep": 1,
+   "tokens": 58150,
+   "success": true
+  },
+  {
+   "task": "debug-timeout",
+   "cond": "both",
+   "rep": 2,
+   "tokens": 52711,
+   "success": true
+  },
+  {
+   "task": "debug-timeout",
+   "cond": "both",
+   "rep": 3,
+   "tokens": 56638,
+   "success": true
+  },
+  {
+   "task": "debug-timeout",
+   "cond": "cheap_but_wrong",
+   "rep": 1,
+   "tokens": 33043,
+   "success": true
+  },
+  {
+   "task": "debug-timeout",
+   "cond": "cheap_but_wrong",
+   "rep": 2,
+   "tokens": 32008,
+   "success": true
+  },
+  {
+   "task": "debug-timeout",
+   "cond": "cheap_but_wrong",
+   "rep": 3,
+   "tokens": 31769,
+   "success": false
+  },
+  {
+   "task": "add-validation",
+   "cond": "baseline",
+   "rep": 1,
+   "tokens": 35898,
+   "success": true
+  },
+  {
+   "task": "add-validation",
+   "cond": "baseline",
+   "rep": 2,
+   "tokens": 35906,
+   "success": true
+  },
+  {
+   "task": "add-validation",
+   "cond": "baseline",
+   "rep": 3,
+   "tokens": 35397,
+   "success": true
+  },
+  {
+   "task": "add-validation",
+   "cond": "map_only",
+   "rep": 1,
+   "tokens": 27810,
+   "success": true
+  },
+  {
+   "task": "add-validation",
+   "cond": "map_only",
+   "rep": 2,
+   "tokens": 26422,
+   "success": true
+  },
+  {
+   "task": "add-validation",
+   "cond": "map_only",
+   "rep": 3,
+   "tokens": 27099,
+   "success": true
+  },
+  {
+   "task": "add-validation",
+   "cond": "prune_only",
+   "rep": 1,
+   "tokens": 32974,
+   "success": true
+  },
+  {
+   "task": "add-validation",
+   "cond": "prune_only",
+   "rep": 2,
+   "tokens": 31384,
+   "success": true
+  },
+  {
+   "task": "add-validation",
+   "cond": "prune_only",
+   "rep": 3,
+   "tokens": 33960,
+   "success": true
+  },
+  {
+   "task": "add-validation",
+   "cond": "both",
+   "rep": 1,
+   "tokens": 26238,
+   "success": true
+  },
+  {
+   "task": "add-validation",
+   "cond": "both",
+   "rep": 2,
+   "tokens": 26359,
+   "success": true
+  },
+  {
+   "task": "add-validation",
+   "cond": "both",
+   "rep": 3,
+   "tokens": 24973,
+   "success": true
+  },
+  {
+   "task": "add-validation",
+   "cond": "cheap_but_wrong",
+   "rep": 1,
+   "tokens": 14382,
+   "success": true
+  },
+  {
+   "task": "add-validation",
+   "cond": "cheap_but_wrong",
+   "rep": 2,
+   "tokens": 15448,
+   "success": true
+  },
+  {
+   "task": "add-validation",
+   "cond": "cheap_but_wrong",
+   "rep": 3,
+   "tokens": 16093,
+   "success": false
+  }
+ ]
+}
