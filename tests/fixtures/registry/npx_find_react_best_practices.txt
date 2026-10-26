@@ -1,0 +1,63 @@
+
+Install with npx skills add <owner/repo@skill>
+
+vercel-labs/agent-skills@vercel-react-best-practices 839K installs
+â”” https://skills.sh/vercel-labs/agent-skills/vercel-react-best-practices
+
+vercel-labs/agent-skills@vercel-react-native-skills 255K installs
+â”” https://skills.sh/vercel-labs/agent-skills/vercel-react-native-skills
+
+callstackincubator/agent-skills@react-native-best-practices 30.2K installs
+â”” https://skills.sh/callstackincubator/agent-skills/react-native-best-practices
+
+giuseppe-trisciuoglio/developer-kit@tailwind-css-patterns 17.6K installs
+â”” https://skills.sh/giuseppe-trisciuoglio/developer-kit/tailwind-css-patterns
+
+affaan-m/ecc@frontend-patterns 15.3K installs
+â”” https://skills.sh/affaan-m/ecc/frontend-patterns
+
+deckardger/tanstack-agent-skills@tanstack-query-best-practices 12.8K installs
+â”” https://skills.sh/deckardger/tanstack-agent-skills/tanstack-query-best-practices
+
+deckardger/tanstack-agent-skills@tanstack-start-best-practices 9.8K installs
+â”” https://skills.sh/deckardger/tanstack-agent-skills/tanstack-start-best-practices
+
+affaan-m/ecc@remotion-video-creation 9.8K installs
+â”” https://skills.sh/affaan-m/ecc/remotion-video-creation
+
+deckardger/tanstack-agent-skills@tanstack-router-best-practices 7.1K installs
+â”” https://skills.sh/deckardger/tanstack-agent-skills/tanstack-router-best-practices
+
+pproenca/dot-skills@zod 7K installs
+â”” https://skills.sh/pproenca/dot-skills/zod
+
+affaan-m/ecc@react-performance 6.4K installs
+â”” https://skills.sh/affaan-m/ecc/react-performance
+
+software-mansion-labs/skills@react-native-best-practices 5.6K installs
+â”” https://skills.sh/software-mansion-labs/skills/react-native-best-practices
+
+giuseppe-trisciuoglio/developer-kit@nextjs-performance 4.9K installs
+â”” https://skills.sh/giuseppe-trisciuoglio/developer-kit/nextjs-performance
+
+medusajs/medusa-agent-skills@storefront-best-practices 4.6K installs
+â”” https://skills.sh/medusajs/medusa-agent-skills/storefront-best-practices
+
+delphi-ai/animate-skill@animate 3.6K installs
+â”” https://skills.sh/delphi-ai/animate-skill/animate
+
+alleneubank/claude-code@react-best-practices 3.2K installs
+â”” https://skills.sh/alleneubank/claude-code/react-best-practices
+
+pproenca/dot-skills@react-hook-form 3K installs
+â”” https://skills.sh/pproenca/dot-skills/react-hook-form
+
+asyrafhussin/agent-skills@react-vite-best-practices 2.9K installs
+â”” https://skills.sh/asyrafhussin/agent-skills/react-vite-best-practices
+
+mastra-ai/mastra@react-best-practices 2.8K installs
+â”” https://skills.sh/mastra-ai/mastra/react-best-practices
+
+pproenca/dot-skills@emilkowal-animations 2.8K installs
+â”” https://skills.sh/pproenca/dot-skills/emilkowal-animations
+

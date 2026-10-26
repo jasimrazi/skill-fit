@@ -1,0 +1,17 @@
+{
+  "status": 403,
+  "headers": {
+    "server": "GitHub.com",
+    "date": "Mon, 26 Oct 2026 08:30:00 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "x-ratelimit-limit": "60",
+    "x-ratelimit-remaining": "0",
+    "x-ratelimit-reset": "1793007107",
+    "x-ratelimit-used": "60",
+    "x-ratelimit-resource": "core"
+  },
+  "body": {
+    "message": "API rate limit exceeded for 0.0.0.0. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)",
+    "documentation_url": "https://docs.github.com/rest/overview/resources-in-the-rest-api#rate-limiting"
+  }
+}

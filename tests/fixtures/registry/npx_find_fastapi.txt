@@ -1,0 +1,63 @@
+
+Install with npx skills add <owner/repo@skill>
+
+microsoft/azure-skills@python-appservice-deploy 228.5K installs
+â”” https://skills.sh/microsoft/azure-skills/python-appservice-deploy
+
+wshobson/agents@fastapi-templates 25.9K installs
+â”” https://skills.sh/wshobson/agents/fastapi-templates
+
+mindrally/skills@fastapi-python 13.9K installs
+â”” https://skills.sh/mindrally/skills/fastapi-python
+
+fastapi/fastapi@fastapi 13.5K installs
+â”” https://skills.sh/fastapi/fastapi/fastapi
+
+affaan-m/ecc@fastapi-patterns 7.4K installs
+â”” https://skills.sh/affaan-m/ecc/fastapi-patterns
+
+jeffallan/claude-skills@fastapi-expert 6.1K installs
+â”” https://skills.sh/jeffallan/claude-skills/fastapi-expert
+
+starchild-ai-agent/official-skills@preview-dev 4K installs
+â”” https://skills.sh/starchild-ai-agent/official-skills/preview-dev
+
+mrgoonie/claudekit-skills@backend-development 2.3K installs
+â”” https://skills.sh/mrgoonie/claudekit-skills/backend-development
+
+jezweb/claude-skills@fastapi 2K installs
+â”” https://skills.sh/jezweb/claude-skills/fastapi
+
+alirezarezvani/claude-skills@senior-fullstack 1.4K installs
+â”” https://skills.sh/alirezarezvani/claude-skills/senior-fullstack
+
+appwrite/skills@appwrite-python 1.1K installs
+â”” https://skills.sh/appwrite/skills/appwrite-python
+
+thebushidocollective/han@fastapi-async-patterns 953 installs
+â”” https://skills.sh/thebushidocollective/han/fastapi-async-patterns
+
+sickn33/agentic-awesome-skills@python-pro 885 installs
+â”” https://skills.sh/sickn33/agentic-awesome-skills/python-pro
+
+alirezarezvani/claude-skills@code-to-prd 766 installs
+â”” https://skills.sh/alirezarezvani/claude-skills/code-to-prd
+
+mindrally/skills@fastapi-microservices-serverless 724 installs
+â”” https://skills.sh/mindrally/skills/fastapi-microservices-serverless
+
+mindrally/skills@microservices 724 installs
+â”” https://skills.sh/mindrally/skills/microservices
+
+aj-geddes/useful-ai-prompts@fastapi-development 618 installs
+â”” https://skills.sh/aj-geddes/useful-ai-prompts/fastapi-development
+
+astronomer/agents@airflow-plugins 594 installs
+â”” https://skills.sh/astronomer/agents/airflow-plugins
+
+manutej/luxor-claude-marketplace@fastapi-microservices-development 587 installs
+â”” https://skills.sh/manutej/luxor-claude-marketplace/fastapi-microservices-development
+
+sickn33/agentic-awesome-skills@python-fastapi-development 548 installs
+â”” https://skills.sh/sickn33/agentic-awesome-skills/python-fastapi-development
+

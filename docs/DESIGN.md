@@ -86,3 +86,64 @@ and safely ignored by standard Antigravity parsers.
 - **Trigger phrases included**: "optimize agent context", "audit my skills", "set up skills for my stack" -> **Passed**
 - **Flags**: 0 warnings, 0 overlaps -> **Passed**
 - **Baseline idle footprint**: ~34 tokens -> **Minimal**
+
+---
+
+## Phase 0: Live Skill Matching Verification Spike Findings
+
+### 1. `npx skills find <query>` Output
+- **Interactivity**: Fully non-interactive when piped or executed from a subprocess. Does not prompt.
+- **Format**: Deterministic plain text blocks:
+  ```text
+  <owner>/<repo>@<skill_name> <installs> installs
+  └ https://skills.sh/<owner>/<repo>/<skill_name>
+  ```
+- **ANSI Sanitization**: When running in terminals with color, ANSI escape sequences (`\x1b[...m`) are emitted. Stripping ANSI via regex or providing `NO_COLOR=1` / `TERM=dumb` produces clean, easily parseable text.
+- **Recorded Fixtures**:
+  - `tests/fixtures/registry/npx_find_react_best_practices.txt`
+  - `tests/fixtures/registry/npx_find_fastapi.txt`
+  - `tests/fixtures/registry/npx_find_tailwind.txt`
+
+### 2. `npx skills add` Commit Pinning
+- **Pinning Capability**: Verified! `npx skills add` successfully pins to git commit SHAs or branch names using either `<owner>/<repo>#<sha>` or `<owner>/<repo>@<sha>`.
+- **Cloning Behavior**: Running `npx skills add vercel-labs/agent-skills#063bee94c3f4df8453406c830b0a7df0f2860278 --list` clones specifically at the specified SHA (`exit 0`).
+- **Targeting Specific Skills**: Combine with `--skill <skill_name>` and `-y` for non-interactive pinned installation.
+- **Recorded Fixtures**:
+  - `tests/fixtures/registry/npx_add_pin_test.txt`
+  - `tests/fixtures/registry/pin_hash_sha.txt`
+  - `tests/fixtures/registry/pin_at_sha.txt`
+
+### 3. `skills.sh` Public API Endpoints
+- **Public Search**: `GET https://skills.sh/api/search?q=<query>` is public and unauthenticated (HTTP 200). Returns JSON with up to 100 skill records:
+  ```json
+  {
+    "id": "fastapi/fastapi/fastapi",
+    "source": "fastapi/fastapi",
+    "skillId": "fastapi",
+    "name": "fastapi",
+    "installs": 13514
+  }
+  ```
+- **Authenticated Endpoints**: `GET https://skills.sh/api/skill/:id` returns `HTTP 401: Unauthorized` (requires Vercel OIDC or auth token).
+- **Recorded Fixture**:
+  - `tests/fixtures/registry/skills_sh_api_search_fastapi.json`
+
+### 4. GitHub Rate Limits & Error Responses
+- **Core API Rate Limit**: 60 requests/hr per IP (unauthenticated). Search API: 10 requests/min.
+- **403 Response Shape**:
+  ```json
+  {
+    "message": "API rate limit exceeded for <IP>. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)",
+    "documentation_url": "https://docs.github.com/rest/overview/resources-in-the-rest-api#rate-limiting"
+  }
+  ```
+- **Rate Limit Headers**: `X-RateLimit-Limit`, `X-RateLimit-Remaining: 0`, `X-RateLimit-Reset: <epoch>`.
+- **Recorded Fixtures**:
+  - `tests/fixtures/registry/github_rate_limit_403.json`
+  - `tests/fixtures/registry/github_rate_limit_status_200.json`
+
+### Adapter Recommendations
+1. **Search Phase**: Use `skills.sh/api/search` via Python stdlib `urllib` as the primary search mechanism (fast, structured JSON, includes install counts, no subprocess overhead). Fall back to `npx skills find` if `skills.sh` is unreachable.
+2. **Metadata Phase (`fetch_meta`)**: Use GitHub raw content (`raw.githubusercontent.com/<owner>/<repo>/<branch_or_sha>/.../SKILL.md`) with bounded byte caps (e.g. 8KB) to read only frontmatter and line counts, avoiding GitHub API core rate limits. Optionally accept `GITHUB_TOKEN` for GitHub API calls.
+3. **Install Phase**: Use `npx skills add <owner/repo#sha@skill>` since Phase 0 verified commit SHA pinning and non-interactive installation.
+

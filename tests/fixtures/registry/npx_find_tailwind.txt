@@ -1,0 +1,63 @@
+
+Install with npx skills add <owner/repo@skill>
+
+emilkowalski/skills@ask-sonner 140.2K installs
+â”” https://skills.sh/emilkowalski/skills/ask-sonner
+
+anthropics/skills@web-artifacts-builder 112.6K installs
+â”” https://skills.sh/anthropics/skills/web-artifacts-builder
+
+heygen-com/hyperframes@tailwind 70.6K installs
+â”” https://skills.sh/heygen-com/hyperframes/tailwind
+
+wshobson/agents@tailwind-design-system 70.4K installs
+â”” https://skills.sh/wshobson/agents/tailwind-design-system
+
+expo/skills@expo-tailwind-setup 53.6K installs
+â”” https://skills.sh/expo/skills/expo-tailwind-setup
+
+nextlevelbuilder/ui-ux-pro-max-skill@ui-styling 32.4K installs
+â”” https://skills.sh/nextlevelbuilder/ui-ux-pro-max-skill/ckmui-styling
+
+giuseppe-trisciuoglio/developer-kit@shadcn-ui 22.3K installs
+â”” https://skills.sh/giuseppe-trisciuoglio/developer-kit/shadcn-ui
+
+giuseppe-trisciuoglio/developer-kit@tailwind-css-patterns 17.6K installs
+â”” https://skills.sh/giuseppe-trisciuoglio/developer-kit/tailwind-css-patterns
+
+lombiq/tailwind-agent-skills@tailwind-4-docs 17.6K installs
+â”” https://skills.sh/lombiq/tailwind-agent-skills/tailwind-4-docs
+
+antfu/skills@unocss 16K installs
+â”” https://skills.sh/antfu/skills/unocss
+
+heroui-inc/heroui@heroui-react 12.2K installs
+â”” https://skills.sh/heroui-inc/heroui/heroui-react
+
+saadeghi/daisyui@daisyui 12.1K installs
+â”” https://skills.sh/saadeghi/daisyui/daisyui
+
+heroui-inc/heroui@heroui-native 10.8K installs
+â”” https://skills.sh/heroui-inc/heroui/heroui-native
+
+wondelai/skills@refactoring-ui 9.2K installs
+â”” https://skills.sh/wondelai/skills/refactoring-ui
+
+josiahsiegel/claude-plugin-marketplace@tailwindcss-advanced-layouts 8.1K installs
+â”” https://skills.sh/josiahsiegel/claude-plugin-marketplace/tailwindcss-advanced-layouts
+
+secondsky/claude-skills@tailwind-v4-shadcn 8.1K installs
+â”” https://skills.sh/secondsky/claude-skills/tailwind-v4-shadcn
+
+onmax/nuxt-skills@nuxt-ui 7K installs
+â”” https://skills.sh/onmax/nuxt-skills/nuxt-ui
+
+julianoczkowski/designer-skills@design-tokens 5.9K installs
+â”” https://skills.sh/julianoczkowski/designer-skills/design-tokens
+
+giuseppe-trisciuoglio/developer-kit@tailwind-design-system 4.5K installs
+â”” https://skills.sh/giuseppe-trisciuoglio/developer-kit/tailwind-design-system
+
+hairyf/skills@tailwindcss 3.6K installs
+â”” https://skills.sh/hairyf/skills/tailwindcss
+
