@@ -1,0 +1,96 @@
+{
+  "version": "1.0.0",
+  "candidates": [
+    {
+      "id": "flutter-community/skills@flutter-layered-architecture",
+      "name": "flutter-layered-architecture",
+      "repo": "flutter-community/skills",
+      "layer": "architecture",
+      "tags": ["flutter", "dart", "mobile"],
+      "description": "Enforces clean screen -> provider -> repository -> service separation, named routing conventions, and widget tree modularization in Flutter apps.",
+      "description_tokens": 34,
+      "body_tokens": 820,
+      "install_count": 450,
+      "stars": 180,
+      "updated_at": "2026-10-01T00:00:00Z"
+    },
+    {
+      "id": "flutter-community/skills@provider-state-management",
+      "name": "provider-state-management",
+      "repo": "flutter-community/skills",
+      "layer": "state",
+      "tags": ["provider", "flutter", "dart"],
+      "description": "Prevents unnecessary widget rebuilds with ChangeNotifier, enforces Selector/Consumer best practices, and standardizes async loading/error states.",
+      "description_tokens": 32,
+      "body_tokens": 640,
+      "install_count": 390,
+      "stars": 145,
+      "updated_at": "2026-10-01T00:00:00Z"
+    },
+    {
+      "id": "flutter-community/skills@dio-api-client",
+      "name": "dio-api-client",
+      "repo": "flutter-community/skills",
+      "layer": "data",
+      "tags": ["dio", "flutter", "dart", "http"],
+      "description": "Standardizes Dio interceptors, centralized endpoint constants, timeout/retry policies, and typed repository exception mapping.",
+      "description_tokens": 29,
+      "body_tokens": 590,
+      "install_count": 310,
+      "stars": 120,
+      "updated_at": "2026-10-01T00:00:00Z"
+    },
+    {
+      "id": "vercel-labs/agent-skills@react-best-practices",
+      "name": "react-best-practices",
+      "repo": "vercel-labs/agent-skills",
+      "layer": "frontend",
+      "tags": ["react", "nextjs", "typescript", "javascript", "tailwindcss"],
+      "description": "Enforces modern React component composition, hook dependency discipline, and render performance optimizations.",
+      "description_tokens": 26,
+      "body_tokens": 950,
+      "install_count": 1200,
+      "stars": 850,
+      "updated_at": "2026-10-01T00:00:00Z"
+    },
+    {
+      "id": "python-agents/skills@django-service-layer",
+      "name": "django-service-layer",
+      "repo": "python-agents/skills",
+      "layer": "backend",
+      "tags": ["django", "python", "postgresql", "sqlite"],
+      "description": "Prevents N+1 ORM queries via select_related/prefetch_related and enforces thin views with encapsulated service/repository logic.",
+      "description_tokens": 31,
+      "body_tokens": 890,
+      "install_count": 620,
+      "stars": 290,
+      "updated_at": "2026-10-01T00:00:00Z"
+    },
+    {
+      "id": "python-agents/skills@flask-sqlalchemy-patterns",
+      "name": "flask-sqlalchemy-patterns",
+      "repo": "python-agents/skills",
+      "layer": "backend",
+      "tags": ["flask", "sqlalchemy", "python"],
+      "description": "Standardizes Flask application factories, Blueprint routing, and scoped SQLAlchemy session lifecycle management.",
+      "description_tokens": 27,
+      "body_tokens": 740,
+      "install_count": 410,
+      "stars": 175,
+      "updated_at": "2026-10-01T00:00:00Z"
+    },
+    {
+      "id": "devops-skills/containers@docker-compose-lean",
+      "name": "docker-compose-lean",
+      "repo": "devops-skills/containers",
+      "layer": "infra",
+      "tags": ["docker", "docker-compose", "containers"],
+      "description": "Enforces multi-stage Dockerfiles, layer cache ordering, non-root runtime users, and healthcheck-gated compose dependencies.",
+      "description_tokens": 28,
+      "body_tokens": 680,
+      "install_count": 530,
+      "stars": 210,
+      "updated_at": "2026-10-01T00:00:00Z"
+    }
+  ]
+}

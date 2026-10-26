@@ -1,19 +1,22 @@
 #!/usr/bin/env python3
-"""Skill match orchestrator executing the 4-step resolution order.
+"""Skill match orchestrator executing the 5-step resolution order.
 
 Resolution order:
     1. Lockfile exists AND manifest_hash equals scanner's current hash -> use lockfile (no network).
     2. Cache hit for this tag set, within TTL (default 7 days) -> use cache (no network).
-    3. Live search -> score -> shortlist -> write cache.
+    3. Live search (capped queries) -> score -> shortlist -> write cache.
     4. Degraded mode on network failure -> fall back to stale cache with visible stale marker.
-       Never guess or invent candidates.
+    5. Bundled seed catalog fallback -> use pre-vetted references/seed-catalog.json so
+       offline/cold-start runs never return 0 skills for known stacks.
 
 Flags:
-    --refresh    Bypass lockfile and cache reads
-    --offline    Lockfile and cache only; never touch network
-    --budget     Idle token budget for greedy selection (default 1500)
-    --cache-dir  Override cache directory
-    --human      Print human-readable table
+    --refresh      Bypass lockfile and cache reads
+    --offline      Lockfile, cache, and bundled seed only; never touch network
+    --budget       Idle token budget for greedy selection (default 1500)
+    --min-installs Minimum install count filter (default from rank.py, auto-relaxes on 0 match)
+    --max-queries  Max live search queries to prevent CLI timeouts (default 4)
+    --cache-dir    Override cache directory
+    --human        Print human-readable table
 
 Runtime: Python 3.8+ standard library only.
 """
@@ -23,6 +26,7 @@ import argparse
 import copy
 import json
 import os
+import re
 import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Union
@@ -38,6 +42,88 @@ from registry import Registry  # noqa: E402
 from scan import scan  # noqa: E402
 
 MAX_OUTPUT_ESTIMATED_TOKENS = 1000
+DEFAULT_MAX_LIVE_QUERIES = 4
+SEED_CATALOG_PATH = Path(__file__).resolve().parent.parent / "references" / "seed-catalog.json"
+
+
+def normalize_tag(raw_tag: str) -> str:
+    """Normalize stack tags: lowercase, strip version constraints and namespace prefixes."""
+    clean = str(raw_tag).lower().strip()
+    # Strip version constraints like "^6.1.2", ">=3.0.0", "~1.2"
+    clean = re.split(r"[\s^~>=<@!]+", clean)[0]
+    # Keep both base and suffix clean (e.g., "flutter:provider" -> "provider")
+    if ":" in clean:
+        clean = clean.split(":")[-1]
+    return clean
+
+
+def normalize_tag_list(tags: List[str]) -> List[str]:
+    """Return deduplicated list of normalized tags while preserving original order."""
+    seen = set()
+    result: List[str] = []
+    for t in tags:
+        norm = normalize_tag(t)
+        if norm and norm not in seen:
+            seen.add(norm)
+            result.append(norm)
+    return result
+
+
+def load_seed_candidates(stack_tags: List[str]) -> List[Dict[str, Any]]:
+    """Load pre-vetted candidates from references/seed-catalog.json matching stack_tags."""
+    if not SEED_CATALOG_PATH.exists():
+        return []
+    try:
+        raw = json.loads(SEED_CATALOG_PATH.read_text(encoding="utf-8"))
+        all_candidates = raw.get("candidates", [])
+        if not isinstance(all_candidates, list):
+            return []
+
+        norm_stack = set(normalize_tag_list(stack_tags))
+        matched: List[Dict[str, Any]] = []
+        for cand in all_candidates:
+            cand_tags = {normalize_tag(t) for t in cand.get("tags", [])}
+            # Include if tags overlap with detected stack or if marked universal
+            if cand_tags & norm_stack or "universal" in cand_tags:
+                matched.append(cand)
+        return matched
+    except Exception:
+        return []
+
+
+def rank_with_adaptive_floor(
+    candidates: List[Dict[str, Any]],
+    installed_skills: List[Dict[str, Any]],
+    stack_tags: List[str],
+    budget: int,
+    min_install_count: int,
+    now_epoch: Optional[float],
+    warnings: List[str],
+) -> Any:
+    """Rank candidates; if min_install_count rejects all candidates, retry with floor=0."""
+    rank_result = rank.rank_candidates(
+        candidates=candidates,
+        installed_skills=installed_skills,
+        stack_tags=stack_tags,
+        budget=budget,
+        min_install_count=min_install_count,
+        now_epoch=now_epoch,
+    )
+    if not rank_result.shortlist and candidates and min_install_count > 0:
+        relaxed_result = rank.rank_candidates(
+            candidates=candidates,
+            installed_skills=installed_skills,
+            stack_tags=stack_tags,
+            budget=budget,
+            min_install_count=0,
+            now_epoch=now_epoch,
+        )
+        if relaxed_result.shortlist:
+            warnings.append(
+                f"Relaxed min_install_count from {min_install_count} to 0 to surface valid matches"
+            )
+            return relaxed_result
+    return rank_result
 
 
 def enforce_output_token_budget(data: Dict[str, Any]) -> Dict[str, Any]:
@@ -55,12 +141,10 @@ def enforce_output_token_budget(data: Dict[str, Any]) -> Dict[str, Any]:
     # Trim signals in shortlist
     for item in compact.get("shortlist", []):
         if "signals" in item and isinstance(item["signals"], dict):
-            # Keep only summary scores
             item["signals"] = {
                 k: v.get("score", v) if isinstance(v, dict) else v
                 for k, v in item["signals"].items()
             }
-        # Trim description if still long
         if "description" in item and len(item["description"]) > 100:
             item["description"] = item["description"][:97] + "..."
 
@@ -81,6 +165,7 @@ def match_skills(
     offline: bool = False,
     budget: int = rank.DEFAULT_BUDGET,
     min_install_count: int = rank.DEFAULT_MIN_INSTALL_COUNT,
+    max_queries: int = DEFAULT_MAX_LIVE_QUERIES,
     now_epoch: Optional[float] = None,
 ) -> Dict[str, Any]:
     """Execute the resolution order and return deterministic shortlist payload."""
@@ -92,7 +177,8 @@ def match_skills(
     # Step 0: Scan repository to extract stack tags and manifest hash
     scan_result = scan(str(repo))
     manifest_hash = scan_result.get("hash", "")
-    extracted_tags = queries.extract_tags_from_scan(scan_result)
+    raw_extracted_tags = queries.extract_tags_from_scan(scan_result)
+    extracted_tags = normalize_tag_list(raw_extracted_tags)
 
     # Load installed skills for collision check
     installed_report = audit(project_root=str(repo))
@@ -131,35 +217,41 @@ def match_skills(
             now_s=now_epoch,
         )
         warnings.extend(cache_warnings)
-        if cache_entry and not cache_entry.is_stale:
-            # Score and rank cached candidates
-            rank_result = rank.rank_candidates(
+        if cache_entry and not cache_entry.is_stale and cache_entry.candidates:
+            rank_result = rank_with_adaptive_floor(
                 candidates=cache_entry.candidates,
                 installed_skills=installed_skills,
                 stack_tags=extracted_tags,
                 budget=budget,
                 min_install_count=min_install_count,
                 now_epoch=now_epoch,
+                warnings=warnings,
             )
-            output = {
-                "resolution_source": "cache",
-                "manifest_hash": manifest_hash,
-                "stack_tags": extracted_tags,
-                "shortlist": rank_result.shortlist,
-                "rejected": rank_result.rejected,
-                "total_description_tokens": rank_result.total_description_tokens,
-                "budget": budget,
-                "is_stale": False,
-                "warnings": warnings + rank_result.warnings,
-            }
-            return enforce_output_token_budget(output)
+            if rank_result.shortlist:
+                output = {
+                    "resolution_source": "cache",
+                    "manifest_hash": manifest_hash,
+                    "stack_tags": extracted_tags,
+                    "shortlist": rank_result.shortlist,
+                    "rejected": rank_result.rejected,
+                    "total_description_tokens": rank_result.total_description_tokens,
+                    "budget": budget,
+                    "is_stale": False,
+                    "warnings": warnings + rank_result.warnings,
+                }
+                return enforce_output_token_budget(output)
 
     # Step 3: Live Search (unless offline)
     if not offline:
         try:
-            # Build search queries
             q_res = queries.build_queries(scan_result)
-            query_list = q_res.get("queries", [])
+            full_query_list = q_res.get("queries", [])
+            query_list = full_query_list[:max_queries]
+            if len(full_query_list) > max_queries:
+                warnings.append(
+                    f"Capped live queries from {len(full_query_list)} to {max_queries} for speed"
+                )
+
             query_details = q_res.get("query_details", [])
             layer_map = {d["query"]: d.get("layer", "general") for d in query_details}
 
@@ -169,7 +261,15 @@ def match_skills(
             )
             warnings.extend(reg_warnings)
 
-            # Write results to cache
+            # Merge bundled seed candidates if live search came back empty or partial
+            seed_cands = load_seed_candidates(extracted_tags)
+            if seed_cands:
+                existing_ids = {c.get("id") for c in candidates}
+                for sc in seed_cands:
+                    if sc.get("id") not in existing_ids:
+                        candidates.append(sc)
+
+            # Write results to cache if non-empty
             if candidates:
                 cache.set_cache(
                     tags=extracted_tags,
@@ -177,27 +277,28 @@ def match_skills(
                     cache_dir=cache_dir,
                 )
 
-            # Rank and select
-            rank_result = rank.rank_candidates(
+            rank_result = rank_with_adaptive_floor(
                 candidates=candidates,
                 installed_skills=installed_skills,
                 stack_tags=extracted_tags,
                 budget=budget,
                 min_install_count=min_install_count,
                 now_epoch=now_epoch,
+                warnings=warnings,
             )
-            output = {
-                "resolution_source": "live",
-                "manifest_hash": manifest_hash,
-                "stack_tags": extracted_tags,
-                "shortlist": rank_result.shortlist,
-                "rejected": rank_result.rejected,
-                "total_description_tokens": rank_result.total_description_tokens,
-                "budget": budget,
-                "is_stale": False,
-                "warnings": warnings + rank_result.warnings,
-            }
-            return enforce_output_token_budget(output)
+            if rank_result.shortlist:
+                output = {
+                    "resolution_source": "live",
+                    "manifest_hash": manifest_hash,
+                    "stack_tags": extracted_tags,
+                    "shortlist": rank_result.shortlist,
+                    "rejected": rank_result.rejected,
+                    "total_description_tokens": rank_result.total_description_tokens,
+                    "budget": budget,
+                    "is_stale": False,
+                    "warnings": warnings + rank_result.warnings,
+                }
+                return enforce_output_token_budget(output)
 
         except Exception as exc:
             warnings.append(f"Network live search failed ({exc}); falling back to degraded mode")
@@ -212,32 +313,61 @@ def match_skills(
     )
     warnings.extend(stale_warnings)
 
-    if stale_entry:
-        rank_result = rank.rank_candidates(
+    if stale_entry and stale_entry.candidates:
+        rank_result = rank_with_adaptive_floor(
             candidates=stale_entry.candidates,
             installed_skills=installed_skills,
             stack_tags=extracted_tags,
             budget=budget,
             min_install_count=min_install_count,
             now_epoch=now_epoch,
+            warnings=warnings,
         )
-        output = {
-            "resolution_source": "stale_cache",
-            "manifest_hash": manifest_hash,
-            "stack_tags": extracted_tags,
-            "shortlist": rank_result.shortlist,
-            "rejected": rank_result.rejected,
-            "total_description_tokens": rank_result.total_description_tokens,
-            "budget": budget,
-            "is_stale": True,
-            "warnings": warnings + rank_result.warnings,
-        }
-        return enforce_output_token_budget(output)
+        if rank_result.shortlist:
+            output = {
+                "resolution_source": "stale_cache",
+                "manifest_hash": manifest_hash,
+                "stack_tags": extracted_tags,
+                "shortlist": rank_result.shortlist,
+                "rejected": rank_result.rejected,
+                "total_description_tokens": rank_result.total_description_tokens,
+                "budget": budget,
+                "is_stale": True,
+                "warnings": warnings + rank_result.warnings,
+            }
+            return enforce_output_token_budget(output)
+
+    # Step 5: Bundled Seed Catalog Fallback (Zero-Network Guarantee)
+    seed_candidates = load_seed_candidates(extracted_tags)
+    if seed_candidates:
+        rank_result = rank_with_adaptive_floor(
+            candidates=seed_candidates,
+            installed_skills=installed_skills,
+            stack_tags=extracted_tags,
+            budget=budget,
+            min_install_count=0,
+            now_epoch=now_epoch,
+            warnings=warnings,
+        )
+        if rank_result.shortlist:
+            warnings.append("Resolved from bundled seed catalog (no live cache or network match)")
+            output = {
+                "resolution_source": "bundled_seed",
+                "manifest_hash": manifest_hash,
+                "stack_tags": extracted_tags,
+                "shortlist": rank_result.shortlist,
+                "rejected": rank_result.rejected,
+                "total_description_tokens": rank_result.total_description_tokens,
+                "budget": budget,
+                "is_stale": False,
+                "warnings": warnings + rank_result.warnings,
+            }
+            return enforce_output_token_budget(output)
 
     # Empty fallback when offline or complete miss
     source = "offline_miss" if offline else "failed"
     if offline:
-        warnings.append("Offline mode active and no lockfile or cache entry available")
+        warnings.append("Offline mode active and no lockfile, cache, or seed entry available")
 
     output = {
         "resolution_source": source,
@@ -312,7 +442,16 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("--offline", action="store_true", help="Offline mode; no network")
     parser.add_argument("--budget", type=int, default=rank.DEFAULT_BUDGET, help="Token budget")
     parser.add_argument(
-        "--min-installs", type=int, default=rank.DEFAULT_MIN_INSTALL_COUNT, help="Min install count"
+        "--min-installs",
+        type=int,
+        default=rank.DEFAULT_MIN_INSTALL_COUNT,
+        help="Min install count",
+    )
+    parser.add_argument(
+        "--max-queries",
+        type=int,
+        default=DEFAULT_MAX_LIVE_QUERIES,
+        help="Max live queries to prevent timeout",
     )
     parser.add_argument("--human", action="store_true", help="Print human-readable table")
 
@@ -326,6 +465,7 @@ def main(argv: Optional[List[str]] = None) -> int:
         offline=args.offline,
         budget=args.budget,
         min_install_count=args.min_installs,
+        max_queries=args.max_queries,
     )
 
     if args.human:
