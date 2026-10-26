@@ -1,0 +1,340 @@
+#!/usr/bin/env python3
+"""Skill match orchestrator executing the 4-step resolution order.
+
+Resolution order:
+    1. Lockfile exists AND manifest_hash equals scanner's current hash -> use lockfile (no network).
+    2. Cache hit for this tag set, within TTL (default 7 days) -> use cache (no network).
+    3. Live search -> score -> shortlist -> write cache.
+    4. Degraded mode on network failure -> fall back to stale cache with visible stale marker.
+       Never guess or invent candidates.
+
+Flags:
+    --refresh    Bypass lockfile and cache reads
+    --offline    Lockfile and cache only; never touch network
+    --budget     Idle token budget for greedy selection (default 1500)
+    --cache-dir  Override cache directory
+    --human      Print human-readable table
+
+Runtime: Python 3.8+ standard library only.
+"""
+from __future__ import annotations
+
+import argparse
+import copy
+import json
+import os
+import sys
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Union
+
+# Bootstrap scripts
+sys.path.insert(0, os.path.dirname(__file__))
+import cache  # noqa: E402
+import lock  # noqa: E402
+import queries  # noqa: E402
+import rank  # noqa: E402
+from audit import audit  # noqa: E402
+from registry import Registry  # noqa: E402
+from scan import scan  # noqa: E402
+
+MAX_OUTPUT_ESTIMATED_TOKENS = 1000
+
+
+def enforce_output_token_budget(data: Dict[str, Any]) -> Dict[str, Any]:
+    """Ensure serialized JSON output stays strictly under MAX_OUTPUT_ESTIMATED_TOKENS."""
+    serialized = json.dumps(data)
+    est_tokens = len(serialized) // 4
+
+    if est_tokens <= MAX_OUTPUT_ESTIMATED_TOKENS:
+        data["estimated_output_tokens"] = est_tokens
+        return data
+
+    # Compact representation to trim excess tokens
+    compact = copy.deepcopy(data)
+
+    # Trim signals in shortlist
+    for item in compact.get("shortlist", []):
+        if "signals" in item and isinstance(item["signals"], dict):
+            # Keep only summary scores
+            item["signals"] = {
+                k: v.get("score", v) if isinstance(v, dict) else v
+                for k, v in item["signals"].items()
+            }
+        # Trim description if still long
+        if "description" in item and len(item["description"]) > 100:
+            item["description"] = item["description"][:97] + "..."
+
+    # Trim rejected list details
+    if len(compact.get("rejected", [])) > 5:
+        compact["rejected"] = compact["rejected"][:5]
+
+    serialized_compact = json.dumps(compact)
+    compact["estimated_output_tokens"] = len(serialized_compact) // 4
+    return compact
+
+
+def match_skills(
+    repo_path: Union[str, Path] = ".",
+    lockfile_path: Optional[Union[str, Path]] = None,
+    cache_dir: Optional[Union[str, Path]] = None,
+    refresh: bool = False,
+    offline: bool = False,
+    budget: int = rank.DEFAULT_BUDGET,
+    min_install_count: int = rank.DEFAULT_MIN_INSTALL_COUNT,
+    now_epoch: Optional[float] = None,
+) -> Dict[str, Any]:
+    """Execute the resolution order and return deterministic shortlist payload."""
+    repo = Path(repo_path).resolve()
+    lock_file = Path(lockfile_path) if lockfile_path else (repo / lock.DEFAULT_LOCKFILE_NAME)
+
+    warnings: List[str] = []
+
+    # Step 0: Scan repository to extract stack tags and manifest hash
+    scan_result = scan(str(repo))
+    manifest_hash = scan_result.get("hash", "")
+    extracted_tags = queries.extract_tags_from_scan(scan_result)
+
+    # Load installed skills for collision check
+    installed_report = audit(project_root=str(repo))
+    installed_skills = installed_report.get("skills", [])
+
+    # Step 1: Check Lockfile
+    if not refresh and lock_file.exists():
+        lock_data = lock.read_lockfile(lock_file)
+        if lock_data and lock_data.get("manifest_hash") == manifest_hash:
+            locked_skills = lock_data.get("skills", [])
+            output = {
+                "resolution_source": "lockfile",
+                "manifest_hash": manifest_hash,
+                "stack_tags": extracted_tags,
+                "shortlist": locked_skills,
+                "rejected": [],
+                "total_description_tokens": sum(
+                    s.get("description_tokens", 0) for s in locked_skills
+                ),
+                "budget": budget,
+                "is_stale": False,
+                "warnings": warnings,
+            }
+            return enforce_output_token_budget(output)
+        elif lock_data:
+            old_h = lock_data.get("manifest_hash")
+            warnings.append(
+                f"Lockfile hash mismatch ({old_h} != {manifest_hash}); using cache/search"
+            )
+
+    # Step 2: Check Cache (within TTL)
+    if not refresh:
+        cache_entry, cache_warnings = cache.get_cache(
+            tags=extracted_tags,
+            cache_dir=cache_dir,
+            now_s=now_epoch,
+        )
+        warnings.extend(cache_warnings)
+        if cache_entry and not cache_entry.is_stale:
+            # Score and rank cached candidates
+            rank_result = rank.rank_candidates(
+                candidates=cache_entry.candidates,
+                installed_skills=installed_skills,
+                stack_tags=extracted_tags,
+                budget=budget,
+                min_install_count=min_install_count,
+                now_epoch=now_epoch,
+            )
+            output = {
+                "resolution_source": "cache",
+                "manifest_hash": manifest_hash,
+                "stack_tags": extracted_tags,
+                "shortlist": rank_result.shortlist,
+                "rejected": rank_result.rejected,
+                "total_description_tokens": rank_result.total_description_tokens,
+                "budget": budget,
+                "is_stale": False,
+                "warnings": warnings + rank_result.warnings,
+            }
+            return enforce_output_token_budget(output)
+
+    # Step 3: Live Search (unless offline)
+    if not offline:
+        try:
+            # Build search queries
+            q_res = queries.build_queries(scan_result)
+            query_list = q_res.get("queries", [])
+            query_details = q_res.get("query_details", [])
+            layer_map = {d["query"]: d.get("layer", "general") for d in query_details}
+
+            registry = Registry()
+            candidates, reg_warnings = registry.search_and_fetch_all(
+                query_list, layer_map=layer_map
+            )
+            warnings.extend(reg_warnings)
+
+            # Write results to cache
+            if candidates:
+                cache.set_cache(
+                    tags=extracted_tags,
+                    candidates=candidates,
+                    cache_dir=cache_dir,
+                )
+
+            # Rank and select
+            rank_result = rank.rank_candidates(
+                candidates=candidates,
+                installed_skills=installed_skills,
+                stack_tags=extracted_tags,
+                budget=budget,
+                min_install_count=min_install_count,
+                now_epoch=now_epoch,
+            )
+            output = {
+                "resolution_source": "live",
+                "manifest_hash": manifest_hash,
+                "stack_tags": extracted_tags,
+                "shortlist": rank_result.shortlist,
+                "rejected": rank_result.rejected,
+                "total_description_tokens": rank_result.total_description_tokens,
+                "budget": budget,
+                "is_stale": False,
+                "warnings": warnings + rank_result.warnings,
+            }
+            return enforce_output_token_budget(output)
+
+        except Exception as exc:
+            warnings.append(f"Network live search failed ({exc}); falling back to degraded mode")
+
+    # Step 4: Degraded Mode / Offline Fallback -> Stale Cache
+    stale_entry, stale_warnings = cache.get_cache(
+        tags=extracted_tags,
+        cache_dir=cache_dir,
+        offline=True,
+        allow_stale=True,
+        now_s=now_epoch,
+    )
+    warnings.extend(stale_warnings)
+
+    if stale_entry:
+        rank_result = rank.rank_candidates(
+            candidates=stale_entry.candidates,
+            installed_skills=installed_skills,
+            stack_tags=extracted_tags,
+            budget=budget,
+            min_install_count=min_install_count,
+            now_epoch=now_epoch,
+        )
+        output = {
+            "resolution_source": "stale_cache",
+            "manifest_hash": manifest_hash,
+            "stack_tags": extracted_tags,
+            "shortlist": rank_result.shortlist,
+            "rejected": rank_result.rejected,
+            "total_description_tokens": rank_result.total_description_tokens,
+            "budget": budget,
+            "is_stale": True,
+            "warnings": warnings + rank_result.warnings,
+        }
+        return enforce_output_token_budget(output)
+
+    # Empty fallback when offline or complete miss
+    source = "offline_miss" if offline else "failed"
+    if offline:
+        warnings.append("Offline mode active and no lockfile or cache entry available")
+
+    output = {
+        "resolution_source": source,
+        "manifest_hash": manifest_hash,
+        "stack_tags": extracted_tags,
+        "shortlist": [],
+        "rejected": [],
+        "total_description_tokens": 0,
+        "budget": budget,
+        "is_stale": False,
+        "warnings": warnings,
+    }
+    return enforce_output_token_budget(output)
+
+
+# ---------------------------------------------------------------------------
+# CLI
+# ---------------------------------------------------------------------------
+
+def render_human(result: Dict[str, Any]) -> str:
+    lines: List[str] = []
+    source = result.get("resolution_source", "unknown").upper()
+    is_stale = " [STALE]" if result.get("is_stale") else ""
+    lines.append(f"=== SKILL MATCH SHORTLIST ({source}{is_stale}) ===")
+    lines.append(f"Manifest Hash: {result.get('manifest_hash', 'unknown')}")
+    lines.append(f"Stack Tags:    {', '.join(result.get('stack_tags', []))}")
+    lines.append(
+        f"Total Tokens:  {result.get('total_description_tokens', 0)} / {result.get('budget', 0)} "
+        f"(Output est: {result.get('estimated_output_tokens', 0)} tok)"
+    )
+    lines.append("")
+
+    shortlist = result.get("shortlist", [])
+    if not shortlist:
+        lines.append("  (No skills qualified for shortlist)")
+    else:
+        lines.append("Shortlisted Skills:")
+        for idx, item in enumerate(shortlist, 1):
+            cid = item.get("id", "")
+            layer = item.get("layer", "")
+            tokens = item.get("description_tokens", 0)
+            score = item.get("score", 0)
+            desc = item.get("description", "")
+            if len(desc) > 80:
+                desc = desc[:77] + "..."
+            lines.append(f"  {idx}. [{score:>3} pts] {cid:<35} [{layer:<10}] ({tokens} tok)")
+            lines.append(f"     \"{desc}\"")
+
+    rejected = result.get("rejected", [])
+    if rejected:
+        lines.append("")
+        lines.append(f"Rejected ({len(rejected)}):")
+        for r in rejected:
+            lines.append(f"  - {r.get('id', ''):<35} -> {r.get('reason', '')}")
+
+    warnings = result.get("warnings", [])
+    if warnings:
+        lines.append("")
+        lines.append("Warnings:")
+        for w in warnings:
+            lines.append(f"  ! {w}")
+
+    return "\n".join(lines)
+
+
+def main(argv: Optional[List[str]] = None) -> int:
+    parser = argparse.ArgumentParser(description="Skill-fit live match orchestrator")
+    parser.add_argument("repo", nargs="?", default=".", help="Path to repository root")
+    parser.add_argument("--lockfile", default=None, help="Path to skill-fit.lock")
+    parser.add_argument("--cache-dir", default=None, help="Override cache directory")
+    parser.add_argument("--refresh", action="store_true", help="Bypass lockfile and cache")
+    parser.add_argument("--offline", action="store_true", help="Offline mode; no network")
+    parser.add_argument("--budget", type=int, default=rank.DEFAULT_BUDGET, help="Token budget")
+    parser.add_argument(
+        "--min-installs", type=int, default=rank.DEFAULT_MIN_INSTALL_COUNT, help="Min install count"
+    )
+    parser.add_argument("--human", action="store_true", help="Print human-readable table")
+
+    args = parser.parse_args(argv)
+
+    result = match_skills(
+        repo_path=args.repo,
+        lockfile_path=args.lockfile,
+        cache_dir=args.cache_dir,
+        refresh=args.refresh,
+        offline=args.offline,
+        budget=args.budget,
+        min_install_count=args.min_installs,
+    )
+
+    if args.human:
+        print(render_human(result))
+    else:
+        print(json.dumps(result, indent=2))
+
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

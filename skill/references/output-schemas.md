@@ -97,3 +97,80 @@ Renders between markers inside `CLAUDE.md` or `AGENTS.md`:
 - spa [confidence 0.8] (react in deps)
 <!-- context-audit:end -->
 ```
+
+
+## `match.py` Output Schema
+
+```json
+{
+  "resolution_source": "lockfile | cache | live | stale_cache | offline_miss | failed",
+  "manifest_hash": "string (sha1)",
+  "stack_tags": ["string"],
+  "shortlist": [
+    {
+      "id": "owner/repo@skill-name",
+      "layer": "framework",
+      "score": 85,
+      "description": "string",
+      "description_tokens": 12,
+      "signals": {}
+    }
+  ],
+  "rejected": [
+    {
+      "id": "owner/repo@skill-name",
+      "layer": "framework",
+      "reason": "string"
+    }
+  ],
+  "total_description_tokens": 45,
+  "budget": 1500,
+  "is_stale": false,
+  "estimated_output_tokens": 180,
+  "warnings": ["string"]
+}
+```
+
+## `skill-fit.lock` Schema
+
+```json
+{
+  "schema": 1,
+  "manifest_hash": "string (sha1)",
+  "resolved_at": "ISO-8601",
+  "skills": [
+    {
+      "id": "owner/repo@skill-name",
+      "layer": "framework",
+      "pinned_sha": "string (commit sha)",
+      "content_hash": "sha256:...",
+      "description_tokens": 12,
+      "approved": true
+    }
+  ]
+}
+```
+
+## `install.py` Output Schema
+
+```json
+{
+  "dry_run": false,
+  "manifest_hash": "string",
+  "trust_gate": [
+    {
+      "id": "owner/repo@skill-name",
+      "source_repo": "owner/repo",
+      "pinned_sha": "string",
+      "audit_status": "clean",
+      "has_scripts": false,
+      "description_tokens": 12,
+      "quoted_description": "\"string\"",
+      "status": "unvetted | locked"
+    }
+  ],
+  "installed": [],
+  "failures": [],
+  "lockfile_written": true
+}
+```

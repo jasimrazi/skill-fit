@@ -32,7 +32,7 @@ IGNORE_DIRS: frozenset = frozenset({
     ".git", "node_modules", "venv", ".venv", "build", "dist",
     "__pycache__", ".dart_tool", "target", ".gradle", ".idea",
     ".tox", ".eggs", ".mypy_cache", ".pytest_cache", ".ruff_cache",
-    ".cache", "coverage", ".coverage",
+    ".cache", "coverage", ".coverage", ".agents", ".claude",
 })
 
 DEPTH_LIMIT = 2  # scan root (0), +1, +2 — do not descend beyond depth 2

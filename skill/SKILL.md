@@ -12,6 +12,7 @@ Optimize agent context, eliminate repo exploration waste, and audit idle skill c
 3. **Present Findings**: Display total idle tokens, overlaps, and bloat warnings to the user.
 4. **Project Map Approval**: Ask the user before writing the map with `write_map.py . [--create]`.
 5. **Skill Actions**: Never remove skills automatically. Always ask user confirmation before acting.
+6. **Live Skill Matching**: Run `python skill/scripts/match.py . [--offline]` to find stack-matched skills via resolution order (lockfile -> cache -> live search). Install approved skills via `install.py`.
 
 ## Conventions Policy
 The agent may read at most 3 files to identify conventions, propose at most 3 convention lines,

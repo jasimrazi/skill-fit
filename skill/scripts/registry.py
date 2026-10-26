@@ -19,7 +19,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Sequence, Tuple
 
 # Bootstrap _common
 sys.path.insert(0, os.path.dirname(__file__))
@@ -452,6 +452,32 @@ class Registry:
                     self.warnings.append(f"Batch worker error: {e}")
 
         return results
+
+    def search_and_fetch_all(
+        self,
+        queries: Sequence[str],
+        layer_map: Optional[Dict[str, str]] = None,
+    ) -> Tuple[List[Candidate], List[str]]:
+        """Search queries and fetch candidate metadata with bounded concurrency."""
+        l_map = layer_map or {}
+        queries_with_layers = [(q, l_map.get(q, "general")) for q in queries]
+        candidates = self.batch_search(queries_with_layers)
+
+        with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+            future_to_cand = {
+                executor.submit(self.fetch_meta, c): c for c in candidates
+            }
+            for future in as_completed(future_to_cand):
+                c = future_to_cand[future]
+                try:
+                    c.meta = future.result()
+                except Exception as exc:
+                    self.warnings.append(f"Metadata fetch failed for {c.id}: {exc}")
+                    c.meta = Meta(
+                        description="", description_tokens=0, skill_md_lines=0
+                    )
+
+        return candidates, list(self.warnings)
 
 
 # ---------------------------------------------------------------------------
