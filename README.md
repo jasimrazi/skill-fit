@@ -1,95 +1,179 @@
 # skill-fit: cut Claude Code token waste with a project map and skill audit
 
-> **Agent skill that scans your repo, writes a compact project map into CLAUDE.md/AGENTS.md, and audits idle skill token cost.**
+> Agent skill that scans your repo with a deterministic script, writes a compact project map into `CLAUDE.md` / `AGENTS.md`, and audits the idle token cost of your installed skills. No model tokens are spent on scanning, and there are no runtime dependencies.
 
-[![CI](https://github.com/jasimrazi/skill-fit/actions/workflows/ci.yml/badge.svg)](https://github.com/username/skill-fit/actions)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![CI](https://github.com/jasimrazi/skill-fit/actions/workflows/ci.yml/badge.svg)](https://github.com/jasimrazi/skill-fit/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python: 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
-**Topics**: `agent-skills`, `claude-code`, `claude-md`, `agents-md`, `context-engineering`, `token-optimization`, `project-map`
+**Status:** pre-release (v0.1). Scanning, auditing, and map writing work today. Skill matching is planned, not built (see [Roadmap](#roadmap)).
 
----
+## Why
 
-## Why skill-fit?
+Two things waste tokens in agentic coding:
 
-Agents waste thousands of tokens exploring unfamiliar repositories and carrying bloated or overlapping skills:
-1. **Repository Exploration Waste**: Agents run unbounded directory listings, read irrelevant files, and burn 15,000–45,000 tokens trying to figure out how to build and test your project.
-2. **Skill Idle Cost**: Every installed skill loads its name and description into the model router or system prompt on every single turn, whether needed or not.
+1. **Exploration.** An agent with no project summary spends turns on `ls`, `find`, and `cat` to learn how the repo is built and how to run its tests, and it often gets the commands wrong.
+2. **Idle skills.** Every installed skill's name and description is loaded into context on every turn, used or not. Overlapping skills also add contradictory instructions.
 
-`skill-fit` solves both problems with zero runtime dependencies.
+skill-fit handles both with plain Python scripts, so the agent reads a short, accurate summary instead of exploring.
 
-## Key Features
+## What it does (v0.1)
 
-1. **Fingerprint Repo (`scan.py`)**: Deterministically identifies manifests, commands (`build`, `test`, `lint`, `dev`, `run`), entry points, infra, and architecture hints in <100ms.
-2. **Audit Skills (`audit.py`)**: Discovers installed skills across project (`.claude/skills`, `.agents/skills`) and user locations (`~/.claude/skills`, `~/.gemini/config/skills`). Flags bloated descriptions (>1,024 chars), overlaps (Jaccard >= 0.4), and irrelevant skills.
-3. **Write Compact Project Map (`write_map.py`)**: Injects a strict <= 600 token project map into `CLAUDE.md` or `AGENTS.md` between isolated HTML comment markers.
+| Script | Job |
+|---|---|
+| `scan.py` | Fingerprints a repo: manifests, stack and versions, runnable commands (`build`, `test`, `lint`, `dev`, `run`), entry points, infra, and architecture hints with confidence scores. |
+| `audit.py` | Finds installed skills (project and user locations), estimates their idle token cost, and flags oversized descriptions (over 1,024 chars), overlapping skills (Jaccard similarity of 0.4 or higher), and skills that don't match the detected stack. |
+| `write_map.py` | Writes a project map of at most 600 estimated tokens into `CLAUDE.md` or `AGENTS.md`, only between marker comments, and can check whether the map is stale. |
 
-## Benchmark Table
+## Design principles
 
-| Measurement | Raw Agent Exploration | With skill-fit | Reduction / Metric |
+- **Deterministic.** The same repo produces the same output, every run.
+- **Read-only by default.** Scanning and auditing never write. The map writer changes only the marked block in the target file, and supports `--dry-run`.
+- **No network, standard library only.** Python 3.8+ is the only requirement.
+- **Hints, not facts.** Architecture patterns come with a confidence score and the evidence behind it. Overlap and relevance flags are suggestions, and nothing is ever removed automatically.
+- **Estimates are labeled.** Token counts use characters divided by 4. For exact accounting, use your agent's own context report.
+
+## Install
+
+**Skills CLI (requires Node):**
+
+```bash
+# This project only
+npx skills add jasimrazi/skill-fit --skill skill-fit
+
+# All your projects
+npx skills add jasimrazi/skill-fit --skill skill-fit -g
+```
+
+**Manual** (works anywhere an agent reads a skills folder): copy the `skill/` folder into your agent's skills directory under the name `skill-fit`.
+
+```bash
+# This project only
+mkdir -p .claude/skills
+cp -r /path/to/skill-fit/skill .claude/skills/skill-fit
+
+# All your projects
+cp -r /path/to/skill-fit/skill ~/.claude/skills/skill-fit
+```
+
+Requires Python 3.8+ (`python3` on macOS and Linux).
+
+## Use
+
+Ask your agent something like "audit my agent context" or "summarize this project for future sessions". The trigger phrases are listed in [`skill/SKILL.md`](skill/SKILL.md). The agent runs the scripts, shows you the findings, and asks before writing the map or acting on any removal suggestion.
+
+You can also run the scripts directly:
+
+```bash
+# 1. Fingerprint a codebase
+python3 skill/scripts/scan.py /path/to/repo [--human]
+
+# 2. Audit installed skills
+python3 skill/scripts/audit.py [--stack-json scan.json] [--skills-dir /path/to/skills] [--human]
+
+# 3. Write or check the project map
+python3 skill/scripts/write_map.py . --target AGENTS.md --dry-run   # preview the diff
+python3 skill/scripts/write_map.py . --target AGENTS.md --create    # write or update the block
+python3 skill/scripts/write_map.py . --target AGENTS.md --check     # exit 0 if current, 1 if stale
+```
+
+All scripts print JSON by default, and `--human` prints a readable table.
+
+## What it reads and writes
+
+| Script | Reads | Writes |
+|---|---|---|
+| `scan.py` | Manifests, config files, and directory names. Never source file contents. | Nothing |
+| `audit.py` | Skill frontmatter and file sizes in skill folders | Nothing |
+| `write_map.py` | Scan output and the target file | Only the marked block in the target file |
+
+To uninstall, delete the skill folder and the marked block in your `CLAUDE.md` / `AGENTS.md`.
+
+## Benchmarks
+
+**Measured:**
+
+| Measurement | Result | Notes |
+|---|---|---|
+| Scan latency, 10,000-file repo | ~70 ms | On the author's machine, so expect variation by disk |
+| Project map size | at most 600 estimated tokens | Enforced ceiling, chars / 4 |
+| skill-fit's own idle footprint | ~34 estimated tokens | Its frontmatter description, chars / 4 |
+
+**Not yet measured:** end-to-end token savings. How much exploration a map saves depends on the repo, the task, and the model, and a script's output size alone doesn't show that. No savings percentage is claimed until the benchmark has run.
+
+Planned method (see [`bench/`](bench/)): fixed tasks per repo, run under four conditions, 3 or more repetitions each, with the model version held constant.
+
+| Condition | Median tokens | Tool calls | Task success |
 |---|---|---|---|
-| **Repo Fingerprint Cost** | ~15,000 - 45,000 tokens (recursive directory listing, reading source files) | ~350 - 650 tokens (`scan.py` JSON output) | **~95% token reduction** |
-| **Scan Latency (10,000 files)** | > 5,000 ms (unfiltered LLM tool calls) | **~70.2 ms** (in-process `os.scandir` filter) | **Passes < 200 ms target** |
-| **Project Map Size** | Variable, frequently unbounded bloat | **<= 600 estimated tokens** (strict ceiling) | **Deterministic & compact** |
-| **Skill Idle Footprint** | ~500 - 2,000+ tokens (bloated/overlapping skills) | Audited & flagged (self-footprint: **~34 tokens**) | **Actionable savings** |
+| Baseline (no map, no skill) | pending | pending | pending |
+| Map only | pending | pending | pending |
+| Prune only | pending | pending | pending |
+| Map and prune | pending | pending | pending |
 
-## Directory Layout
+A result only counts if task success holds up. Fewer tokens with worse answers is not a win, and the report will flag it.
+
+## Limitations
+
+- Token counts are estimates and will differ from your agent's exact accounting.
+- Overlap and "possibly irrelevant" flags are heuristics. Review them before removing anything.
+- Architecture hints come from folder names and are marked with a confidence score.
+- Skill locations are searched on a best-effort basis. Use `--skills-dir` for non-standard setups.
+- Developed for Claude Code. Other agents that read the Agent Skills format may work, but they are untested.
+
+## Roadmap
+
+Planned, not promised. Nothing below exists today, and v0.1 makes no network calls and installs nothing.
+
+- **v0.2:** check documented commands against the repo's actual scripts, lint `CLAUDE.md` for size and duplication, reversible pruning (move flagged skills aside, never delete), CI mode with a token threshold.
+- **v0.3:** optional usage evidence from local session transcripts, a drift hook that reports a stale map, a committed project profile.
+- **v0.4:** live skill matching with a local cache, a project lockfile with pinned commits and content hashes, and an approval step before any install.
+
+## Related tools
+
+skill-fit overlaps in places with other projects. These are worth a look:
+
+- [skillstat](https://github.com/no7z/skillstat): reads session transcripts to find skills that never fire, and can move idle ones aside.
+- [SkillScope](https://github.com/arsyadal/SkillScope): toggles skills per project using a manifest.
+
+skill-fit's angle is a deterministic repo map plus a static audit, with no model in the loop.
+
+## Repository layout
 
 ```
 skill-fit/
-├── skill/                        # The shippable unit (zero runtime dependencies)
-│   ├── SKILL.md                  # Metadata & operational workflow (<40 lines)
+├── skill/                        # The shippable unit (no runtime dependencies)
+│   ├── SKILL.md                  # Trigger description and workflow (under 40 lines)
 │   ├── scripts/
 │   │   ├── _common.py            # Token estimator, safe file reader, frontmatter parser
-│   │   ├── scan.py               # Repo fingerprinting -> deterministic JSON
-│   │   ├── audit.py              # Installed skills audit -> idle cost, overlaps, bloat
-│   │   ├── write_map.py          # Project map updater with marker isolation & ceiling
-│   │   ├── check_drift.py        # (v0.3) Drift detector
-│   │   └── rank.py               # (v0.2) Skill catalog ranker
+│   │   ├── scan.py               # Repo fingerprint -> JSON
+│   │   ├── audit.py              # Installed skills -> idle cost, overlaps, bloat
+│   │   └── write_map.py          # Project map writer with marker isolation and ceiling
 │   ├── assets/
 │   │   └── map.template.md       # Project map template
 │   └── references/
-│       ├── output-schemas.md     # Reference schemas for scan, audit, and write_map
-│       └── catalog-schema.md     # (v0.2) Catalog schema
+│       └── output-schemas.md     # JSON output schemas
 ├── tests/
-│   ├── fixtures/                 # react-tailwind, fastapi-docker, flutter, monorepo, etc.
-│   ├── golden/                   # Canonical expected JSON fixtures
-│   └── test_*.py                 # Full pytest coverage
-├── docs/
-│   ├── PLAN.md                   # Phased progress and verification checklist
-│   └── DESIGN.md                 # Assumptions, trust gates, token budgets, self-audit
-└── bench/
+│   ├── fixtures/                 # react-tailwind, fastapi-docker, flutter, monorepo, and more
+│   ├── golden/                   # Expected JSON per fixture
+│   └── test_*.py
+├── bench/                        # Benchmark harness and results
+└── docs/
+    ├── PLAN.md                   # Phased plan and verification checklist
+    └── DESIGN.md                 # Assumptions, decisions, token budgets, self-audit
 ```
 
-## Quick Start
+Only `skill/` is meant to be installed. Tests, fixtures, and benchmarks stay out of your agent's context.
 
-### 1. Fingerprint a Codebase
-```bash
-python skill/scripts/scan.py /path/to/repo [--human]
-```
-
-### 2. Audit Installed Agent Skills
-```bash
-# Audit idle cost and find redundant/overlapping skills
-python skill/scripts/audit.py [--stack-json scan.json] [--skills-dir /path/to/skills] [--human]
-```
-
-### 3. Write or Check Project Map
-```bash
-# Preview diff without modifying
-python skill/scripts/write_map.py . --target AGENTS.md --dry-run
-
-# Write/update marked section in CLAUDE.md or AGENTS.md
-python skill/scripts/write_map.py . --target AGENTS.md --create
-
-# Staleness check (exits 0 if up to date, 1 if stale)
-python skill/scripts/write_map.py . --target AGENTS.md --check
-```
-
-## Development & Testing
+## Development
 
 ```bash
 pip install -e ".[dev]"
 pytest -v
 ruff check skill/ tests/
 ```
+
+Tests run against fixture repos and never touch your real home directory or installed skills.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
