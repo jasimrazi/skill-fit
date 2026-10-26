@@ -45,9 +45,10 @@ class Candidate:
     layer: str
     found_by_query: str
     install_count: Optional[int] = None
+    meta: Optional[Meta] = None
 
     def to_dict(self) -> Dict[str, Any]:
-        return {
+        d: Dict[str, Any] = {
             "id": self.id,
             "source_repo": self.source_repo,
             "skill_name": self.skill_name,
@@ -55,6 +56,23 @@ class Candidate:
             "found_by_query": self.found_by_query,
             "install_count": self.install_count,
         }
+        if self.meta:
+            d["meta"] = self.meta.to_dict()
+        return d
+
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> Candidate:
+        meta_data = data.get("meta")
+        meta_obj = Meta.from_dict(meta_data) if meta_data else None
+        return cls(
+            id=data["id"],
+            source_repo=data["source_repo"],
+            skill_name=data["skill_name"],
+            layer=data["layer"],
+            found_by_query=data["found_by_query"],
+            install_count=data.get("install_count"),
+            meta=meta_obj,
+        )
 
 
 @dataclasses.dataclass
@@ -77,6 +95,18 @@ class Meta:
             "last_commit": self.last_commit,
             "audit_status": self.audit_status,
         }
+
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> Meta:
+        return cls(
+            description=data.get("description", ""),
+            description_tokens=data.get("description_tokens", 0),
+            skill_md_lines=data.get("skill_md_lines", 0),
+            has_references=data.get("has_references", False),
+            has_scripts=data.get("has_scripts", False),
+            last_commit=data.get("last_commit"),
+            audit_status=data.get("audit_status", "clean"),
+        )
 
 
 # ---------------------------------------------------------------------------
