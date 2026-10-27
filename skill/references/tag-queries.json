@@ -133,6 +133,188 @@
         "github actions best practices",
         "ci cd workflow automation"
       ]
+    },
+    "go": {
+      "layer": "language",
+      "queries": [
+        "go best practices",
+        "golang project layout"
+      ]
+    },
+    "golang": {
+      "layer": "language",
+      "queries": [
+        "go best practices",
+        "golang project layout"
+      ]
+    },
+    "gin": {
+      "layer": "backend",
+      "queries": [
+        "gin web framework patterns",
+        "go gin best practices"
+      ]
+    },
+    "fiber": {
+      "layer": "backend",
+      "queries": [
+        "gofiber best practices",
+        "go api patterns"
+      ]
+    },
+    "echo": {
+      "layer": "backend",
+      "queries": [
+        "labstack echo patterns",
+        "go api best practices"
+      ]
+    },
+    "rust": {
+      "layer": "language",
+      "queries": [
+        "rust best practices",
+        "idiomatic rust patterns"
+      ]
+    },
+    "cargo": {
+      "layer": "language",
+      "queries": [
+        "rust cargo patterns",
+        "rust best practices"
+      ]
+    },
+    "axum": {
+      "layer": "backend",
+      "queries": [
+        "axum web framework patterns",
+        "tokio axum best practices"
+      ]
+    },
+    "actix": {
+      "layer": "backend",
+      "queries": [
+        "actix web patterns",
+        "rust actix best practices"
+      ]
+    },
+    "tokio": {
+      "layer": "backend",
+      "queries": [
+        "tokio async patterns",
+        "rust async best practices"
+      ]
+    },
+    "svelte": {
+      "layer": "framework",
+      "queries": [
+        "svelte best practices",
+        "svelte runes patterns"
+      ]
+    },
+    "sveltekit": {
+      "layer": "framework",
+      "queries": [
+        "sveltekit app architecture",
+        "svelte best practices"
+      ]
+    },
+    "angular": {
+      "layer": "framework",
+      "queries": [
+        "angular best practices",
+        "angular signals patterns"
+      ]
+    },
+    "astro": {
+      "layer": "framework",
+      "queries": [
+        "astro best practices",
+        "astro content collections"
+      ]
+    },
+    "remix": {
+      "layer": "framework",
+      "queries": [
+        "remix run patterns",
+        "remix fullstack best practices"
+      ]
+    },
+    "nuxt": {
+      "layer": "framework",
+      "queries": [
+        "nuxt best practices",
+        "vue nuxt architecture"
+      ]
+    },
+    "nestjs": {
+      "layer": "backend",
+      "queries": [
+        "nestjs architecture patterns",
+        "nestjs best practices"
+      ]
+    },
+    "fastify": {
+      "layer": "backend",
+      "queries": [
+        "fastify best practices",
+        "nodejs fastify patterns"
+      ]
+    },
+    "rails": {
+      "layer": "backend",
+      "queries": [
+        "ruby on rails patterns",
+        "rails best practices"
+      ]
+    },
+    "spring-boot": {
+      "layer": "backend",
+      "queries": [
+        "spring boot architecture",
+        "spring boot best practices"
+      ]
+    },
+    "drizzle": {
+      "layer": "orm",
+      "queries": [
+        "drizzle orm patterns",
+        "drizzle schema best practices"
+      ]
+    },
+    "typeorm": {
+      "layer": "orm",
+      "queries": [
+        "typeorm patterns",
+        "typeorm best practices"
+      ]
+    },
+    "redis": {
+      "layer": "database",
+      "queries": [
+        "redis caching patterns",
+        "redis best practices"
+      ]
+    },
+    "mongodb": {
+      "layer": "database",
+      "queries": [
+        "mongodb schema design",
+        "mongodb best practices"
+      ]
+    },
+    "playwright": {
+      "layer": "testing",
+      "queries": [
+        "playwright e2e best practices",
+        "playwright testing patterns"
+      ]
+    },
+    "jest": {
+      "layer": "testing",
+      "queries": [
+        "jest testing best practices",
+        "javascript unit testing"
+      ]
     }
   }
 }

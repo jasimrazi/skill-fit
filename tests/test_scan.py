@@ -180,3 +180,27 @@ def test_scan_matches_golden():
         expected = load_golden(fixture)
         assert actual == expected, f"scan({fixture!r}) did not match golden output"
 
+
+def test_scan_go_gin():
+    """Verify Go module scanning with go.mod parser and directory purposes."""
+    result = run_scan("go-gin")
+    assert_scan_shape(result, "go-gin")
+    assert result["project"] == "github.com/example/go-gin-api"
+    assert "go.mod" in result["manifests"]
+    stack_names = [s["name"] for s in result.get("stack", [])]
+    assert "github.com/gin-gonic/gin" in stack_names
+    assert "github.com/google/uuid" in stack_names
+    assert "cmd" in result["dir_purposes"]
+
+
+def test_scan_rust_cargo():
+    """Verify Rust Cargo scanning with Cargo.toml parser and dev-dependencies."""
+    result = run_scan("rust-cargo")
+    assert_scan_shape(result, "rust-cargo")
+    assert result["project"] == "rust-cargo-api"
+    assert "Cargo.toml" in result["manifests"]
+    stack_names = [s["name"] for s in result.get("stack", [])]
+    assert "axum" in stack_names
+    assert "tokio" in stack_names
+    assert "src" in result["dir_purposes"]
+

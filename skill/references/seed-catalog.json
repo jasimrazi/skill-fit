@@ -6,7 +6,11 @@
       "name": "flutter-layered-architecture",
       "repo": "flutter-community/skills",
       "layer": "architecture",
-      "tags": ["flutter", "dart", "mobile"],
+      "tags": [
+        "flutter",
+        "dart",
+        "mobile"
+      ],
       "description": "Enforces clean screen -> provider -> repository -> service separation, named routing conventions, and widget tree modularization in Flutter apps.",
       "description_tokens": 34,
       "body_tokens": 820,
@@ -19,7 +23,11 @@
       "name": "provider-state-management",
       "repo": "flutter-community/skills",
       "layer": "state",
-      "tags": ["provider", "flutter", "dart"],
+      "tags": [
+        "provider",
+        "flutter",
+        "dart"
+      ],
       "description": "Prevents unnecessary widget rebuilds with ChangeNotifier, enforces Selector/Consumer best practices, and standardizes async loading/error states.",
       "description_tokens": 32,
       "body_tokens": 640,
@@ -32,7 +40,12 @@
       "name": "dio-api-client",
       "repo": "flutter-community/skills",
       "layer": "data",
-      "tags": ["dio", "flutter", "dart", "http"],
+      "tags": [
+        "dio",
+        "flutter",
+        "dart",
+        "http"
+      ],
       "description": "Standardizes Dio interceptors, centralized endpoint constants, timeout/retry policies, and typed repository exception mapping.",
       "description_tokens": 29,
       "body_tokens": 590,
@@ -45,7 +58,13 @@
       "name": "react-best-practices",
       "repo": "vercel-labs/agent-skills",
       "layer": "frontend",
-      "tags": ["react", "nextjs", "typescript", "javascript", "tailwindcss"],
+      "tags": [
+        "react",
+        "nextjs",
+        "typescript",
+        "javascript",
+        "tailwindcss"
+      ],
       "description": "Enforces modern React component composition, hook dependency discipline, and render performance optimizations.",
       "description_tokens": 26,
       "body_tokens": 950,
@@ -58,7 +77,12 @@
       "name": "django-service-layer",
       "repo": "python-agents/skills",
       "layer": "backend",
-      "tags": ["django", "python", "postgresql", "sqlite"],
+      "tags": [
+        "django",
+        "python",
+        "postgresql",
+        "sqlite"
+      ],
       "description": "Prevents N+1 ORM queries via select_related/prefetch_related and enforces thin views with encapsulated service/repository logic.",
       "description_tokens": 31,
       "body_tokens": 890,
@@ -71,7 +95,11 @@
       "name": "flask-sqlalchemy-patterns",
       "repo": "python-agents/skills",
       "layer": "backend",
-      "tags": ["flask", "sqlalchemy", "python"],
+      "tags": [
+        "flask",
+        "sqlalchemy",
+        "python"
+      ],
       "description": "Standardizes Flask application factories, Blueprint routing, and scoped SQLAlchemy session lifecycle management.",
       "description_tokens": 27,
       "body_tokens": 740,
@@ -84,12 +112,107 @@
       "name": "docker-compose-lean",
       "repo": "devops-skills/containers",
       "layer": "infra",
-      "tags": ["docker", "docker-compose", "containers"],
+      "tags": [
+        "docker",
+        "docker-compose",
+        "containers"
+      ],
       "description": "Enforces multi-stage Dockerfiles, layer cache ordering, non-root runtime users, and healthcheck-gated compose dependencies.",
       "description_tokens": 28,
       "body_tokens": 680,
       "install_count": 530,
       "stars": 210,
+      "updated_at": "2026-10-01T00:00:00Z"
+    },
+    {
+      "id": "tiangolo/fastapi@fastapi-production-patterns",
+      "name": "fastapi-production-patterns",
+      "repo": "tiangolo/fastapi",
+      "layer": "backend",
+      "tags": [
+        "fastapi",
+        "python",
+        "pydantic",
+        "uvicorn"
+      ],
+      "description": "Standardizes async route handlers, dependency injection trees, Pydantic v2 schemas, and structured error responses.",
+      "description_tokens": 28,
+      "body_tokens": 850,
+      "install_count": 1850,
+      "stars": 920,
+      "updated_at": "2026-10-01T00:00:00Z"
+    },
+    {
+      "id": "vercel/nextjs-skills@nextjs-app-router",
+      "name": "nextjs-app-router",
+      "repo": "vercel/nextjs-skills",
+      "layer": "framework",
+      "tags": [
+        "next",
+        "nextjs",
+        "react",
+        "typescript"
+      ],
+      "description": "Enforces Server Components by default, Server Actions security, route handler error boundaries, and nested layouts.",
+      "description_tokens": 27,
+      "body_tokens": 920,
+      "install_count": 2100,
+      "stars": 1150,
+      "updated_at": "2026-10-01T00:00:00Z"
+    },
+    {
+      "id": "tailwindlabs/skills@tailwind-clean-architecture",
+      "name": "tailwind-clean-architecture",
+      "repo": "tailwindlabs/skills",
+      "layer": "styling",
+      "tags": [
+        "tailwind",
+        "tailwindcss",
+        "css"
+      ],
+      "description": "Prevents arbitrary utility bloat with design tokens, cn/clsx merge discipline, and component variant extraction.",
+      "description_tokens": 26,
+      "body_tokens": 620,
+      "install_count": 1400,
+      "stars": 680,
+      "updated_at": "2026-10-01T00:00:00Z"
+    },
+    {
+      "id": "golang-standards/skills@go-clean-architecture",
+      "name": "go-clean-architecture",
+      "repo": "golang-standards/skills",
+      "layer": "backend",
+      "tags": [
+        "go",
+        "golang",
+        "gin",
+        "fiber",
+        "echo"
+      ],
+      "description": "Enforces idiomatic Go project layout, explicit error wrapping, context propagation, and table-driven testing.",
+      "description_tokens": 27,
+      "body_tokens": 780,
+      "install_count": 890,
+      "stars": 420,
+      "updated_at": "2026-10-01T00:00:00Z"
+    },
+    {
+      "id": "rust-lang/skills@rust-idiomatic-patterns",
+      "name": "rust-idiomatic-patterns",
+      "repo": "rust-lang/skills",
+      "layer": "backend",
+      "tags": [
+        "rust",
+        "cargo",
+        "axum",
+        "actix",
+        "tokio"
+      ],
+      "description": "Enforces idiomatic Result/Option handling with thiserror/anyhow, zero-copy borrowing, Clippy lints, and async safety.",
+      "description_tokens": 29,
+      "body_tokens": 810,
+      "install_count": 760,
+      "stars": 380,
       "updated_at": "2026-10-01T00:00:00Z"
     }
   ]

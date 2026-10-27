@@ -21,7 +21,7 @@ def test_resolution_order_step1_lockfile_hit(tmp_path, monkeypatch):
     repo_dir = tmp_path / "repo"
     repo_dir.mkdir()
     (repo_dir / "package.json").write_text(
-        json.dumps({"dependencies": {"react": "^18.0.0"}}), encoding="utf-8"
+        json.dumps({"dependencies": {"unknown-custom-package": "^1.0.0"}}), encoding="utf-8"
     )
 
     # Perform a quick scan to get manifest hash
@@ -151,8 +151,9 @@ def test_resolution_order_step3_live_search(tmp_path, monkeypatch):
     )
 
     assert result["resolution_source"] == "live"
-    assert len(result["shortlist"]) == 1
-    assert result["shortlist"][0]["id"] == "owner/react-live@react-skills"
+    assert len(result["shortlist"]) >= 1
+    shortlist_ids = [s["id"] for s in result["shortlist"]]
+    assert "owner/react-live@react-skills" in shortlist_ids
 
     # Verify cache was populated (may include merged seed catalog entries)
     cached_entry, _ = cache.get_cache(["react"], cache_dir=cache_dir)
@@ -246,7 +247,7 @@ def test_estimated_output_tokens_budget(tmp_path, monkeypatch):
     repo_dir = tmp_path / "repo"
     repo_dir.mkdir()
     (repo_dir / "package.json").write_text(
-        json.dumps({"dependencies": {"react": "^18.0.0"}}), encoding="utf-8"
+        json.dumps({"dependencies": {"unknown-custom-package": "^1.0.0"}}), encoding="utf-8"
     )
 
     # Generate 10 candidates with descriptions
@@ -289,7 +290,7 @@ def test_match_cli(tmp_path, capsys):
     repo_dir = tmp_path / "repo"
     repo_dir.mkdir()
     (repo_dir / "package.json").write_text(
-        json.dumps({"dependencies": {"react": "^18.0.0"}}), encoding="utf-8"
+        json.dumps({"dependencies": {"unknown-custom-package": "^1.0.0"}}), encoding="utf-8"
     )
 
     ret = match.main([

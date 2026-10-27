@@ -275,8 +275,10 @@ def rank_candidates(
         skill_name = cand.get("skill_name", "").strip().lower()
         layer = cand.get("layer", "general").strip().lower()
         meta = cand.get("meta") or {}
-        description = meta.get("description", "").strip()
-        audit_status = meta.get("audit_status", "clean").strip().lower()
+        description = (meta.get("description") or cand.get("description") or "").strip()
+        audit_status = (
+            meta.get("audit_status") or cand.get("audit_status") or "clean"
+        ).strip().lower()
         install_count = cand.get("install_count")
 
         # Hard Filter A: Already installed
@@ -347,7 +349,8 @@ def rank_candidates(
     for score, cid, cand, signals in scored_candidates:
         layer = cand.get("layer", "general").strip().lower()
         meta = cand.get("meta") or {}
-        desc_tokens = meta.get("description_tokens", 25)
+        desc_tokens = meta.get("description_tokens") or cand.get("description_tokens") or 25
+        cand_desc = (meta.get("description") or cand.get("description") or "").strip()
 
         if layer in selected_layers:
             rejected.append({
@@ -370,12 +373,12 @@ def rank_candidates(
         current_tokens += desc_tokens
         shortlist.append({
             "id": cid,
-            "source_repo": cand.get("source_repo", ""),
-            "skill_name": cand.get("skill_name", ""),
+            "source_repo": cand.get("source_repo", cand.get("repo", "")),
+            "skill_name": cand.get("skill_name", cand.get("name", "")),
             "layer": layer,
             "found_by_query": cand.get("found_by_query", ""),
             "install_count": cand.get("install_count"),
-            "description": meta.get("description", ""),
+            "description": cand_desc,
             "description_tokens": desc_tokens,
             "score": score,
             "signals": signals,

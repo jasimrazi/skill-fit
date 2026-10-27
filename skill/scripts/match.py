@@ -66,6 +66,12 @@ def normalize_tag_list(tags: List[str]) -> List[str]:
         if norm and norm not in seen:
             seen.add(norm)
             result.append(norm)
+        # Also include base package suffix if tag is a path (e.g. github.com/gin-gonic/gin -> gin)
+        if "/" in norm:
+            suffix = norm.split("/")[-1]
+            if suffix and suffix not in seen:
+                seen.add(suffix)
+                result.append(suffix)
     return result
 
 
