@@ -114,6 +114,78 @@ def test_audit_flags_possibly_irrelevant_with_stack():
     assert "possibly_irrelevant" in android["flags"], (
         f"Expected possibly_irrelevant flag on android-ui-builder, got: {android['flags']}"
     )
+    assert android.get("reason"), "Expected reason explaining absent technologies"
+    assert android.get("confidence") is not None and android["confidence"] > 0, (
+        f"Expected confidence score, got: {android.get('confidence')}"
+    )
+
+
+def test_audit_general_purpose_skill_never_flagged_with_stack(tmp_path):
+    """A skill whose description names no technology from our known vocabulary is never flagged."""
+    skills_dir = tmp_path / "skills"
+    skills_dir.mkdir()
+
+    # Synthetic general-purpose descriptions that name no technology from known vocabulary
+    fixtures = [
+        ("git-pr-helper", "Automates commit messages, branch naming, and PR summaries."),
+        ("markdown-formatter", "Formats markdown tables, fixes list indent, and checks links."),
+        ("todo-tracker", "Extracts TODO comments across codebase and renders a summary."),
+        ("clean-code-reviewer", "Checks function length, conditionals, and naming style."),
+    ]
+    for sname, sdesc in fixtures:
+        sdir = skills_dir / sname
+        sdir.mkdir()
+        (sdir / "SKILL.md").write_text(
+            f"---\nname: {sname}\ndescription: {sdesc}\n---\n# {sname}\nHelpful guidance.\n",
+            encoding="utf-8",
+        )
+
+    fastapi_stack = ROOT / "tests" / "golden" / "fastapi-docker.json"
+    result = run_audit("--skills-dir", str(skills_dir), "--stack-json", str(fastapi_stack))
+
+    for skill in result["skills"]:
+        assert "possibly_irrelevant" not in skill.get("flags", []), (
+            f"General-purpose skill {skill['name']} was wrongly flagged: {skill['flags']}"
+        )
+
+
+def test_audit_absent_technology_flagged_with_reason_and_confidence(tmp_path):
+    """A skill naming an absent technology is flagged with reason and confidence."""
+    skills_dir = tmp_path / "skills"
+    skills_dir.mkdir()
+
+    # Synthetic skill naming technologies absent from Python FastAPI (e.g. Flutter / Dart)
+    sdir = skills_dir / "flutter-ui-kit"
+    sdir.mkdir()
+    (sdir / "SKILL.md").write_text(
+        "---\nname: flutter-ui-kit\n"
+        "description: Builds responsive Flutter widgets and screen layouts in Dart.\n---\n"
+        "# Flutter\n",
+        encoding="utf-8",
+    )
+
+    fastapi_stack = ROOT / "tests" / "golden" / "fastapi-docker.json"
+    result = run_audit("--skills-dir", str(skills_dir), "--stack-json", str(fastapi_stack))
+
+    target = next((s for s in result["skills"] if s["name"] == "flutter-ui-kit"), None)
+    assert target is not None, "flutter-ui-kit not found in audit output"
+    assert "possibly_irrelevant" in target["flags"]
+    assert "flutter" in target["reason"].lower() or "dart" in target["reason"].lower()
+    assert isinstance(target["confidence"], (int, float)) and target["confidence"] > 0
+
+
+def test_audit_skill_fit_never_flagged_by_own_audit():
+    """skill-fit itself is never flagged as irrelevant by its own audit."""
+    for golden_name in ("fastapi-docker.json", "react-tailwind.json", "flutter.json", "empty.json"):
+        stack_file = ROOT / "tests" / "golden" / golden_name
+        result = run_audit("--skills-dir", str(ROOT / "skill"), "--stack-json", str(stack_file))
+        skill_fit = next(
+            (s for s in result["skills"] if s["name"] in ("skill-fit", "skill_fit")), None
+        )
+        if skill_fit is not None:
+            assert "possibly_irrelevant" not in skill_fit.get("flags", []), (
+                f"skill-fit was flagged as irrelevant on {golden_name}: {skill_fit.get('flags')}"
+            )
 
 
 def test_audit_never_deletes_or_modifies():

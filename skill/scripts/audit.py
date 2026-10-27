@@ -142,8 +142,32 @@ def discover_skills(
 
 
 # ---------------------------------------------------------------------------
-# Stack keywords extraction
+# Stack keywords extraction & Known Vocabulary
 # ---------------------------------------------------------------------------
+
+# Known technology vocabulary: specific frameworks, platforms, languages, and tools.
+# A skill is only evaluated for stack relevance if its description names at least one of these.
+KNOWN_TECH_VOCABULARY: frozenset = frozenset({
+    # Mobile & UI platforms
+    "android", "ios", "flutter", "react-native", "swiftui", "swift", "kotlin", "objc",
+    # Frontend frameworks & styling
+    "react", "vue", "angular", "svelte", "sveltekit", "next", "nextjs", "nuxt",
+    "astro", "remix", "tailwind", "tailwindcss",
+    # Backend frameworks & runtimes
+    "fastapi", "django", "flask", "express", "nestjs", "fastify", "rails",
+    "spring", "spring-boot", "gin", "fiber", "echo", "axum", "actix",
+    # Languages & ecosystems
+    "python", "rust", "golang", "go", "ruby", "java", "scala", "elixir", "php",
+    "csharp", "dotnet", "typescript", "javascript", "dart",
+    # Data & persistence
+    "postgres", "postgresql", "mysql", "sqlite", "mongodb", "redis",
+    "prisma", "drizzle", "typeorm", "sqlalchemy", "alembic",
+    # Infrastructure & containerization
+    "docker", "kubernetes", "k8s", "terraform", "ansible",
+    # Testing
+    "pytest", "jest", "vitest", "cypress", "playwright",
+})
+
 
 def _extract_stack_keywords(stack_json_path: str) -> Tuple[Set[str], Optional[str]]:
     """Load stack JSON and extract package/technology keywords."""
@@ -165,6 +189,23 @@ def _extract_stack_keywords(stack_json_path: str) -> Tuple[Set[str], Optional[st
             elif isinstance(item, str):
                 keywords.update(_tokenize(item))
 
+    # Check manifests
+    manifests = data.get("manifests") if isinstance(data, dict) else None
+    if isinstance(manifests, list):
+        for m in manifests:
+            m_lower = str(m).lower()
+            keywords.update(_tokenize(m_lower))
+            if any(p in m_lower for p in ("requirements", "pyproject", "setup.py", "pipfile")):
+                keywords.add("python")
+            elif any(p in m_lower for p in ("package.json", "tsconfig", "yarn.lock")):
+                keywords.update({"javascript", "typescript", "node", "npm"})
+            elif "cargo" in m_lower:
+                keywords.update({"rust", "cargo"})
+            elif "go.mod" in m_lower or "go.sum" in m_lower:
+                keywords.update({"go", "golang"})
+            elif "pubspec" in m_lower:
+                keywords.update({"flutter", "dart"})
+
     # Check commands
     cmds = data.get("commands") if isinstance(data, dict) else None
     if isinstance(cmds, dict):
@@ -183,6 +224,25 @@ def _extract_stack_keywords(stack_json_path: str) -> Tuple[Set[str], Optional[st
         for a in arch:
             if isinstance(a, dict) and "hint" in a:
                 keywords.update(_tokenize(str(a["hint"])))
+
+    # Check entry points
+    entry_points = data.get("entry_points") if isinstance(data, dict) else None
+    if isinstance(entry_points, list):
+        for ep in entry_points:
+            ep_lower = str(ep).lower()
+            keywords.update(_tokenize(ep_lower))
+            if ep_lower.endswith(".py"):
+                keywords.add("python")
+            elif ep_lower.endswith((".ts", ".tsx")):
+                keywords.update({"typescript", "javascript"})
+            elif ep_lower.endswith((".js", ".jsx")):
+                keywords.add("javascript")
+            elif ep_lower.endswith(".rs"):
+                keywords.add("rust")
+            elif ep_lower.endswith(".go"):
+                keywords.update({"go", "golang"})
+            elif ep_lower.endswith(".dart"):
+                keywords.update({"flutter", "dart"})
 
     return keywords, None
 
@@ -250,6 +310,8 @@ def audit(
             "has_references": has_references,
             "has_scripts": has_scripts,
             "flags": flags,
+            "reason": None,
+            "confidence": None,
             "tokens_saved_if_removed": tokens_saved,
             "_tokens": _tokenize(f"{name} {description}"),
         })
@@ -283,11 +345,28 @@ def audit(
     # Stack relevance heuristic (if stack_keywords provided)
     if stack_keywords is not None and len(stack_keywords) > 0:
         for skill in skills_data:
+            # skill-fit itself is never flagged as irrelevant by its own audit
+            if skill["name"] in ("skill-fit", "skill_fit"):
+                continue
+
             s_tokens = skill["_tokens"]
-            common = s_tokens & stack_keywords
-            # If no keyword overlap at all with the stack, flag possibly_irrelevant
-            if not common:
+            # A skill is only evaluated for stack relevance if it explicitly names a technology
+            # from our known technology vocabulary.
+            named_tech = {t for t in s_tokens if t in KNOWN_TECH_VOCABULARY}
+
+            # Rule 1: A skill whose description names no technology from
+            # our known vocabulary is never flagged
+            if not named_tech:
+                continue
+
+            # Rule 2: If it names technologies from the vocabulary, check if any match the stack.
+            overlap = named_tech & stack_keywords
+            if not overlap:
+                absent_list = sorted(list(named_tech))
+                absent_str = ", ".join(absent_list)
                 skill["flags"].append("possibly_irrelevant")
+                skill["reason"] = f"Names technology absent from detected stack: {absent_str}"
+                skill["confidence"] = 0.85
 
     # Clean internal temporary keys
     for skill in skills_data:
@@ -317,10 +396,14 @@ def _human_output(data: Dict[str, Any]) -> str:
     ]
     for s in data.get("skills", []):
         flag_str = ", ".join(s.get("flags", [])) if s.get("flags") else "-"
+        if s.get("confidence") is not None:
+            flag_str += f" (conf: {s['confidence']:.2f})"
         lines.append(
             f"{s['name']:<25} {s['scope']:<8} {s['description_chars']:<7} "
             f"{s['description_tokens']:<8} {s['line_count']:<7} {flag_str}"
         )
+        if s.get("reason"):
+            lines.append(f"    |-- reason: {s['reason']}")
 
     if data.get("overlaps"):
         lines.append("")

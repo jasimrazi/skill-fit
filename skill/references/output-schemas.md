@@ -56,6 +56,8 @@ Reference schemas for JSON outputs produced by `context-audit` scripts.
       "has_references": true,
       "has_scripts": true,
       "flags": ["description_too_long", "description_overlap", "possibly_irrelevant"],
+      "reason": "string or null",
+      "confidence": 0.85,
       "tokens_saved_if_removed": 30
     }
   ],
