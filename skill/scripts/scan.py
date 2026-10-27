@@ -564,7 +564,7 @@ def scan(root: str) -> Dict[str, Any]:  # noqa: C901
 
     # Top-level directory listing (for hash + dir_purposes + avoid)
     try:
-        top_entries = os.listdir(root)
+        top_entries = sorted(os.listdir(root))
     except OSError as exc:
         warnings.append(f"Cannot list root: {exc}")
         top_entries = []
@@ -598,7 +598,7 @@ def scan(root: str) -> Dict[str, Any]:  # noqa: C901
         dirpath, depth = walk_stack.pop()
 
         try:
-            entries = list(os.scandir(dirpath))
+            entries = sorted(os.scandir(dirpath), key=lambda e: e.name.lower())
         except OSError as exc:
             warnings.append(f"{os.path.relpath(dirpath, root)}: scandir error: {exc}")
             continue
