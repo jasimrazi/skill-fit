@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "Agent skill that scans your repo, writes a compact project map into CLAUDE.md/AGENTS.md, and audits idle skill token cost."
 readme = "README.md"
 requires-python = ">=3.8"
-license = "MIT"
+license = { text = "MIT" }
 keywords = [
     "agent-skills",
     "claude-code",

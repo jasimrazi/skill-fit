@@ -142,7 +142,7 @@ def test_batch_search_wall_timeout_degrades(monkeypatch):
 
     # Provide a single dummy query; the search itself will hit the adapter
     # timeout instantly (timeout_s=0.001) or be cancelled by the deadline.
-    results = registry.batch_search([("python", "backend")])
+    registry.batch_search([("python", "backend")])
 
     # Results may be empty or partial — what matters is the degradation path.
     assert registry.partial is True, "Registry must be marked partial on timeout"

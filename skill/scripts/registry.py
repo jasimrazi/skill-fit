@@ -18,7 +18,13 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from concurrent.futures import Future, ThreadPoolExecutor, TimeoutError as FuturesTimeoutError, as_completed
+from concurrent.futures import (
+    ThreadPoolExecutor,
+    as_completed,
+)
+from concurrent.futures import (
+    TimeoutError as FuturesTimeoutError,
+)
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 
 # Bootstrap _common
@@ -464,7 +470,8 @@ class Registry:
                 for q, layer in queries_with_layers
             }
             try:
-                for future in as_completed(future_to_query, timeout=max(0.1, deadline - time.monotonic())):
+                timeout_val = max(0.1, deadline - time.monotonic())
+                for future in as_completed(future_to_query, timeout=timeout_val):
                     try:
                         candidates = future.result()
                         for c in candidates:
@@ -500,7 +507,9 @@ class Registry:
         """
         l_map = layer_map or {}
         queries_with_layers = [(q, l_map.get(q, "general")) for q in queries]
-        search_deadline = deadline if deadline is not None else (time.monotonic() + LIVE_SEARCH_WALL_TIMEOUT_S)
+        search_deadline = (
+            deadline if deadline is not None else (time.monotonic() + LIVE_SEARCH_WALL_TIMEOUT_S)
+        )
         candidates = self.batch_search(queries_with_layers)
 
         # Remaining budget for meta fetches
@@ -527,7 +536,12 @@ class Registry:
                 # Fill in empty meta for any unfinished candidates
                 for future, c in future_to_cand.items():
                     if c.meta is None:
-                        c.meta = Meta(description="", description_tokens=0, skill_md_lines=0, audit_status="timeout")
+                        c.meta = Meta(
+                            description="",
+                            description_tokens=0,
+                            skill_md_lines=0,
+                            audit_status="timeout",
+                        )
 
         return candidates, list(self.warnings)
 
