@@ -1,12 +1,17 @@
-# skill-fit: cut Claude Code token waste with a project map and skill audit
+<p align="center">
+  <img src="docs/assets/logo.png" alt="skill-fit logo" width="680" />
+</p>
 
-> Agent skill that scans your repo with a deterministic script, writes a compact project map into `CLAUDE.md` / `AGENTS.md`, and audits the idle token cost of your installed skills. No model tokens are spent on scanning, and there are no runtime dependencies.
+
+<h3 align="center">cut Claude Code token waste with a project map and skill audit</h3>
+
+> Agent skill that scans your repo, writes a compact project map into `CLAUDE.md` / `AGENTS.md`, and audits the idle token cost of your installed skills. On request, it also searches a public registry for stack-matched skills. No model tokens are spent on scanning, and scan/audit/map have no runtime dependencies.
 
 [![CI](https://github.com/jasimrazi/skill-fit/actions/workflows/ci.yml/badge.svg)](https://github.com/jasimrazi/skill-fit/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python: 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
-**Status:** pre-release (v0.1). Scanning, auditing, and map writing work today. Skill matching is planned, not built (see [Roadmap](#roadmap)).
+**Status:** pre-release (v0.1). Scanning, auditing, and map writing work today. Skill matching is built but opt-in and experimental; live search is known to time out on slow connections (see [Limitations](#limitations)).
 
 ## Why
 
@@ -25,11 +30,20 @@ skill-fit handles both with plain Python scripts, so the agent reads a short, ac
 | `audit.py` | Finds installed skills (project and user locations), estimates their idle token cost, and flags oversized descriptions (over 1,024 chars), overlapping skills (Jaccard similarity of 0.4 or higher), and skills that don't match the detected stack. |
 | `write_map.py` | Writes a project map of at most 600 estimated tokens into `CLAUDE.md` or `AGENTS.md`, only between marker comments, and can check whether the map is stale. |
 
+**Opt-in / experimental (makes network calls):**
+
+| Script | Job |
+|---|---|
+| `match.py` | 5-step resolution: lockfile → cache → live search → stale fallback → seed catalog. Returns a ranked shortlist within a token budget. Live search times out at 20 s and degrades gracefully. |
+| `rank.py` | Scores candidates by stack tag overlap, install count, description length (idle cost), and age. |
+| `registry.py` | Adapter: `skills.sh` public API primary, `npx skills find` fallback, GitHub raw for metadata. |
+| `install.py` | Calls `npx skills add` with SHA pinning for reproducibility. Requires explicit per-skill approval. |
+
 ## Design principles
 
 - **Deterministic.** The same repo produces the same output, every run.
 - **Read-only by default.** Scanning and auditing never write. The map writer changes only the marked block in the target file, and supports `--dry-run`.
-- **No network, standard library only.** Python 3.8+ is the only requirement.
+- **No network by default.** Scanning, auditing, and map writing make no network calls. Skill matching is opt-in and explicit; the agent asks before running it. Python 3.8+ standard library only.
 - **Hints, not facts.** Architecture patterns come with a confidence score and the evidence behind it. Overlap and relevance flags are suggestions, and nothing is ever removed automatically.
 - **Estimates are labeled.** Token counts use characters divided by 4. For exact accounting, use your agent's own context report.
 
@@ -119,10 +133,11 @@ A result only counts if task success holds up. Fewer tokens with worse answers i
 - Architecture hints come from folder names and are marked with a confidence score.
 - Skill locations are searched on a best-effort basis. Use `--skills-dir` for non-standard setups.
 - Developed for Claude Code. Other agents that read the Agent Skills format may work, but they are untested.
+- **Live search can time out.** The matching phase has a 20-second total wall-clock limit. On timeout it degrades to stale cache or seed catalog, but the shortlist may be less relevant than a live result. Do not rely on `match.py` for latency-sensitive workflows.
 
 ## Roadmap
 
-Planned, not promised. Nothing below exists today, and v0.1 makes no network calls and installs nothing.
+Planned, not promised.
 
 - **v0.2:** check documented commands against the repo's actual scripts, lint `CLAUDE.md` for size and duplication, reversible pruning (move flagged skills aside, never delete), CI mode with a token threshold.
 - **v0.3:** optional usage evidence from local session transcripts, a drift hook that reports a stale map, a committed project profile.

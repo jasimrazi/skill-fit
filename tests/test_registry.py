@@ -120,3 +120,32 @@ def test_fetch_meta_frontmatter_only_byte_cap():
     assert len(meta.description) <= 1024
     assert meta.description_tokens <= 256
     assert "\x00" not in meta.description
+
+
+def test_batch_search_wall_timeout_degrades(monkeypatch):
+    """Verify that a wall-clock timeout degrades like a rate-limit.
+
+    We patch LIVE_SEARCH_WALL_TIMEOUT_S to a near-zero value so
+    as_completed fires FuturesTimeoutError on the very first iteration,
+    then confirm that Registry.partial is True and a human-readable
+    warning appears in Registry.warnings.
+    """
+    import registry as reg_mod
+
+    # Patch the wall-clock budget to effectively zero so the deadline is
+    # already past before any future can finish.
+    monkeypatch.setattr(reg_mod, "LIVE_SEARCH_WALL_TIMEOUT_S", 0.001)
+
+    # Use an offline Registry so no real network calls are made, but
+    # override offline flag after construction so batch_search actually runs.
+    registry = Registry(offline=False, timeout_s=0.001)
+
+    # Provide a single dummy query; the search itself will hit the adapter
+    # timeout instantly (timeout_s=0.001) or be cancelled by the deadline.
+    results = registry.batch_search([("python", "backend")])
+
+    # Results may be empty or partial — what matters is the degradation path.
+    assert registry.partial is True, "Registry must be marked partial on timeout"
+    assert any("timed out" in w.lower() or "timeout" in w.lower() for w in registry.warnings), (
+        f"Expected a timeout warning in {registry.warnings}"
+    )

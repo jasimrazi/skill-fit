@@ -18,7 +18,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import Future, ThreadPoolExecutor, TimeoutError as FuturesTimeoutError, as_completed
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 
 # Bootstrap _common
@@ -31,6 +31,10 @@ MAX_DESCRIPTION_CHARS = 1024
 MAX_WORKERS = 4
 SKILLS_SH_SEARCH_URL = "https://skills.sh/api/search"
 RAW_GITHUB_URL = "https://raw.githubusercontent.com"
+
+# Total wall-clock cap for the entire live-search phase (search + meta fetch).
+# When exceeded the search is marked partial and falls back to cache / seed catalog.
+LIVE_SEARCH_WALL_TIMEOUT_S = 20.0
 
 
 # ---------------------------------------------------------------------------
@@ -385,6 +389,17 @@ class Registry:
         if warn not in self.warnings:
             self.warnings.append(warn)
 
+    def handle_timeout(self, elapsed_s: float) -> None:
+        """Mark a wall-clock timeout identically to a rate-limit: partial result, clear message."""
+        self.partial = True
+        warn = (
+            f"Live search timed out after {elapsed_s:.1f}s "
+            f"(limit {LIVE_SEARCH_WALL_TIMEOUT_S}s). Results may be incomplete; "
+            "falling back to cache / seed catalog."
+        )
+        if warn not in self.warnings:
+            self.warnings.append(warn)
+
     def search(self, query: str, layer: str = "") -> List[Candidate]:
         if self.offline:
             return []
@@ -429,27 +444,45 @@ class Registry:
     def batch_search(
         self, queries_with_layers: List[Tuple[str, str]]
     ) -> List[Candidate]:
-        """Search multiple queries with bounded concurrency (max 4 workers)."""
+        """Search multiple queries with bounded concurrency (max 4 workers).
+
+        Enforces LIVE_SEARCH_WALL_TIMEOUT_S total wall-clock time.  When the
+        deadline is reached any unfinished futures are cancelled and the Registry
+        is marked partial (same path as a rate-limit hit)., so callers fall back
+        to cache / seed catalog automatically.
+        """
         if self.offline or not queries_with_layers:
             return []
 
         results: List[Candidate] = []
         seen_ids = set()
+        deadline = time.monotonic() + LIVE_SEARCH_WALL_TIMEOUT_S
 
         with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
             future_to_query = {
                 executor.submit(self.search, q, layer): (q, layer)
                 for q, layer in queries_with_layers
             }
-            for future in as_completed(future_to_query):
-                try:
-                    candidates = future.result()
-                    for c in candidates:
-                        if c.id not in seen_ids:
-                            seen_ids.add(c.id)
-                            results.append(c)
-                except Exception as e:
-                    self.warnings.append(f"Batch worker error: {e}")
+            try:
+                for future in as_completed(future_to_query, timeout=max(0.1, deadline - time.monotonic())):
+                    try:
+                        candidates = future.result()
+                        for c in candidates:
+                            if c.id not in seen_ids:
+                                seen_ids.add(c.id)
+                                results.append(c)
+                    except Exception as e:
+                        self.warnings.append(f"Batch worker error: {e}")
+                    if time.monotonic() >= deadline:
+                        for pending in future_to_query:
+                            pending.cancel()
+                        self.handle_timeout(LIVE_SEARCH_WALL_TIMEOUT_S)
+                        break
+            except FuturesTimeoutError:
+                elapsed = time.monotonic() - (deadline - LIVE_SEARCH_WALL_TIMEOUT_S)
+                for pending in future_to_query:
+                    pending.cancel()
+                self.handle_timeout(elapsed)
 
         return results
 
@@ -457,25 +490,44 @@ class Registry:
         self,
         queries: Sequence[str],
         layer_map: Optional[Dict[str, str]] = None,
+        deadline: Optional[float] = None,
     ) -> Tuple[List[Candidate], List[str]]:
-        """Search queries and fetch candidate metadata with bounded concurrency."""
+        """Search queries and fetch candidate metadata with bounded concurrency.
+
+        *deadline* is a `time.monotonic()` value; when provided the meta-fetch
+        phase will not start new work past that point and will degrade the same
+        way as a rate-limit or search timeout (partial=True, clear warning).
+        """
         l_map = layer_map or {}
         queries_with_layers = [(q, l_map.get(q, "general")) for q in queries]
+        search_deadline = deadline if deadline is not None else (time.monotonic() + LIVE_SEARCH_WALL_TIMEOUT_S)
         candidates = self.batch_search(queries_with_layers)
 
+        # Remaining budget for meta fetches
+        meta_remaining = max(0.1, search_deadline - time.monotonic())
         with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
             future_to_cand = {
                 executor.submit(self.fetch_meta, c): c for c in candidates
             }
-            for future in as_completed(future_to_cand):
-                c = future_to_cand[future]
-                try:
-                    c.meta = future.result()
-                except Exception as exc:
-                    self.warnings.append(f"Metadata fetch failed for {c.id}: {exc}")
-                    c.meta = Meta(
-                        description="", description_tokens=0, skill_md_lines=0
-                    )
+            try:
+                for future in as_completed(future_to_cand, timeout=meta_remaining):
+                    c = future_to_cand[future]
+                    try:
+                        c.meta = future.result()
+                    except Exception as exc:
+                        self.warnings.append(f"Metadata fetch failed for {c.id}: {exc}")
+                        c.meta = Meta(
+                            description="", description_tokens=0, skill_md_lines=0
+                        )
+            except FuturesTimeoutError:
+                elapsed = time.monotonic() - (search_deadline - LIVE_SEARCH_WALL_TIMEOUT_S)
+                for pending in future_to_cand:
+                    pending.cancel()
+                self.handle_timeout(elapsed)
+                # Fill in empty meta for any unfinished candidates
+                for future, c in future_to_cand.items():
+                    if c.meta is None:
+                        c.meta = Meta(description="", description_tokens=0, skill_md_lines=0, audit_status="timeout")
 
         return candidates, list(self.warnings)
 

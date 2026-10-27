@@ -256,10 +256,16 @@ def match_skills(
             layer_map = {d["query"]: d.get("layer", "general") for d in query_details}
 
             registry = Registry()
-            candidates, reg_warnings = registry.search_and_fetch_all(
+            raw_candidates, reg_warnings = registry.search_and_fetch_all(
                 query_list, layer_map=layer_map
             )
             warnings.extend(reg_warnings)
+            # Normalize to dicts (search_and_fetch_all returns Candidate objects)
+            from registry import Candidate as _Candidate  # noqa: E402
+            candidates: List[Dict[str, Any]] = [
+                c.to_dict() if isinstance(c, _Candidate) else c
+                for c in raw_candidates
+            ]
 
             # Merge bundled seed candidates if live search came back empty or partial
             seed_cands = load_seed_candidates(extracted_tags)

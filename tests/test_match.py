@@ -137,13 +137,12 @@ def test_resolution_order_step3_live_search(tmp_path, monkeypatch):
         ),
     )
 
-    def mock_search_all(self, queries, layer_map=None):
+    def mock_search_all(self, queries, layer_map=None, deadline=None):
         return [mock_candidate], []
 
-    monkeypatch.setattr(
-        "registry.Registry.search_and_fetch_all",
-        mock_search_all,
-    )
+    # Patch the class in the registry module that match.py imported at load time
+    import registry as reg_mod
+    monkeypatch.setattr(reg_mod.Registry, "search_and_fetch_all", mock_search_all)
 
     result = match.match_skills(
         repo_path=repo_dir,
@@ -155,10 +154,12 @@ def test_resolution_order_step3_live_search(tmp_path, monkeypatch):
     assert len(result["shortlist"]) == 1
     assert result["shortlist"][0]["id"] == "owner/react-live@react-skills"
 
-    # Verify cache was populated
+    # Verify cache was populated (may include merged seed catalog entries)
     cached_entry, _ = cache.get_cache(["react"], cache_dir=cache_dir)
     assert cached_entry is not None
-    assert len(cached_entry.candidates) == 1
+    assert len(cached_entry.candidates) >= 1
+    mock_ids = {c.get("id") if isinstance(c, dict) else c.id for c in cached_entry.candidates}
+    assert "owner/react-live@react-skills" in mock_ids
 
 
 def test_resolution_order_degraded_stale_fallback(tmp_path, monkeypatch):
