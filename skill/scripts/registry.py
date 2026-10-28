@@ -40,7 +40,7 @@ RAW_GITHUB_URL = "https://raw.githubusercontent.com"
 
 # Total wall-clock cap for the entire live-search phase (search + meta fetch).
 # When exceeded the search is marked partial and falls back to cache / seed catalog.
-LIVE_SEARCH_WALL_TIMEOUT_S = 20.0
+LIVE_SEARCH_WALL_TIMEOUT_S = 35.0
 
 
 # ---------------------------------------------------------------------------

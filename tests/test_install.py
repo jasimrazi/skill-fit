@@ -264,3 +264,52 @@ def test_install_cli(tmp_path, capsys):
     assert "DRY RUN" in captured.out
     assert "unvetted" in captured.out.lower()
     assert not lock_file.exists()
+
+
+def test_unpinned_candidate_resolves_sha(tmp_path, monkeypatch):
+    """An unpinned shortlist candidate (HEAD) is resolved to an exact commit SHA before install."""
+    skills_dir = tmp_path / "skills"
+    lock_file = tmp_path / "skill-fit.lock"
+
+    monkeypatch.setattr(
+        install,
+        "resolve_remote_sha",
+        lambda repo, timeout_s=5.0: "1234567890abcdef1234567890abcdef12345678",
+    )
+
+    shortlist = [
+        {
+            "id": "owner/repo@unpinned-skill",
+            "source_repo": "owner/repo",
+            "skill_name": "unpinned-skill",
+            "layer": "framework",
+            "pinned_sha": "HEAD",
+            "description": "Unpinned skill",
+            "description_tokens": 8,
+        }
+    ]
+
+    recorded_shas = []
+
+    def mock_installer(source_repo, pinned_sha, target_dir):
+        recorded_shas.append(pinned_sha)
+        create_mock_skill(target_dir, "unpinned-skill", tampered=False)
+        return True, ""
+
+    result = install.install_skills(
+        shortlist=shortlist,
+        manifest_hash="man-hash-unpinned",
+        skills_dir=skills_dir,
+        lockfile_path=lock_file,
+        approved_ids=["owner/repo@unpinned-skill"],
+        installer_runner=mock_installer,
+    )
+
+    assert result["dry_run"] is False
+    assert len(result["installed"]) == 1
+    assert recorded_shas == ["1234567890abcdef1234567890abcdef12345678"]
+    assert (
+        result["installed"][0]["pinned_sha"]
+        == "1234567890abcdef1234567890abcdef12345678"
+    )
+

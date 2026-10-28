@@ -24,6 +24,8 @@ import shutil
 import subprocess
 import sys
 import time
+import urllib.error
+import urllib.request
 from pathlib import Path
 from typing import Any, Callable, Dict, List, Optional, Sequence, Set, Tuple, Union
 
@@ -34,6 +36,54 @@ from registry import sanitize_description  # noqa: E402
 
 DEFAULT_SKILLS_DIR = ".agents/skills"
 DEFAULT_LOCKFILE_PATH = "skill-fit.lock"
+
+
+def resolve_remote_sha(source_repo: str, timeout_s: float = 5.0) -> str:
+    """Resolve latest commit SHA for a GitHub repo (owner/repo).
+
+    Queries GitHub commit API or git ls-remote. Returns 40-char SHA or 'HEAD' on failure.
+    """
+    if not source_repo or "/" not in source_repo:
+        return "HEAD"
+    owner, repo = source_repo.split("/", 1)
+
+    # 1. Try GitHub commit API
+    url = f"https://api.github.com/repos/{owner}/{repo}/commits/HEAD"
+    try:
+        req = urllib.request.Request(
+            url,
+            headers={
+                "User-Agent": "skill-fit/0.1",
+                "Accept": "application/vnd.github.v3+json",
+            },
+        )
+        with urllib.request.urlopen(req, timeout=timeout_s) as resp:
+            if resp.status == 200:
+                data = json.loads(resp.read().decode("utf-8"))
+                sha = data.get("sha")
+                if sha and len(sha) == 40:
+                    return sha
+    except Exception:
+        pass
+
+    # 2. Try git ls-remote if git is available locally
+    try:
+        cmd = ["git", "ls-remote", f"https://github.com/{owner}/{repo}.git", "HEAD"]
+        proc = subprocess.run(
+            cmd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            timeout=timeout_s,
+        )
+        if proc.returncode == 0 and proc.stdout:
+            parts = proc.stdout.split()
+            if parts and len(parts[0]) == 40:
+                return parts[0]
+    except Exception:
+        pass
+
+    return "HEAD"
 
 
 def format_trust_gate_item(
@@ -79,6 +129,11 @@ def default_installer_runner(
 ) -> Tuple[bool, str]:
     """Execute `npx skills add <source_repo>#<pinned_sha>` to install skill."""
     npx_cmd = "npx.cmd" if sys.platform == "win32" else "npx"
+    if not pinned_sha or pinned_sha == "HEAD":
+        resolved = resolve_remote_sha(source_repo)
+        if resolved and resolved != "HEAD":
+            pinned_sha = resolved
+
     if pinned_sha and pinned_sha != "HEAD":
         specifier = f"{source_repo}#{pinned_sha}"
     else:
@@ -165,7 +220,11 @@ def install_skills(
             continue
 
         source_repo = item.get("source_repo", "")
-        pinned_sha = item.get("pinned_sha", "HEAD")
+        pinned_sha = item.get("pinned_sha") or "HEAD"
+        if pinned_sha == "HEAD":
+            resolved = resolve_remote_sha(source_repo)
+            if resolved and resolved != "HEAD":
+                pinned_sha = resolved
         expected_hash = item.get("expected_content_hash") or item.get("content_hash")
         tokens = item.get("description_tokens", 0)
         layer = item.get("layer", "general")
