@@ -47,6 +47,14 @@ skill-fit handles both with plain Python scripts, so the agent reads a short, ac
 - **Hints, not facts.** Architecture patterns come with a confidence score and the evidence behind it. Overlap and relevance flags are suggestions, and nothing is ever removed automatically.
 - **Estimates are labeled.** Token counts use characters divided by 4. For exact accounting, use your agent's own context report.
 
+## Security & Trust Model
+
+`skill-fit` is engineered for safety in autonomous agent environments:
+
+1. **Local & offline by default (Act 1):** `scan.py`, `audit.py`, and `write_map.py` make zero network requests, require no third-party Python dependencies, and only read manifests and file trees (never secrets or sensitive file contents). Map modifications are strictly confined between marker comments.
+2. **Indirect prompt injection defense (Act 2):** When searching for stack-matched skills (`match.py`), third-party descriptions and metadata fetched from `skills.sh` or GitHub are sanitized (stripping ANSI escapes, removing ASCII control characters, and normalizing whitespace), capped at safe lengths, and treated strictly as passive data. Agents are explicitly instructed never to execute instructions found in external skill descriptions.
+3. **Supply chain & transitive installation guardrails (`install.py`):** `skill-fit` never installs skills autonomously. Candidates must pass an interactive trust gate requiring explicit, per-skill human approval. Installations are SHA-pinned for reproducibility, and content hashes are re-verified post-install. Tampered or mismatched content is immediately quarantined and aborts lockfile creation.
+
 ## Install
 
 **Skills CLI (requires Node):**
