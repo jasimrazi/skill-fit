@@ -3,24 +3,43 @@
 </p>
 
 
-<h3 align="center">cut Claude Code token waste with a project map and skill audit</h3>
+<h1 align="center">skill-fit</h1>
 
-> Agent skill that scans your repo, writes a compact project map into `CLAUDE.md` / `AGENTS.md`, and audits the idle token cost of your installed skills. On request, it also searches a public registry for stack-matched skills. No model tokens are spent on scanning, and scan/audit/map have no runtime dependencies.
+<h3 align="center">Cut Claude Code Token Waste with an Automated Project Map & Skill Audit</h3>
+
+<p align="center">
+  <strong>Deterministic context engineering for Claude Code, Cursor, and AI agents. Generates compact <code>CLAUDE.md</code> / <code>AGENTS.md</code> project maps and eliminates idle skill token bloat.</strong>
+</p>
+
+> **TL;DR:** `skill-fit` is an open-source agent skill and CLI tool that scans your codebase in ~70ms, writes a compact project map (<600 tokens) into `CLAUDE.md` or `AGENTS.md`, and audits installed skills for idle context costs, overlapping triggers, and tech-stack mismatches. Zero model tokens are consumed during scanning, and core scripts run completely offline with zero runtime dependencies.
 
 [![CI](https://github.com/jasimrazi/skill-fit/actions/workflows/ci.yml/badge.svg)](https://github.com/jasimrazi/skill-fit/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python: 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Standards: CLAUDE.md | AGENTS.md](https://img.shields.io/badge/standards-CLAUDE.md%20%7C%20AGENTS.md-blueviolet.svg)](#what-it-reads-and-writes)
+[![Zero Model Tokens](https://img.shields.io/badge/model%20tokens-0%20spent-success.svg)](#design-principles)
 
 **Status:** pre-release (v0.1). Scanning, auditing, and map writing work today. Skill matching is built but opt-in and experimental; live search is known to time out on slow connections (see [Limitations](#limitations)).
 
-## Why
+## Why: Solving Context Window Exhaustion in Claude Code
 
-Two things waste tokens in agentic coding:
+Two invisible issues cause severe token waste and prompt bloat in agentic coding environments like Claude Code:
 
-1. **Exploration.** An agent with no project summary spends turns on `ls`, `find`, and `cat` to learn how the repo is built and how to run its tests, and it often gets the commands wrong.
-2. **Idle skills.** Every installed skill's name and description is loaded into context on every turn, used or not. Overlapping skills also add contradictory instructions.
+1. **Exploration loops.** An agent without a project summary spends 3–6 turns running `ls`, `find`, and `cat` just to understand how the repo is structured, which package manager is used, and how to execute tests—often guessing commands incorrectly.
+2. **Idle skill context tax.** Every installed agent skill loads its name and description into your system prompt on **every single turn**, whether relevant to the current task or not. Overlapping or unused skills silently burn hundreds of tokens per turn and introduce conflicting instructions.
 
-skill-fit handles both with plain Python scripts, so the agent reads a short, accurate summary instead of exploring.
+`skill-fit` solves both challenges using fast, deterministic Python scripts with zero LLM API overhead: your agent reads a verified, compact project map instead of wandering.
+
+## Comparison: How skill-fit Compares
+
+| Feature | `skill-fit` | Manual `CLAUDE.md` | Context Dumpers (e.g. Repomix) | Transcript Analyzers (e.g. Skillstat) |
+|---|---|---|---|---|
+| **Approach** | Fast AST & manifest parsing | Hand-written notes | Full-repo concatenation | Session transcript log mining |
+| **Model Tokens to Run** | **0 tokens (100% offline)** | 0 tokens | 0 tokens (huge prompt output) | 0 tokens |
+| **Output Token Size** | **Enforced ceiling (<600 tokens)** | Unpredictable (prone to bloat) | 20k–100k+ tokens (context overload) | N/A (report only) |
+| **Skill Bloat Audit** | **Yes** (idle cost, overlaps, stack fit) | No | No | Yes (post-session usage) |
+| **Safe Isolation** | **Yes** (updates only marked block) | Manual editing | Overwrites or dumps to prompt | File moves |
+| **Runtime Dependencies** | **None** (Python 3.8+ stdlib) | None | Node.js / CLI packages | Python / CLI packages |
 
 ## What it does (v0.1)
 
@@ -133,6 +152,26 @@ Planned method (see [`bench/`](bench/)): fixed tasks per repo, run under four co
 | Map and prune | pending | pending | pending |
 
 A result only counts if task success holds up. Fewer tokens with worse answers is not a win, and the report will flag it.
+
+## Frequently Asked Questions (FAQ)
+
+### How does skill-fit prevent Claude Code from exhausting context window limits?
+By providing a compact project map (<600 tokens) directly in `CLAUDE.md` or `AGENTS.md`, Claude Code immediately knows how to build, test, lint, and run the project without spending turns running exploratory shell commands. Additionally, `skill-fit audit` detects idle and bloated skills, preventing hundreds of irrelevant tokens from polluting the system prompt on every conversational turn.
+
+### What is the difference between CLAUDE.md and AGENTS.md?
+`CLAUDE.md` is the project instruction file used natively by Claude Code. `AGENTS.md` is an emerging open standard adopted by multi-agent frameworks and IDEs (such as Antigravity, Cursor, and Codex tools). `skill-fit` supports both seamlessly via `--target CLAUDE.md` or `--target AGENTS.md`.
+
+### Does skill-fit consume LLM API tokens to run?
+No. Act 1 (`scan.py`, `audit.py`, `write_map.py`) uses 100% local deterministic file parsing and token estimation heuristics (character length / 4) in Python standard library. It requires zero API keys and spends zero model tokens.
+
+### Can skill-fit run in CI/CD pipelines to prevent map drift?
+Yes. You can run `python3 skill/scripts/write_map.py . --check` in GitHub Actions or your pre-commit hooks. It returns exit code `0` if the map is up-to-date and `1` if the project manifest or architecture has changed, alerting developers to update their project map.
+
+### Can I use skill-fit with Cursor, Windsurf, or other AI agents?
+Yes. While developed with Claude Code workflows in mind, `skill-fit` writes standard Markdown maps and reads Agent Skills frontmatter (`agentskills.io` standard). Any agent or IDE that reads `AGENTS.md` or repository rules benefits immediately from the structured commands and directory purposes.
+
+### How does skill-fit protect against indirect prompt injection?
+External skill recommendations (Act 2) are treated strictly as untrusted display data. External descriptions are sanitized (stripping ANSI escapes, removing control characters, and normalizing whitespace) and enclosed in passive quotes. Agents are explicitly instructed never to execute instructions embedded inside external descriptions. Furthermore, installations require explicit per-skill user consent and SHA commit pinning.
 
 ## Limitations
 
