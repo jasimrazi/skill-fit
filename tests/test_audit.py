@@ -231,3 +231,27 @@ def test_disabled_skill_is_not_loaded(tmp_path):
     skill_entry = result["skills"][0]
     assert skill_entry["tokens_saved_if_disabled"] == skill_entry["tokens_saved_if_removed"]
 
+
+def test_audit_discovers_multi_agent_project_paths(tmp_path):
+    """audit.py discovers skills in .opencode/skills and .cursor/skills."""
+    opencode_dir = tmp_path / ".opencode" / "skills" / "oc-skill"
+    opencode_dir.mkdir(parents=True)
+    (opencode_dir / "SKILL.md").write_text(
+        "---\nname: oc-skill\ndescription: OpenCode skill\n---\n# OC",
+        encoding="utf-8",
+    )
+
+    cursor_dir = tmp_path / ".cursor" / "skills" / "cursor-skill"
+    cursor_dir.mkdir(parents=True)
+    (cursor_dir / "SKILL.md").write_text(
+        "---\nname: cursor-skill\ndescription: Cursor skill\n---\n# Cursor",
+        encoding="utf-8",
+    )
+
+    result = run_audit("--path", str(tmp_path))
+    names = [s["name"] for s in result["skills"]]
+    assert "oc-skill" in names
+    assert "cursor-skill" in names
+    assert len(result["skills"]) >= 2
+
+

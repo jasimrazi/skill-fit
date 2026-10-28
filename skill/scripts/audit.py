@@ -110,8 +110,21 @@ def discover_skills(
                 seen_paths.add(norm)
                 found.append((s_path, s_scope))
 
-    # Project-level locations
-    for sub in [".agents/skills", ".agent/skills", "_agents/skills", ".claude/skills"]:
+    # Project-level locations across supported coding agents
+    project_subdirs = [
+        ".agents/skills",
+        ".agent/skills",
+        "_agents/skills",
+        ".claude/skills",
+        ".opencode/skills",
+        ".cursor/skills",
+        ".windsurf/skills",
+        ".codex/skills",
+        ".cline/skills",
+        ".roo/skills",
+        ".openhands/skills",
+    ]
+    for sub in project_subdirs:
         add_skills(os.path.join(project_root, sub), "project")
 
     # Project plugins
@@ -124,10 +137,25 @@ def discover_skills(
         except OSError:
             pass
 
-    # User-level locations
+    # User-level locations across supported coding agents
     home = os.path.expanduser("~")
-    add_skills(os.path.join(home, ".gemini", "config", "skills"), "user")
-    add_skills(os.path.join(home, ".claude", "skills"), "user")
+    user_skill_dirs = [
+        os.path.join(home, ".gemini", "config", "skills"),
+        os.path.join(home, ".claude", "skills"),
+        os.path.join(home, ".config", "opencode", "skills"),
+        os.path.join(home, ".opencode", "skills"),
+        os.path.join(home, ".cursor", "skills"),
+        os.path.join(home, ".windsurf", "skills"),
+        os.path.join(home, ".codex", "skills"),
+        os.path.join(home, ".cline", "skills"),
+        os.path.join(home, ".roo", "skills"),
+    ]
+    appdata = os.environ.get("APPDATA")
+    if appdata:
+        user_skill_dirs.append(os.path.join(appdata, "opencode", "skills"))
+
+    for u_dir in user_skill_dirs:
+        add_skills(u_dir, "user")
 
     # User plugins
     user_plugins = os.path.join(home, ".gemini", "config", "plugins")

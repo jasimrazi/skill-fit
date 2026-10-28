@@ -11,10 +11,16 @@ Optimize agent context: project map, idle skill audit, and optional skill recomm
 ### Act 1 — Scan & Audit (100% Offline, Read-Only)
 1. Run `python skill/scripts/scan.py .` and save output as `$SCAN`.
 2. Run `python skill/scripts/audit.py --stack-json <($SCAN)` (reuse `$SCAN`; do not rescan).
-3. Present combined findings: detected stack, commands, entry points, idle token total, overlap flags.
+3. Present combined findings clearly:
+   - **Detected Stack & Commands:** Stack, runnable commands, entry points.
+   - **Installed Skills Audit:** List installed skills with scope and idle token cost.
+     - If skills are found with 0 flags: explicitly state:
+       `"Audit clean: Found X installed skills (~Y idle tokens). All match your detected stack with 0 conflict or bloat flags; none need disabling."`
+     - If 0 skills are found: explicitly state:
+       `"Audit clean: 0 installed skills detected across project and user directories."`
 4. Ask two separate questions — never bundle them:
    - **Write the project map?** → run `write_map.py . --create` on yes.
-   - **Act on disable suggestions?** → For each flagged skill, prompt individually:
+   - **Act on disable suggestions?** → Only if one or more skills were flagged by the audit. If no skills are flagged, explicitly note that no skills need disabling and skip prompting. For each flagged skill, prompt individually:
      - Show the skill name, idle token cost, flag, **reason**, and **confidence** (e.g., `android-ui-builder: reason="Names technology absent from detected stack: android, java, kotlin", confidence=0.85`).
      - State explicitly: **"Keeping this skill is the safe default."** Do not describe the audit as agreeing with that default; the audit only surfaces heuristic signals, while the safe decision default remains keeping.
      - Prompt for decision (Keep / Disable).
