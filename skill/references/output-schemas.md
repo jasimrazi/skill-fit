@@ -58,7 +58,8 @@ Reference schemas for JSON outputs produced by `context-audit` scripts.
       "flags": ["description_too_long", "description_overlap", "possibly_irrelevant"],
       "reason": "string or null",
       "confidence": 0.85,
-      "tokens_saved_if_removed": 30
+      "tokens_saved_if_removed": 30,
+      "tokens_saved_if_disabled": 30
     }
   ],
   "overlaps": [

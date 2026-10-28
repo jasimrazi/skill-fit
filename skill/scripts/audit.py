@@ -7,7 +7,8 @@ Usage:
 Output fields (JSON):
     skills[]:
         name, scope, path, description_chars, description_tokens,
-        line_count, has_references, has_scripts, flags[], tokens_saved_if_removed
+        line_count, has_references, has_scripts, flags[],
+        tokens_saved_if_removed, tokens_saved_if_disabled
     overlaps[]:
         skill_a, skill_b, score
     total_idle_tokens: int
@@ -313,6 +314,7 @@ def audit(
             "reason": None,
             "confidence": None,
             "tokens_saved_if_removed": tokens_saved,
+            "tokens_saved_if_disabled": tokens_saved,
             "_tokens": _tokenize(f"{name} {description}"),
         })
         token_sets.append((name, _tokenize(description)))

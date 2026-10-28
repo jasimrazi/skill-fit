@@ -44,7 +44,7 @@ skill-fit handles both with plain Python scripts, so the agent reads a short, ac
 - **Deterministic.** The same repo produces the same output, every run.
 - **Read-only by default.** Scanning and auditing never write. The map writer changes only the marked block in the target file, and supports `--dry-run`.
 - **No network by default.** Scanning, auditing, and map writing make no network calls. Skill matching is opt-in and explicit; the agent asks before running it. Python 3.8+ standard library only.
-- **Hints, not facts.** Architecture patterns come with a confidence score and the evidence behind it. Overlap and relevance flags are suggestions, and nothing is ever removed automatically.
+- **Hints, not facts.** Architecture patterns come with a confidence score and the evidence behind it. Overlap and relevance flags are suggestions, and nothing is ever removed or disabled automatically.
 - **Estimates are labeled.** Token counts use characters divided by 4. For exact accounting, use your agent's own context report.
 
 ## Security & Trust Model
@@ -82,7 +82,7 @@ Requires Python 3.8+ (`python3` on macOS and Linux).
 
 ## Use
 
-Ask your agent something like "audit my agent context" or "summarize this project for future sessions". The trigger phrases are listed in [`skill/SKILL.md`](skill/SKILL.md). The agent runs the scripts, shows you the findings, and asks before writing the map or acting on any removal suggestion.
+Ask your agent something like "audit my agent context" or "summarize this project for future sessions". The trigger phrases are listed in [`skill/SKILL.md`](skill/SKILL.md). The agent runs the scripts, shows you the findings, and asks before writing the map or acting on any disable suggestion.
 
 You can also run the scripts directly:
 

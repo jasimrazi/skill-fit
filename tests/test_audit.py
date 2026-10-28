@@ -44,7 +44,7 @@ def assert_audit_shape(result: dict) -> None:
         skill_required = [
             "name", "description_chars", "description_tokens",
             "line_count", "has_references", "has_scripts",
-            "flags", "tokens_saved_if_removed",
+            "flags", "tokens_saved_if_removed", "tokens_saved_if_disabled",
         ]
         missing_s = [k for k in skill_required if k not in skill]
         assert not missing_s, (
@@ -203,3 +203,31 @@ def test_audit_never_deletes_or_modifies():
 
     after = {f: file_hash(f) for f in skill_files}
     assert before == after, "audit.py modified skill files on disk!"
+
+
+def test_disabled_skill_is_not_loaded(tmp_path):
+    """A skill disabled via SKILL.md.disabled is ignored and consumes 0 idle tokens."""
+    skills_dir = tmp_path / "skills"
+    skills_dir.mkdir()
+    active_dir = skills_dir / "active-skill"
+    active_dir.mkdir()
+    (active_dir / "SKILL.md").write_text(
+        "---\nname: active\ndescription: Active skill\n---\n# Active",
+        encoding="utf-8",
+    )
+
+    disabled_dir = skills_dir / "disabled-skill"
+    disabled_dir.mkdir()
+    (disabled_dir / "SKILL.md.disabled").write_text(
+        "---\nname: disabled\ndescription: Disabled skill\n---\n# Disabled",
+        encoding="utf-8",
+    )
+
+    result = run_audit("--skills-dir", str(skills_dir))
+    names = [s["name"] for s in result["skills"]]
+    assert "active" in names
+    assert "disabled" not in names
+    assert len(result["skills"]) == 1
+    skill_entry = result["skills"][0]
+    assert skill_entry["tokens_saved_if_disabled"] == skill_entry["tokens_saved_if_removed"]
+
