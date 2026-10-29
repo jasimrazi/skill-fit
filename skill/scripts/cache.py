@@ -22,6 +22,7 @@ import json
 import os
 import sys
 import tempfile
+import time
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Sequence, Tuple, Union
 
@@ -250,6 +251,92 @@ def set_cache(
         raise
 
     return key
+
+
+def set_candidate_pool_cache(
+    tags: Sequence[str],
+    pool_data: Dict[str, Any],
+    cache_dir: Optional[Union[str, Path]] = None,
+    tag_queries_version: Optional[str] = None,
+    ttl_s: int = DEFAULT_TTL_S,
+    now: Optional[datetime.datetime] = None,
+) -> str:
+    """Cache candidate pool including per-query execution stats and completion counts."""
+    version = tag_queries_version or get_tag_queries_version()
+    key = compute_cache_key(tags, version)
+    target_dir = Path(cache_dir) if cache_dir else get_default_cache_dir()
+    target_dir.mkdir(parents=True, exist_ok=True)
+
+    dest_file = target_dir / f"pool_{key}.json"
+    now_dt = now or datetime.datetime.now(datetime.timezone.utc)
+    entry_payload = {
+        "schema": CACHE_SCHEMA_VERSION,
+        "fetched_at": now_dt.isoformat(),
+        "ttl_s": ttl_s,
+        "key": key,
+        "pool": pool_data,
+    }
+    serialized = json.dumps(entry_payload, indent=2, sort_keys=True)
+    temp_fd, temp_path = tempfile.mkstemp(dir=target_dir, prefix=f".pool_{key}-", suffix=".tmp")
+    try:
+        with os.fdopen(temp_fd, "w", encoding="utf-8") as f:
+            f.write(serialized)
+            f.flush()
+            os.fsync(f.fileno())
+        os.replace(temp_path, dest_file)
+    except Exception:
+        if os.path.exists(temp_path):
+            try:
+                os.remove(temp_path)
+            except OSError:
+                pass
+        raise
+    return key
+
+
+def get_candidate_pool_cache(
+    tags: Sequence[str],
+    cache_dir: Optional[Union[str, Path]] = None,
+    tag_queries_version: Optional[str] = None,
+    refresh: bool = False,
+    offline: bool = False,
+    allow_stale: bool = False,
+    now_s: Optional[float] = None,
+) -> Tuple[Optional[Dict[str, Any]], List[str]]:
+    """Retrieve cached candidate pool by canonical tag set within TTL."""
+    if refresh:
+        return None, ["Cache refresh requested"]
+
+    version = tag_queries_version or get_tag_queries_version()
+    key = compute_cache_key(tags, version)
+    target_dir = Path(cache_dir) if cache_dir else get_default_cache_dir()
+    pool_file = target_dir / f"pool_{key}.json"
+
+    if not pool_file.exists():
+        return None, []
+
+    content, err = safe_read(pool_file)
+    if err or not content:
+        return None, [f"Failed to read pool cache {pool_file}: {err}"]
+
+    try:
+        data = json.loads(content)
+        pool = data.get("pool")
+        if not pool or not isinstance(pool, dict):
+            return None, ["Malformed pool cache entry"]
+
+        fetched_at = data.get("fetched_at")
+        ttl_s = data.get("ttl_s", DEFAULT_TTL_S)
+        ref_time = now_s if now_s is not None else time.time()
+        ts = parse_iso_timestamp(fetched_at)
+        is_stale = (ts is None) or (ref_time - ts > ttl_s)
+
+        if is_stale and not allow_stale and not offline:
+            return None, ["Pool cache entry is stale"]
+
+        return pool, []
+    except Exception as exc:
+        return None, [f"Pool cache load error: {exc}"]
 
 
 # ---------------------------------------------------------------------------

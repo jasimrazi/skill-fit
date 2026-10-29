@@ -172,6 +172,7 @@ def match_skills(
     budget: int = rank.DEFAULT_BUDGET,
     min_install_count: int = rank.DEFAULT_MIN_INSTALL_COUNT,
     max_queries: int = DEFAULT_MAX_LIVE_QUERIES,
+    time_budget_s: float = 10.0,
     now_epoch: Optional[float] = None,
 ) -> Dict[str, Any]:
     """Execute the resolution order and return deterministic shortlist payload."""
@@ -259,19 +260,20 @@ def match_skills(
                 )
 
             query_details = q_res.get("query_details", [])
-            layer_map = {d["query"]: d.get("layer", "general") for d in query_details}
+            queries_with_layers = [
+                (d["query"], d.get("layer", "general"))
+                for d in query_details
+                if d["query"] in query_list
+            ]
 
             registry = Registry()
-            raw_candidates, reg_warnings = registry.search_and_fetch_all(
-                query_list, layer_map=layer_map
+            pool_result = registry.generate_candidates(
+                queries_with_layers=queries_with_layers,
+                tags=extracted_tags,
+                time_budget_s=time_budget_s,
             )
-            warnings.extend(reg_warnings)
-            # Normalize to dicts (search_and_fetch_all returns Candidate objects)
-            from registry import Candidate as _Candidate  # noqa: E402
-            candidates: List[Dict[str, Any]] = [
-                c.to_dict() if isinstance(c, _Candidate) else c
-                for c in raw_candidates
-            ]
+            warnings.extend(pool_result.get("warnings", []))
+            candidates: List[Dict[str, Any]] = pool_result.get("candidates", [])
 
             # Merge bundled seed candidates if live search came back empty or partial
             seed_cands = load_seed_candidates(extracted_tags)
@@ -281,8 +283,15 @@ def match_skills(
                     if sc.get("id") not in existing_ids:
                         candidates.append(sc)
 
+            pool_result["candidates"] = candidates
+
             # Write results to cache if non-empty
             if candidates:
+                cache.set_candidate_pool_cache(
+                    tags=extracted_tags,
+                    pool_data=pool_result,
+                    cache_dir=cache_dir,
+                )
                 cache.set_cache(
                     tags=extracted_tags,
                     candidates=candidates,
@@ -308,6 +317,9 @@ def match_skills(
                     "total_description_tokens": rank_result.total_description_tokens,
                     "budget": budget,
                     "is_stale": False,
+                    "queries_completed": pool_result.get("queries_completed", len(query_list)),
+                    "queries_total": pool_result.get("queries_total", len(query_list)),
+                    "query_statuses": pool_result.get("query_statuses", []),
                     "warnings": warnings + rank_result.warnings,
                 }
                 return enforce_output_token_budget(output)
@@ -465,6 +477,12 @@ def main(argv: Optional[List[str]] = None) -> int:
         default=DEFAULT_MAX_LIVE_QUERIES,
         help="Max live queries to prevent timeout",
     )
+    parser.add_argument(
+        "--time-budget",
+        type=float,
+        default=10.0,
+        help="Total time budget in seconds for candidate generation",
+    )
     parser.add_argument("--human", action="store_true", help="Print human-readable table")
 
     args = parser.parse_args(argv)
@@ -478,6 +496,7 @@ def main(argv: Optional[List[str]] = None) -> int:
         budget=args.budget,
         min_install_count=args.min_installs,
         max_queries=args.max_queries,
+        time_budget_s=args.time_budget,
     )
 
     if args.human:
