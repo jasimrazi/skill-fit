@@ -1,8 +1,30 @@
 {
-  "queries": [],
-  "query_details": [],
-  "tags_matched": [],
+  "queries": [
+    "python best practices"
+  ],
+  "query_details": [
+    {
+      "query": "python best practices",
+      "tag": "python",
+      "layer": "framework"
+    }
+  ],
+  "tags_matched": [
+    "python"
+  ],
   "no_coverage": [
     "requests"
-  ]
+  ],
+  "profile": {
+    "primary": [
+      "python"
+    ],
+    "secondary": [
+      "requests"
+    ],
+    "generic": [],
+    "all_detected": [
+      "requests"
+    ]
+  }
 }

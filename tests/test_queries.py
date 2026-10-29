@@ -35,8 +35,8 @@ def test_queries_react_tailwind():
     res = run_queries(str(GOLDEN / "react-tailwind.json"))
     queries = res["queries"]
     assert "react best practices" in queries
-    assert "tailwind css patterns" in queries
-    assert "github actions best practices" in queries
+    assert "react tailwind" in queries
+    assert "react github actions" in queries
     # vite, eslint, vitest are in no_coverage
     no_cov = res["no_coverage"]
     assert "vite" in no_cov
@@ -44,16 +44,18 @@ def test_queries_react_tailwind():
 
 
 def test_queries_fastapi_docker():
-    """fastapi-docker maps to FastAPI, Pytest, and Docker queries."""
+    """fastapi-docker maps to FastAPI, Docker, and library queries."""
     res = run_queries(str(GOLDEN / "fastapi-docker.json"))
     queries = res["queries"]
     assert "fastapi best practices" in queries
-    assert "pytest best practices" in queries
-    assert "docker best practices" in queries
-    # pydantic, sqlalchemy in no_coverage
+    assert "fastapi patterns" in queries
+    assert "fastapi docker" in queries
+    assert "fastapi sqlalchemy" in queries
+    assert "fastapi pydantic" in queries
+    # pytest, alembic, uvicorn in no_coverage
     no_cov = res["no_coverage"]
-    assert "pydantic" in no_cov
-    assert "sqlalchemy" in no_cov
+    assert "pytest" in no_cov
+    assert "alembic" in no_cov
 
 
 def test_queries_flutter():
@@ -61,7 +63,8 @@ def test_queries_flutter():
     res = run_queries(str(GOLDEN / "flutter.json"))
     queries = res["queries"]
     assert "flutter best practices" in queries
-    assert "provider" in res["no_coverage"]
+    assert "flutter provider" in queries
+    assert "http" in res["no_coverage"]
 
 
 def test_queries_empty():

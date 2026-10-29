@@ -1,7 +1,9 @@
 {
   "queries": [
     "flutter best practices",
-    "flutter state management"
+    "flutter state management",
+    "flutter dart",
+    "flutter provider"
   ],
   "query_details": [
     {
@@ -13,16 +15,50 @@
       "query": "flutter state management",
       "tag": "flutter",
       "layer": "framework"
+    },
+    {
+      "query": "flutter dart",
+      "tag": "dart",
+      "layer": "language"
+    },
+    {
+      "query": "flutter provider",
+      "tag": "provider",
+      "layer": "state"
     }
   ],
   "tags_matched": [
-    "flutter"
+    "flutter",
+    "dart",
+    "provider"
   ],
   "no_coverage": [
-    "flutter_lints",
-    "flutter_test",
     "http",
-    "provider",
-    "shared_preferences"
-  ]
+    "lint",
+    "shared_preferences",
+    "test"
+  ],
+  "profile": {
+    "primary": [
+      "flutter",
+      "dart"
+    ],
+    "secondary": [
+      "http",
+      "provider",
+      "shared_preferences"
+    ],
+    "generic": [
+      "test",
+      "lint"
+    ],
+    "all_detected": [
+      "flutter",
+      "http",
+      "provider",
+      "shared_preferences",
+      "test",
+      "lint"
+    ]
+  }
 }

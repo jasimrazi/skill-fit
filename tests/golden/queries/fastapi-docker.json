@@ -2,11 +2,9 @@
   "queries": [
     "fastapi best practices",
     "fastapi patterns",
-    "pytest best practices",
-    "python testing patterns",
-    "docker-compose patterns",
-    "docker best practices",
-    "docker container optimization"
+    "fastapi sqlalchemy",
+    "fastapi pydantic",
+    "fastapi docker"
   ],
   "query_details": [
     {
@@ -20,43 +18,57 @@
       "layer": "backend"
     },
     {
-      "query": "pytest best practices",
-      "tag": "pytest",
-      "layer": "testing"
+      "query": "fastapi sqlalchemy",
+      "tag": "sqlalchemy",
+      "layer": "orm"
     },
     {
-      "query": "python testing patterns",
-      "tag": "pytest",
-      "layer": "testing"
+      "query": "fastapi pydantic",
+      "tag": "pydantic",
+      "layer": "backend"
     },
     {
-      "query": "docker-compose patterns",
-      "tag": "docker-compose",
-      "layer": "infra"
-    },
-    {
-      "query": "docker best practices",
-      "tag": "docker-compose",
-      "layer": "infra"
-    },
-    {
-      "query": "docker container optimization",
+      "query": "fastapi docker",
       "tag": "docker",
       "layer": "infra"
     }
   ],
   "tags_matched": [
     "fastapi",
-    "pytest",
-    "docker-compose",
+    "sqlalchemy",
+    "pydantic",
     "docker"
   ],
   "no_coverage": [
     "alembic",
     "httpx",
-    "pydantic",
-    "pytest-asyncio",
-    "sqlalchemy",
+    "pytest",
     "uvicorn"
-  ]
+  ],
+  "profile": {
+    "primary": [
+      "fastapi"
+    ],
+    "secondary": [
+      "uvicorn",
+      "sqlalchemy",
+      "pydantic",
+      "alembic",
+      "httpx"
+    ],
+    "generic": [
+      "pytest",
+      "docker"
+    ],
+    "all_detected": [
+      "fastapi",
+      "uvicorn",
+      "sqlalchemy",
+      "pydantic",
+      "alembic",
+      "pytest",
+      "httpx",
+      "docker"
+    ]
+  }
 }

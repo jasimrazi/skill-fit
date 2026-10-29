@@ -4,8 +4,7 @@
     "react": {
       "layer": "framework",
       "queries": [
-        "react best practices",
-        "react performance"
+        "react best practices"
       ]
     },
     "next": {
@@ -22,18 +21,10 @@
         "vue composition api"
       ]
     },
-    "tailwindcss": {
-      "layer": "styling",
-      "queries": [
-        "tailwind css patterns",
-        "tailwind best practices"
-      ]
-    },
     "tailwind": {
       "layer": "styling",
       "queries": [
-        "tailwind css patterns",
-        "tailwind best practices"
+        "{primary} tailwind"
       ]
     },
     "fastapi": {
@@ -46,15 +37,14 @@
     "django": {
       "layer": "backend",
       "queries": [
-        "django best practices",
-        "django security"
+        "django best practices"
       ]
     },
     "flask": {
       "layer": "backend",
       "queries": [
-        "flask patterns",
-        "flask best practices"
+        "flask best practices",
+        "flask patterns"
       ]
     },
     "express": {
@@ -67,22 +57,43 @@
     "prisma": {
       "layer": "orm",
       "queries": [
-        "prisma orm best practices",
-        "prisma schema design"
+        "{primary} prisma"
+      ]
+    },
+    "sqlalchemy": {
+      "layer": "orm",
+      "queries": [
+        "{primary} sqlalchemy"
+      ]
+    },
+    "pydantic": {
+      "layer": "backend",
+      "queries": [
+        "{primary} pydantic"
+      ]
+    },
+    "celery": {
+      "layer": "backend",
+      "queries": [
+        "{primary} celery"
+      ]
+    },
+    "provider": {
+      "layer": "state",
+      "queries": [
+        "{primary} provider"
+      ]
+    },
+    "dio": {
+      "layer": "data",
+      "queries": [
+        "{primary} dio"
       ]
     },
     "docker": {
       "layer": "infra",
       "queries": [
-        "docker best practices",
-        "docker container optimization"
-      ]
-    },
-    "docker-compose": {
-      "layer": "infra",
-      "queries": [
-        "docker-compose patterns",
-        "docker best practices"
+        "{primary} docker"
       ]
     },
     "flutter": {
@@ -92,81 +103,46 @@
         "flutter state management"
       ]
     },
-    "pytest": {
-      "layer": "testing",
-      "queries": [
-        "pytest best practices",
-        "python testing patterns"
-      ]
-    },
-    "typescript": {
-      "layer": "language",
-      "queries": [
-        "typescript best practices",
-        "typescript strict types"
-      ]
-    },
     "postgres": {
       "layer": "database",
       "queries": [
-        "postgres optimization",
-        "postgresql schema design"
+        "{primary} postgres"
       ]
     },
-    "postgresql": {
+    "redis": {
       "layer": "database",
       "queries": [
-        "postgres optimization",
-        "postgresql schema design"
+        "{primary} redis"
       ]
     },
     "github-actions": {
       "layer": "ci",
       "queries": [
-        "github actions best practices",
-        "ci cd workflow automation"
-      ]
-    },
-    "github_actions": {
-      "layer": "ci",
-      "queries": [
-        "github actions best practices",
-        "ci cd workflow automation"
+        "{primary} github actions"
       ]
     },
     "go": {
       "layer": "language",
       "queries": [
-        "go best practices",
-        "golang project layout"
-      ]
-    },
-    "golang": {
-      "layer": "language",
-      "queries": [
-        "go best practices",
-        "golang project layout"
+        "go best practices"
       ]
     },
     "gin": {
       "layer": "backend",
       "queries": [
-        "gin web framework patterns",
         "go gin best practices"
       ]
     },
     "fiber": {
       "layer": "backend",
       "queries": [
-        "gofiber best practices",
-        "go api patterns"
+        "go fiber best practices"
       ]
     },
     "echo": {
       "layer": "backend",
       "queries": [
-        "labstack echo patterns",
-        "go api best practices"
+        "go echo best practices"
       ]
     },
     "rust": {
@@ -176,88 +152,16 @@
         "idiomatic rust patterns"
       ]
     },
-    "cargo": {
-      "layer": "language",
-      "queries": [
-        "rust cargo patterns",
-        "rust best practices"
-      ]
-    },
     "axum": {
       "layer": "backend",
       "queries": [
-        "axum web framework patterns",
-        "tokio axum best practices"
+        "rust axum best practices"
       ]
     },
     "actix": {
       "layer": "backend",
       "queries": [
-        "actix web patterns",
         "rust actix best practices"
-      ]
-    },
-    "tokio": {
-      "layer": "backend",
-      "queries": [
-        "tokio async patterns",
-        "rust async best practices"
-      ]
-    },
-    "svelte": {
-      "layer": "framework",
-      "queries": [
-        "svelte best practices",
-        "svelte runes patterns"
-      ]
-    },
-    "sveltekit": {
-      "layer": "framework",
-      "queries": [
-        "sveltekit app architecture",
-        "svelte best practices"
-      ]
-    },
-    "angular": {
-      "layer": "framework",
-      "queries": [
-        "angular best practices",
-        "angular signals patterns"
-      ]
-    },
-    "astro": {
-      "layer": "framework",
-      "queries": [
-        "astro best practices",
-        "astro content collections"
-      ]
-    },
-    "remix": {
-      "layer": "framework",
-      "queries": [
-        "remix run patterns",
-        "remix fullstack best practices"
-      ]
-    },
-    "nuxt": {
-      "layer": "framework",
-      "queries": [
-        "nuxt best practices",
-        "vue nuxt architecture"
-      ]
-    },
-    "nestjs": {
-      "layer": "backend",
-      "queries": [
-        "nestjs architecture patterns",
-        "nestjs best practices"
-      ]
-    },
-    "fastify": {
-      "layer": "backend",
-      "queries": [
-        "fastify best practices",
-        "nodejs fastify patterns"
       ]
     },
     "rails": {
@@ -277,43 +181,13 @@
     "drizzle": {
       "layer": "orm",
       "queries": [
-        "drizzle orm patterns",
-        "drizzle schema best practices"
-      ]
-    },
-    "typeorm": {
-      "layer": "orm",
-      "queries": [
-        "typeorm patterns",
-        "typeorm best practices"
-      ]
-    },
-    "redis": {
-      "layer": "database",
-      "queries": [
-        "redis caching patterns",
-        "redis best practices"
+        "{primary} drizzle"
       ]
     },
     "mongodb": {
       "layer": "database",
       "queries": [
-        "mongodb schema design",
-        "mongodb best practices"
-      ]
-    },
-    "playwright": {
-      "layer": "testing",
-      "queries": [
-        "playwright e2e best practices",
-        "playwright testing patterns"
-      ]
-    },
-    "jest": {
-      "layer": "testing",
-      "queries": [
-        "jest testing best practices",
-        "javascript unit testing"
+        "{primary} mongodb"
       ]
     }
   }

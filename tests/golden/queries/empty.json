@@ -2,5 +2,11 @@
   "queries": [],
   "query_details": [],
   "tags_matched": [],
-  "no_coverage": []
+  "no_coverage": [],
+  "profile": {
+    "primary": [],
+    "secondary": [],
+    "generic": [],
+    "all_detected": []
+  }
 }

@@ -1,12 +1,42 @@
 {
-  "queries": [],
-  "query_details": [],
-  "tags_matched": [],
+  "queries": [
+    "javascript best practices"
+  ],
+  "query_details": [
+    {
+      "query": "javascript best practices",
+      "tag": "javascript",
+      "layer": "framework"
+    }
+  ],
+  "tags_matched": [
+    "javascript"
+  ],
   "no_coverage": [
     "api",
     "turbo",
     "ui",
     "utils",
     "web"
-  ]
+  ],
+  "profile": {
+    "primary": [
+      "javascript"
+    ],
+    "secondary": [
+      "turbo",
+      "utils",
+      "ui",
+      "web",
+      "api"
+    ],
+    "generic": [],
+    "all_detected": [
+      "turbo",
+      "utils",
+      "ui",
+      "web",
+      "api"
+    ]
+  }
 }
