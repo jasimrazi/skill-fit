@@ -20,6 +20,7 @@ def create_candidate(
     last_commit: str = "2026-03-01T00:00:00Z",
     audit_status: str = "clean",
     installs: int = 5000,
+    pinned_sha: str = "1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62",
 ):
     return {
         "id": cid,
@@ -28,6 +29,7 @@ def create_candidate(
         "layer": layer,
         "found_by_query": query,
         "install_count": installs,
+        "pinned_sha": pinned_sha,
         "meta": {
             "description": description,
             "description_tokens": tokens,

@@ -89,15 +89,16 @@ def infer_installed_skills_layers(
     for s in installed_skills:
         name = s.get("name", "").strip().lower()
         desc = s.get("description", "").strip().lower()
-        matched_layer: Optional[str] = None
+        matched_layer: Optional[str] = s.get("layer")
 
-        # Check tag matches
-        for tag, details in table.items():
-            tag_lower = tag.lower()
-            pattern = rf"\b{re.escape(tag_lower)}\b"
-            if re.search(pattern, name) or re.search(pattern, desc):
-                matched_layer = details.get("layer", "unknown")
-                break
+        # Check tag matches if layer not explicitly provided
+        if not matched_layer or matched_layer == "unknown":
+            for tag, details in table.items():
+                tag_lower = tag.lower()
+                pattern = rf"\b{re.escape(tag_lower)}\b"
+                if re.search(pattern, name) or re.search(pattern, desc):
+                    matched_layer = details.get("layer", "unknown")
+                    break
 
         if matched_layer and matched_layer != "unknown":
             layer_map[name] = matched_layer
@@ -237,6 +238,212 @@ def score_candidate(
     return total_score, signals
 
 
+HEX40_RE = re.compile(r"^[0-9a-fA-F]{40}$")
+
+PRIMARY_LANGUAGES_SET: Set[str] = {
+    "python", "go", "golang", "rust", "dart", "typescript", "javascript",
+    "ruby", "java", "kotlin", "php", "csharp", "swift",
+}
+
+PRIMARY_FRAMEWORKS_SET: Set[str] = {
+    "flutter", "django", "fastapi", "flask", "react", "next", "vue", "nuxt",
+    "svelte", "sveltekit", "angular", "rails", "express", "nestjs", "fastify",
+    "gin", "fiber", "echo", "axum", "actix", "spring-boot", "remix", "astro",
+}
+
+SPECIALIZED_SERVICES_SET: Set[str] = {
+    "redis", "mongodb", "kafka", "rabbitmq", "cassandra", "elasticsearch"
+}
+
+
+def apply_hard_gates(
+    candidates: Sequence[Union[Dict[str, Any], Any]],
+    installed_skills: Optional[Sequence[Dict[str, Any]]] = None,
+    stack_tags: Optional[Sequence[str]] = None,
+    tag_queries_table: Optional[Dict[str, Dict[str, Any]]] = None,
+    min_install_count: int = DEFAULT_MIN_INSTALL_COUNT,
+) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+    """Apply Phase 3 hard gates, returning (eligible, rejected_with_reasons).
+
+    Hard gates:
+    1. Real SHA exists via frontmatter / pinned_sha (40 hex chars, never floating HEAD).
+    2. Matches a detected tag by name, description, or path.
+    3. Negative language/framework constraint (no conflicting language, framework, or uninstalled service).
+    4. Install count floor (configurable).
+    5. Audit status (clean / approved).
+    6. Layer collision with installed skills and already-installed check.
+    """
+    clean_tags = [t.strip().lower() for t in (stack_tags or []) if t and t.strip()]
+    installed = list(installed_skills or [])
+    table = tag_queries_table if tag_queries_table is not None else load_tag_queries_table()
+
+    installed_layers_map, _ = infer_installed_skills_layers(installed, table)
+    installed_layers: Set[str] = set(installed_layers_map.values())
+    installed_names: Set[str] = {s.get("name", "").strip().lower() for s in installed}
+
+    cand_dicts: List[Dict[str, Any]] = []
+    for c in candidates:
+        if hasattr(c, "to_dict") and callable(c.to_dict):
+            cand_dicts.append(c.to_dict())
+        elif isinstance(c, dict):
+            cand_dicts.append(c)
+        else:
+            cand_dicts.append(dataclasses.asdict(c))
+
+    rejected: List[Dict[str, Any]] = []
+    eligible: List[Dict[str, Any]] = []
+
+    expanded_stack = set(clean_tags)
+    if "go" in clean_tags:
+        expanded_stack.add("golang")
+    if "golang" in clean_tags:
+        expanded_stack.add("go")
+    if "next" in clean_tags:
+        expanded_stack.add("nextjs")
+    if "nextjs" in clean_tags:
+        expanded_stack.add("next")
+    if "react" in clean_tags:
+        expanded_stack.add("next")
+        expanded_stack.add("nextjs")
+
+    for cand in cand_dicts:
+        cid = cand.get("id", "")
+        skill_name = cand.get("skill_name", cand.get("name", "")).strip().lower()
+        layer = cand.get("layer", "general").strip().lower()
+        meta = cand.get("meta") or {}
+        description = (meta.get("description") or cand.get("description") or "").strip()
+        audit_status = (
+            meta.get("audit_status") or cand.get("audit_status") or "clean"
+        ).strip().lower()
+        install_count = cand.get("install_count")
+        pinned_sha = cand.get("pinned_sha") or cand.get("commit_sha")
+
+        # Hard Gate 1: Real SHA Check (never floating HEAD or unverified)
+        if pinned_sha and (pinned_sha == "HEAD" or pinned_sha.startswith("HEAD")):
+            rejected.append({
+                "id": cid,
+                "layer": layer,
+                "reason": f"No valid commit SHA resolved (unverified or floating HEAD: {pinned_sha!r})",
+            })
+            continue
+
+        if audit_status in ("metadata_unavailable", "fetch_error"):
+            rejected.append({
+                "id": cid,
+                "layer": layer,
+                "reason": f"No valid commit SHA resolved (frontmatter fetch failed: {audit_status!r})",
+            })
+            continue
+
+        # Hard Gate 5 (Pre-check): Audit status failed / malicious / unsafe
+        if audit_status in ("failed", "malicious", "unsafe"):
+            rejected.append({
+                "id": cid,
+                "layer": layer,
+                "reason": f"Failed audit status: '{audit_status}'",
+            })
+            continue
+
+        # Missing or empty description
+        if not description:
+            rejected.append({
+                "id": cid,
+                "layer": layer,
+                "reason": "Missing or empty skill description",
+            })
+            continue
+
+        # Hard Gate 6: Already installed & Layer collision with installed skill
+        if skill_name in installed_names or cid in installed_names:
+            rejected.append({
+                "id": cid,
+                "layer": layer,
+                "reason": f"Skill '{skill_name}' is already installed",
+            })
+            continue
+
+        if layer in installed_layers:
+            matched = [k for k, v in installed_layers_map.items() if v == layer][0]
+            rejected.append({
+                "id": cid,
+                "layer": layer,
+                "reason": f"Layer collision with installed skill '{matched}' (layer: {layer})",
+            })
+            continue
+
+        cand_text = " ".join([
+            cid,
+            skill_name,
+            description,
+            cand.get("found_by_query", ""),
+            " ".join(str(t) for t in cand.get("tags", [])),
+        ]).lower()
+
+        # Hard Gate 3: Negative Language/Framework Constraint
+        conflict_lang = None
+        for lang in PRIMARY_LANGUAGES_SET | PRIMARY_FRAMEWORKS_SET:
+            if lang not in expanded_stack:
+                if re.search(rf"\b{re.escape(lang)}\b", cand_text):
+                    conflict_lang = lang
+                    break
+
+        if conflict_lang:
+            rejected.append({
+                "id": cid,
+                "layer": layer,
+                "reason": f"Names conflicting language or framework '{conflict_lang}' absent from detected stack",
+            })
+            continue
+
+        # Check specialized service conflict (e.g. redis when redis not detected)
+        conflict_service = None
+        for svc in SPECIALIZED_SERVICES_SET:
+            if svc not in expanded_stack:
+                if re.search(rf"\b{re.escape(svc)}\b", cand_text):
+                    conflict_service = svc
+                    break
+
+        if conflict_service:
+            rejected.append({
+                "id": cid,
+                "layer": layer,
+                "reason": f"Names technology '{conflict_service}' absent from detected stack",
+            })
+            continue
+
+        # Hard Gate 2: Matches a detected tag by name, description, or path
+        if clean_tags:
+            matches_detected = False
+            for tag in clean_tags:
+                if re.search(rf"\b{re.escape(tag)}\b", cand_text):
+                    matches_detected = True
+                    break
+                alt = tag.replace("-", "_") if "-" in tag else tag.replace("_", "-")
+                if re.search(rf"\b{re.escape(alt)}\b", cand_text):
+                    matches_detected = True
+                    break
+            if not matches_detected:
+                rejected.append({
+                    "id": cid,
+                    "layer": layer,
+                    "reason": f"Does not match any detected tag in stack: {clean_tags}",
+                })
+                continue
+
+        # Hard Gate 4: Install count floor
+        if install_count is not None and install_count < min_install_count:
+            rejected.append({
+                "id": cid,
+                "layer": layer,
+                "reason": f"Install count ({install_count}) below floor ({min_install_count})",
+            })
+            continue
+
+        eligible.append(cand)
+
+    return eligible, rejected
+
+
 def rank_candidates(
     candidates: Sequence[Union[Dict[str, Any], Any]],
     installed_skills: Optional[Sequence[Dict[str, Any]]] = None,
@@ -254,80 +461,15 @@ def rank_candidates(
     # Step 1: Infer installed skills layers
     installed_layers_map, unknown_layer_warnings = infer_installed_skills_layers(installed, table)
     installed_layers: Set[str] = set(installed_layers_map.values())
-    installed_names: Set[str] = {s.get("name", "").strip().lower() for s in installed}
-
-    # Normalize candidates to dicts
-    cand_dicts: List[Dict[str, Any]] = []
-    for c in candidates:
-        if hasattr(c, "to_dict") and callable(c.to_dict):
-            cand_dicts.append(c.to_dict())
-        elif isinstance(c, dict):
-            cand_dicts.append(c)
-        else:
-            cand_dicts.append(dataclasses.asdict(c))
-
-    rejected: List[Dict[str, Any]] = []
-    eligible: List[Dict[str, Any]] = []
 
     # Step 2: Apply Hard Filters
-    for cand in cand_dicts:
-        cid = cand.get("id", "")
-        skill_name = cand.get("skill_name", "").strip().lower()
-        layer = cand.get("layer", "general").strip().lower()
-        meta = cand.get("meta") or {}
-        description = (meta.get("description") or cand.get("description") or "").strip()
-        audit_status = (
-            meta.get("audit_status") or cand.get("audit_status") or "clean"
-        ).strip().lower()
-        install_count = cand.get("install_count")
-
-        # Hard Filter A: Already installed
-        if skill_name in installed_names or cid in installed_names:
-            rejected.append({
-                "id": cid,
-                "layer": layer,
-                "reason": f"Skill '{skill_name}' is already installed",
-            })
-            continue
-
-        # Hard Filter B: Layer collision with installed skill
-        if layer in installed_layers:
-            matched = [k for k, v in installed_layers_map.items() if v == layer][0]
-            rejected.append({
-                "id": cid,
-                "layer": layer,
-                "reason": f"Layer collision with installed skill '{matched}' (layer: {layer})",
-            })
-            continue
-
-        # Hard Filter C: Audit status failed
-        if audit_status == "failed":
-            rejected.append({
-                "id": cid,
-                "layer": layer,
-                "reason": f"Failed audit status: '{audit_status}'",
-            })
-            continue
-
-        # Hard Filter D: Missing description
-        if not description:
-            rejected.append({
-                "id": cid,
-                "layer": layer,
-                "reason": "Missing or empty skill description",
-            })
-            continue
-
-        # Hard Filter E: Install count floor
-        if install_count is not None and install_count < min_install_count:
-            rejected.append({
-                "id": cid,
-                "layer": layer,
-                "reason": f"Install count ({install_count}) below floor ({min_install_count})",
-            })
-            continue
-
-        eligible.append(cand)
+    eligible, rejected = apply_hard_gates(
+        candidates=candidates,
+        installed_skills=installed,
+        stack_tags=clean_tags,
+        tag_queries_table=table,
+        min_install_count=min_install_count,
+    )
 
     # Step 3: Score eligible candidates
     scored_candidates: List[Tuple[int, str, Dict[str, Any], Dict[str, Any]]] = []
@@ -376,6 +518,7 @@ def rank_candidates(
             "source_repo": cand.get("source_repo", cand.get("repo", "")),
             "skill_name": cand.get("skill_name", cand.get("name", "")),
             "layer": layer,
+            "pinned_sha": cand.get("pinned_sha") or cand.get("commit_sha"),
             "found_by_query": cand.get("found_by_query", ""),
             "install_count": cand.get("install_count"),
             "description": cand_desc,

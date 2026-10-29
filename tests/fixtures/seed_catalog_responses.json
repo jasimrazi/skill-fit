@@ -1,0 +1,52 @@
+{
+  "vercel-labs/agent-skills@vercel-react-best-practices": {
+    "status": 200,
+    "sha": "1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62",
+    "content": "---\nname: vercel-react-best-practices\ndescription: React and Next.js performance optimization guidelines from Vercel Engineering.\n---\n# React Best Practices\nGuidelines for optimal React performance."
+  },
+  "vercel-labs/agent-skills@vercel-composition-patterns": {
+    "status": 200,
+    "sha": "1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62",
+    "content": "---\nname: vercel-composition-patterns\ndescription: Component composition and state boundaries for React applications.\n---\n# Composition Patterns\nModular React architectures."
+  },
+  "supabase/agent-skills@supabase-postgres-best-practices": {
+    "status": 200,
+    "sha": "c9be0e931b7930f7d02126d04774d904c381e7d7",
+    "content": "---\nname: supabase-postgres-best-practices\ndescription: Postgres query optimization, connection pooling, and row-level security.\n---\n# Supabase Postgres\nProduction PostgreSQL guidance."
+  },
+  "affaan-m/ecc@django-patterns": {
+    "status": 200,
+    "sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+    "content": "---\nname: django-patterns\ndescription: Clean architecture for Django apps, service layer patterns, and ORM query optimization.\n---\n# Django Patterns\nProduction Django architectural patterns."
+  },
+  "affaan-m/ecc@django-celery": {
+    "status": 200,
+    "sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+    "content": "---\nname: django-celery\ndescription: Asynchronous task queues, periodic jobs, and error retries with Celery and Django.\n---\n# Django Celery\nCelery worker patterns for Django."
+  },
+  "affaan-m/ecc@fastapi-patterns": {
+    "status": 200,
+    "sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+    "content": "---\nname: fastapi-patterns\ndescription: Idiomatic FastAPI async route handlers, dependency injection trees, and Pydantic schemas.\n---\n# FastAPI Patterns\nProduction FastAPI guidance."
+  },
+  "affaan-m/ecc@docker-patterns": {
+    "status": 200,
+    "sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+    "content": "---\nname: docker-patterns\ndescription: Multi-stage Dockerfiles, minimal attack surface, non-root containers, and layer caching.\n---\n# Docker Patterns\nContainer best practices."
+  },
+  "affaan-m/ecc@golang-patterns": {
+    "status": 200,
+    "sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+    "content": "---\nname: golang-patterns\ndescription: Idiomatic Go project layout, error wrapping, context propagation, and concurrent safety.\n---\n# Go Patterns\nStandard Go design guidelines."
+  },
+  "affaan-m/ecc@rust-patterns": {
+    "status": 200,
+    "sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+    "content": "---\nname: rust-patterns\ndescription: Idiomatic Result and Option handling, zero-copy borrowing, Clippy lints, and concurrency.\n---\n# Rust Patterns\nIdiomatic Rust practices."
+  },
+  "affaan-m/ecc@rails-patterns": {
+    "status": 200,
+    "sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+    "content": "---\nname: rails-patterns\ndescription: Ruby on Rails conventions, ActiveRecord scopes, service objects, and secure defaults.\n---\n# Rails Patterns\nClean Rails architectures."
+  }
+}

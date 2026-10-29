@@ -2,218 +2,157 @@
   "version": "1.0.0",
   "candidates": [
     {
-      "id": "flutter-community/skills@flutter-layered-architecture",
-      "name": "flutter-layered-architecture",
-      "repo": "flutter-community/skills",
-      "layer": "architecture",
-      "tags": [
-        "flutter",
-        "dart",
-        "mobile"
-      ],
-      "description": "Enforces clean screen -> provider -> repository -> service separation, named routing conventions, and widget tree modularization in Flutter apps.",
-      "description_tokens": 34,
-      "body_tokens": 820,
-      "install_count": 450,
-      "stars": 180,
-      "updated_at": "2026-10-01T00:00:00Z"
-    },
-    {
-      "id": "flutter-community/skills@provider-state-management",
-      "name": "provider-state-management",
-      "repo": "flutter-community/skills",
-      "layer": "state",
-      "tags": [
-        "provider",
-        "flutter",
-        "dart"
-      ],
-      "description": "Prevents unnecessary widget rebuilds with ChangeNotifier, enforces Selector/Consumer best practices, and standardizes async loading/error states.",
-      "description_tokens": 32,
-      "body_tokens": 640,
-      "install_count": 390,
-      "stars": 145,
-      "updated_at": "2026-10-01T00:00:00Z"
-    },
-    {
-      "id": "flutter-community/skills@dio-api-client",
-      "name": "dio-api-client",
-      "repo": "flutter-community/skills",
-      "layer": "data",
-      "tags": [
-        "dio",
-        "flutter",
-        "dart",
-        "http"
-      ],
-      "description": "Standardizes Dio interceptors, centralized endpoint constants, timeout/retry policies, and typed repository exception mapping.",
-      "description_tokens": 29,
-      "body_tokens": 590,
-      "install_count": 310,
-      "stars": 120,
-      "updated_at": "2026-10-01T00:00:00Z"
-    },
-    {
-      "id": "vercel-labs/agent-skills@react-best-practices",
-      "name": "react-best-practices",
+      "id": "vercel-labs/agent-skills@vercel-react-best-practices",
+      "name": "vercel-react-best-practices",
       "repo": "vercel-labs/agent-skills",
-      "layer": "frontend",
+      "pinned_sha": "1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62",
+      "layer": "framework",
       "tags": [
         "react",
-        "nextjs",
-        "typescript",
-        "javascript",
-        "tailwindcss"
+        "next",
+        "typescript"
       ],
-      "description": "Enforces modern React component composition, hook dependency discipline, and render performance optimizations.",
-      "description_tokens": 26,
-      "body_tokens": 950,
-      "install_count": 1200,
-      "stars": 850,
-      "updated_at": "2026-10-01T00:00:00Z"
+      "description": "React and Next.js performance optimization guidelines from Vercel Engineering.",
+      "description_tokens": 12,
+      "install_count": 850000,
+      "audit_status": "clean"
     },
     {
-      "id": "python-agents/skills@django-service-layer",
-      "name": "django-service-layer",
-      "repo": "python-agents/skills",
+      "id": "vercel-labs/agent-skills@vercel-composition-patterns",
+      "name": "vercel-composition-patterns",
+      "repo": "vercel-labs/agent-skills",
+      "pinned_sha": "1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62",
+      "layer": "framework",
+      "tags": [
+        "react",
+        "next"
+      ],
+      "description": "Component composition and state boundaries for React applications.",
+      "description_tokens": 10,
+      "install_count": 425000,
+      "audit_status": "clean"
+    },
+    {
+      "id": "supabase/agent-skills@supabase-postgres-best-practices",
+      "name": "supabase-postgres-best-practices",
+      "repo": "supabase/agent-skills",
+      "pinned_sha": "c9be0e931b7930f7d02126d04774d904c381e7d7",
+      "layer": "database",
+      "tags": [
+        "postgres",
+        "postgresql",
+        "database"
+      ],
+      "description": "Postgres query optimization, connection pooling, and row-level security.",
+      "description_tokens": 10,
+      "install_count": 350000,
+      "audit_status": "clean"
+    },
+    {
+      "id": "affaan-m/ecc@django-patterns",
+      "name": "django-patterns",
+      "repo": "affaan-m/ecc",
+      "pinned_sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
       "layer": "backend",
       "tags": [
         "django",
-        "python",
-        "postgresql",
-        "sqlite"
-      ],
-      "description": "Prevents N+1 ORM queries via select_related/prefetch_related and enforces thin views with encapsulated service/repository logic.",
-      "description_tokens": 31,
-      "body_tokens": 890,
-      "install_count": 620,
-      "stars": 290,
-      "updated_at": "2026-10-01T00:00:00Z"
-    },
-    {
-      "id": "python-agents/skills@flask-sqlalchemy-patterns",
-      "name": "flask-sqlalchemy-patterns",
-      "repo": "python-agents/skills",
-      "layer": "backend",
-      "tags": [
-        "flask",
-        "sqlalchemy",
         "python"
       ],
-      "description": "Standardizes Flask application factories, Blueprint routing, and scoped SQLAlchemy session lifecycle management.",
-      "description_tokens": 27,
-      "body_tokens": 740,
-      "install_count": 410,
-      "stars": 175,
-      "updated_at": "2026-10-01T00:00:00Z"
+      "description": "Clean architecture for Django apps, service layer patterns, and ORM query optimization.",
+      "description_tokens": 14,
+      "install_count": 12000,
+      "audit_status": "clean"
     },
     {
-      "id": "devops-skills/containers@docker-compose-lean",
-      "name": "docker-compose-lean",
-      "repo": "devops-skills/containers",
-      "layer": "infra",
+      "id": "affaan-m/ecc@django-celery",
+      "name": "django-celery",
+      "repo": "affaan-m/ecc",
+      "pinned_sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+      "layer": "backend",
       "tags": [
-        "docker",
-        "docker-compose",
-        "containers"
+        "django",
+        "celery",
+        "python"
       ],
-      "description": "Enforces multi-stage Dockerfiles, layer cache ordering, non-root runtime users, and healthcheck-gated compose dependencies.",
-      "description_tokens": 28,
-      "body_tokens": 680,
-      "install_count": 530,
-      "stars": 210,
-      "updated_at": "2026-10-01T00:00:00Z"
+      "description": "Asynchronous task queues, periodic jobs, and error retries with Celery and Django.",
+      "description_tokens": 14,
+      "install_count": 7088,
+      "audit_status": "clean"
     },
     {
-      "id": "tiangolo/fastapi@fastapi-production-patterns",
-      "name": "fastapi-production-patterns",
-      "repo": "tiangolo/fastapi",
+      "id": "affaan-m/ecc@fastapi-patterns",
+      "name": "fastapi-patterns",
+      "repo": "affaan-m/ecc",
+      "pinned_sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
       "layer": "backend",
       "tags": [
         "fastapi",
-        "python",
-        "pydantic",
-        "uvicorn"
+        "python"
       ],
-      "description": "Standardizes async route handlers, dependency injection trees, Pydantic v2 schemas, and structured error responses.",
-      "description_tokens": 28,
-      "body_tokens": 850,
-      "install_count": 1850,
-      "stars": 920,
-      "updated_at": "2026-10-01T00:00:00Z"
+      "description": "Idiomatic FastAPI async route handlers, dependency injection trees, and Pydantic schemas.",
+      "description_tokens": 13,
+      "install_count": 15000,
+      "audit_status": "clean"
     },
     {
-      "id": "vercel/nextjs-skills@nextjs-app-router",
-      "name": "nextjs-app-router",
-      "repo": "vercel/nextjs-skills",
-      "layer": "framework",
+      "id": "affaan-m/ecc@docker-patterns",
+      "name": "docker-patterns",
+      "repo": "affaan-m/ecc",
+      "pinned_sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+      "layer": "infra",
       "tags": [
-        "next",
-        "nextjs",
-        "react",
-        "typescript"
+        "docker",
+        "containers"
       ],
-      "description": "Enforces Server Components by default, Server Actions security, route handler error boundaries, and nested layouts.",
-      "description_tokens": 27,
-      "body_tokens": 920,
-      "install_count": 2100,
-      "stars": 1150,
-      "updated_at": "2026-10-01T00:00:00Z"
+      "description": "Multi-stage Dockerfiles, minimal attack surface, non-root containers, and layer caching.",
+      "description_tokens": 12,
+      "install_count": 8900,
+      "audit_status": "clean"
     },
     {
-      "id": "tailwindlabs/skills@tailwind-clean-architecture",
-      "name": "tailwind-clean-architecture",
-      "repo": "tailwindlabs/skills",
-      "layer": "styling",
-      "tags": [
-        "tailwind",
-        "tailwindcss",
-        "css"
-      ],
-      "description": "Prevents arbitrary utility bloat with design tokens, cn/clsx merge discipline, and component variant extraction.",
-      "description_tokens": 26,
-      "body_tokens": 620,
-      "install_count": 1400,
-      "stars": 680,
-      "updated_at": "2026-10-01T00:00:00Z"
-    },
-    {
-      "id": "golang-standards/skills@go-clean-architecture",
-      "name": "go-clean-architecture",
-      "repo": "golang-standards/skills",
+      "id": "affaan-m/ecc@golang-patterns",
+      "name": "golang-patterns",
+      "repo": "affaan-m/ecc",
+      "pinned_sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
       "layer": "backend",
       "tags": [
         "go",
-        "golang",
-        "gin",
-        "fiber",
-        "echo"
+        "golang"
       ],
-      "description": "Enforces idiomatic Go project layout, explicit error wrapping, context propagation, and table-driven testing.",
-      "description_tokens": 27,
-      "body_tokens": 780,
-      "install_count": 890,
-      "stars": 420,
-      "updated_at": "2026-10-01T00:00:00Z"
+      "description": "Idiomatic Go project layout, error wrapping, context propagation, and concurrent safety.",
+      "description_tokens": 13,
+      "install_count": 11500,
+      "audit_status": "clean"
     },
     {
-      "id": "rust-lang/skills@rust-idiomatic-patterns",
-      "name": "rust-idiomatic-patterns",
-      "repo": "rust-lang/skills",
+      "id": "affaan-m/ecc@rust-patterns",
+      "name": "rust-patterns",
+      "repo": "affaan-m/ecc",
+      "pinned_sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
       "layer": "backend",
       "tags": [
         "rust",
-        "cargo",
-        "axum",
-        "actix",
-        "tokio"
+        "cargo"
       ],
-      "description": "Enforces idiomatic Result/Option handling with thiserror/anyhow, zero-copy borrowing, Clippy lints, and async safety.",
-      "description_tokens": 29,
-      "body_tokens": 810,
-      "install_count": 760,
-      "stars": 380,
-      "updated_at": "2026-10-01T00:00:00Z"
+      "description": "Idiomatic Result and Option handling, zero-copy borrowing, Clippy lints, and concurrency.",
+      "description_tokens": 13,
+      "install_count": 9400,
+      "audit_status": "clean"
+    },
+    {
+      "id": "affaan-m/ecc@rails-patterns",
+      "name": "rails-patterns",
+      "repo": "affaan-m/ecc",
+      "pinned_sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+      "layer": "backend",
+      "tags": [
+        "rails",
+        "ruby"
+      ],
+      "description": "Ruby on Rails conventions, ActiveRecord scopes, service objects, and secure defaults.",
+      "description_tokens": 12,
+      "install_count": 6200,
+      "audit_status": "clean"
     }
   ]
 }
