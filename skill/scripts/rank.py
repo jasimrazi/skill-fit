@@ -35,10 +35,12 @@ from typing import Any, Dict, List, Optional, Sequence, Set, Tuple, Union
 
 # Bootstrap queries
 sys.path.insert(0, os.path.dirname(__file__))
-from queries import load_tag_queries_table  # noqa: E402
+from queries import build_stack_profile, load_tag_queries_table  # noqa: E402
 
 DEFAULT_BUDGET = 1500
 DEFAULT_MIN_INSTALL_COUNT = 1000
+DEFAULT_STRONG_THRESHOLD = 70
+DEFAULT_POSSIBLE_THRESHOLD = 40
 
 # Layer weight priorities for tag-match strength
 LAYER_PRIORITIES: Dict[str, int] = {
@@ -59,17 +61,29 @@ class RankResult:
     rejected: List[Dict[str, Any]]
     total_description_tokens: int
     budget: int
-    installed_layer_conflicts: List[str]
-    warnings: List[str]
+    installed_layer_conflicts: List[str] = dataclasses.field(default_factory=list)
+    warnings: List[str] = dataclasses.field(default_factory=list)
+    strong: List[Dict[str, Any]] = dataclasses.field(default_factory=list)
+    possible: List[Dict[str, Any]] = dataclasses.field(default_factory=list)
+    gaps: List[str] = dataclasses.field(default_factory=list)
+    has_strong_matches: bool = True
+    message: str = ""
+    strong_threshold: int = DEFAULT_STRONG_THRESHOLD
 
     def to_dict(self) -> Dict[str, Any]:
         return {
             "shortlist": self.shortlist,
+            "strong": self.strong,
+            "possible": self.possible,
+            "gaps": self.gaps,
             "rejected": self.rejected,
+            "has_strong_matches": self.has_strong_matches,
+            "message": self.message,
             "total_description_tokens": self.total_description_tokens,
             "budget": self.budget,
             "installed_layer_conflicts": self.installed_layer_conflicts,
             "warnings": self.warnings,
+            "strong_threshold": self.strong_threshold,
         }
 
 
@@ -133,107 +147,172 @@ def score_candidate(
 ) -> Tuple[int, Dict[str, Any]]:
     """Compute deterministic score and signal breakdown for a single candidate.
 
-    install_count is STRICTLY excluded from score calculation.
+    Scoring formula prioritizes:
+        1. Fit first: strength of tag match, secondary-tag coverage, specificity.
+        2. Quality: description token efficiency, concise line count, modularity, freshness, clean audit.
+        3. Popularity: weak tiebreaker only (log-scaled 0 to 5 points max).
     """
     meta = candidate.get("meta") or {}
     layer = candidate.get("layer", "general").lower()
     query = candidate.get("found_by_query", "").lower()
+    cid = candidate.get("id", "").lower()
+    cname = (candidate.get("skill_name") or candidate.get("name") or "").lower()
+    desc = (meta.get("description") or candidate.get("description") or "").lower()
+    ctags = [str(t).lower() for t in (candidate.get("tags") or [])]
+    cand_text = f"{cid} {cname} {desc} {' '.join(ctags)} {query}"
 
-    signals: Dict[str, Any] = {}
+    # Profile stack tags
+    clean_tags = [str(t).strip().lower() for t in stack_tags if str(t).strip()]
+    profile = build_stack_profile(clean_tags)
+    primary_tags = set(profile.get("primary", []))
+    secondary_tags = set(profile.get("secondary", []))
+    generic_tags = set(profile.get("generic", []))
+    if not primary_tags and clean_tags:
+        primary_tags = {clean_tags[0]}
+        secondary_tags = set(clean_tags[1:])
 
-    # 1. Tag match strength
-    base_layer_score = LAYER_PRIORITIES.get(layer, 15)
-    exact_tag_bonus = 0
-    for tag in stack_tags:
-        t_clean = tag.strip().lower()
-        if t_clean and t_clean in query:
-            exact_tag_bonus = 20
-            break
-    tag_score = base_layer_score + exact_tag_bonus
-    signals["tag_match"] = {
-        "score": tag_score,
-        "base_layer": base_layer_score,
-        "exact_tag_bonus": exact_tag_bonus,
-    }
+    # -------------------------------------------------------------------------
+    # 1. Fit Scoring (Max ~95 pts)
+    # -------------------------------------------------------------------------
+    primary_name_match = any(
+        re.search(rf"\b{re.escape(t)}\b", f"{cname} {cid}") for t in primary_tags
+    )
+    primary_text_match = any(
+        re.search(rf"\b{re.escape(t)}\b", cand_text) for t in primary_tags
+    )
 
-    # 2. Description tokens (lower is better to avoid idle bloat)
+    if primary_name_match:
+        tag_match_score = 40
+    elif primary_text_match:
+        tag_match_score = 25
+    else:
+        tag_match_score = LAYER_PRIORITIES.get(layer, 15)
+
+    covered_secondary = [
+        t for t in secondary_tags if re.search(rf"\b{re.escape(t)}\b", cand_text)
+    ]
+    secondary_coverage_score = min(30, len(covered_secondary) * 15)
+
+    combo_bonus = 15 if (primary_text_match and covered_secondary) else 0
+    specific_name_bonus = 10 if any(
+        re.search(rf"\b{re.escape(t)}\b", cname) for t in (primary_tags | secondary_tags)
+    ) else 0
+    specificity_score = combo_bonus + specific_name_bonus
+
+    fit_total = tag_match_score + secondary_coverage_score + specificity_score
+
+    # -------------------------------------------------------------------------
+    # 2. Quality Scoring (Max ~55 pts)
+    # -------------------------------------------------------------------------
     desc_tokens = meta.get("description_tokens", 25)
     if desc_tokens <= 15:
-        token_score = 25
+        token_score = 15
     elif desc_tokens <= 30:
-        token_score = 18
+        token_score = 12
     elif desc_tokens <= 50:
-        token_score = 10
+        token_score = 6
     else:
-        token_score = 5
-    signals["description_tokens"] = {
-        "score": token_score,
-        "tokens": desc_tokens,
-    }
+        token_score = 0
 
-    # 3. Line count (<300 preferred)
     line_count = meta.get("skill_md_lines", 150)
     if line_count < 300:
-        line_score = 20
+        line_score = 15
     elif line_count <= 500:
-        line_score = 10
+        line_score = 8
     else:
         line_score = 0
-    signals["line_count"] = {
-        "score": line_score,
-        "lines": line_count,
-    }
 
-    # 4. References present (modularity bonus)
     has_refs = bool(meta.get("has_references", False))
-    ref_score = 15 if has_refs else 0
-    signals["references"] = {
-        "score": ref_score,
-        "has_references": has_refs,
-    }
+    ref_score = 10 if has_refs else 0
 
-    # 5. Scripts flag (informational only; 0 points bonus)
-    has_scripts = bool(meta.get("has_scripts", False))
-    signals["scripts"] = {
-        "score": 0,
-        "has_scripts": has_scripts,
-        "note": "informational only",
-    }
-
-    # 6. Commit age (freshness)
     last_commit = meta.get("last_commit")
     age_days = parse_commit_age_days(last_commit, now_epoch=now_epoch)
     if age_days is None:
         freshness_score = 5
-    elif age_days <= 90:
-        freshness_score = 15
     elif age_days <= 180:
         freshness_score = 10
     elif age_days <= 365:
         freshness_score = 5
     else:
         freshness_score = 0
-    signals["freshness"] = {
-        "score": freshness_score,
-        "age_days": age_days,
-    }
 
-    # 7. Audit status
     audit_status = meta.get("audit_status", "clean")
     audit_score = 10 if audit_status == "clean" else 0
-    signals["audit_status"] = {
-        "score": audit_score,
-        "status": audit_status,
-    }
 
-    total_score = (
-        tag_score
-        + token_score
-        + line_score
-        + ref_score
-        + freshness_score
-        + audit_score
-    )
+    quality_total = token_score + line_score + ref_score + freshness_score + audit_score
+
+    # -------------------------------------------------------------------------
+    # 3. Popularity Tiebreaker (Max 5 pts)
+    # -------------------------------------------------------------------------
+    installs = candidate.get("install_count") or 0
+    if installs >= 100000:
+        pop_score = 5
+    elif installs >= 10000:
+        pop_score = 4
+    elif installs >= 1000:
+        pop_score = 3
+    elif installs >= 100:
+        pop_score = 2
+    elif installs >= 10:
+        pop_score = 1
+    else:
+        pop_score = 0
+
+    total_score = fit_total + quality_total + pop_score
+
+    signals: Dict[str, Any] = {
+        "fit": {
+            "tag_match_score": tag_match_score,
+            "secondary_coverage_score": secondary_coverage_score,
+            "specificity_score": specificity_score,
+            "covered_secondary": covered_secondary,
+            "total": fit_total,
+        },
+        "quality": {
+            "description_tokens": token_score,
+            "line_count": line_score,
+            "references": ref_score,
+            "freshness": freshness_score,
+            "audit_status": audit_score,
+            "total": quality_total,
+        },
+        "popularity": {
+            "score": pop_score,
+            "install_count": installs,
+            "note": "weak tiebreaker only (max 5 pts)",
+        },
+        # Backward-compatible keys
+        "tag_match": {
+            "score": tag_match_score,
+            "base_layer": tag_match_score,
+            "exact_tag_bonus": secondary_coverage_score,
+        },
+        "description_tokens": {
+            "score": token_score,
+            "tokens": desc_tokens,
+        },
+        "line_count": {
+            "score": line_score,
+            "lines": line_count,
+        },
+        "references": {
+            "score": ref_score,
+            "has_references": has_refs,
+        },
+        "scripts": {
+            "score": 0,
+            "has_scripts": bool(meta.get("has_scripts", False)),
+            "note": "informational only",
+        },
+        "freshness": {
+            "score": freshness_score,
+            "age_days": age_days,
+        },
+        "audit_status": {
+            "score": audit_score,
+            "status": audit_status,
+        },
+    }
 
     return total_score, signals
 
@@ -452,9 +531,16 @@ def rank_candidates(
     budget: int = DEFAULT_BUDGET,
     min_install_count: int = DEFAULT_MIN_INSTALL_COUNT,
     now_epoch: Optional[float] = None,
+    strong_threshold: int = DEFAULT_STRONG_THRESHOLD,
+    possible_threshold: int = DEFAULT_POSSIBLE_THRESHOLD,
 ) -> RankResult:
-    """Filter, score, and greedily select candidate skills deterministically."""
-    clean_tags = list(stack_tags) if stack_tags else []
+    """Filter, score, and categorize candidate skills into deterministic tiers:
+    - strong: at most one per layer, score >= strong_threshold, under token budget
+    - possible: near misses, alternatives in already-filled layers, score >= possible_threshold
+    - gaps: detected stack tags with no matching candidate
+    - rejected: failed hard gates or score < possible_threshold with explicit reasons
+    """
+    clean_tags = [t.strip() for t in stack_tags if t.strip()] if stack_tags else []
     installed = list(installed_skills) if installed_skills else []
     table = tag_queries_table if tag_queries_table is not None else load_tag_queries_table()
 
@@ -462,7 +548,7 @@ def rank_candidates(
     installed_layers_map, unknown_layer_warnings = infer_installed_skills_layers(installed, table)
     installed_layers: Set[str] = set(installed_layers_map.values())
 
-    # Step 2: Apply Hard Filters
+    # Step 2: Apply Hard Gates
     eligible, rejected = apply_hard_gates(
         candidates=candidates,
         installed_skills=installed,
@@ -472,60 +558,113 @@ def rank_candidates(
     )
 
     # Step 3: Score eligible candidates
-    scored_candidates: List[Tuple[int, str, Dict[str, Any], Dict[str, Any]]] = []
+    scored_candidates: List[Tuple[int, int, str, Dict[str, Any], Dict[str, Any]]] = []
     for cand in eligible:
         score, signals = score_candidate(cand, clean_tags, now_epoch=now_epoch)
         cid = cand.get("id", "")
-        # Store tuple: (score, negative_id_or_id for stable tie breaking)
-        scored_candidates.append((score, cid, cand, signals))
+        install_count = cand.get("install_count") or 0
+        scored_candidates.append((score, install_count, cid, cand, signals))
 
-    # Sort deterministically: score DESCENDING, id ASCENDING (tie-break)
-    # In python: sort key = (-score, cid)
-    scored_candidates.sort(key=lambda item: (-item[0], item[1]))
+    # Sort deterministically:
+    # 1. Total score DESCENDING
+    # 2. Raw install_count DESCENDING (popularity tiebreaker when scores equal)
+    # 3. ID ASCENDING (stable alphanumeric tiebreaker)
+    scored_candidates.sort(key=lambda item: (-item[0], -item[1], item[2]))
 
-    # Step 4: Greedy selection under budget (one skill per layer)
-    shortlist: List[Dict[str, Any]] = []
+    # Step 4: Tier Categorization
+    strong: List[Dict[str, Any]] = []
+    possible: List[Dict[str, Any]] = []
     selected_layers: Set[str] = set()
     current_tokens = 0
 
-    for score, cid, cand, signals in scored_candidates:
+    for score, pop_score, cid, cand, signals in scored_candidates:
         layer = cand.get("layer", "general").strip().lower()
         meta = cand.get("meta") or {}
         desc_tokens = meta.get("description_tokens") or cand.get("description_tokens") or 25
         cand_desc = (meta.get("description") or cand.get("description") or "").strip()
+        pinned_sha = cand.get("pinned_sha") or cand.get("commit_sha")
+        if pinned_sha and not HEX40_RE.match(str(pinned_sha)):
+            pinned_sha = None
 
-        if layer in selected_layers:
-            rejected.append({
-                "id": cid,
-                "layer": layer,
-                "reason": f"Layer collision in selection: layer '{layer}' already represented",
-            })
-            continue
-
-        if current_tokens + desc_tokens > budget:
-            rejected.append({
-                "id": cid,
-                "layer": layer,
-                "reason": f"Exceeds token budget ({current_tokens} + {desc_tokens} > {budget})",
-            })
-            continue
-
-        # Add to shortlist
-        selected_layers.add(layer)
-        current_tokens += desc_tokens
-        shortlist.append({
+        item_dict = {
             "id": cid,
             "source_repo": cand.get("source_repo", cand.get("repo", "")),
             "skill_name": cand.get("skill_name", cand.get("name", "")),
             "layer": layer,
-            "pinned_sha": cand.get("pinned_sha") or cand.get("commit_sha"),
+            "pinned_sha": pinned_sha,
             "found_by_query": cand.get("found_by_query", ""),
             "install_count": cand.get("install_count"),
             "description": cand_desc,
             "description_tokens": desc_tokens,
             "score": score,
             "signals": signals,
-        })
+        }
+
+        if score >= strong_threshold:
+            if layer not in selected_layers and (current_tokens + desc_tokens <= budget):
+                selected_layers.add(layer)
+                current_tokens += desc_tokens
+                strong.append(item_dict)
+            else:
+                if layer in selected_layers:
+                    item_dict["tier_reason"] = (
+                        f"Layer collision in selection: layer '{layer}' already represented"
+                    )
+                    # Also record in rejected for layer collision tests compatibility
+                    rejected.append({
+                        "id": cid,
+                        "layer": layer,
+                        "reason": f"Layer collision in selection: layer '{layer}' already represented",
+                    })
+                else:
+                    item_dict["tier_reason"] = f"Exceeds token budget ({current_tokens} + {desc_tokens} > {budget})"
+                    rejected.append({
+                        "id": cid,
+                        "layer": layer,
+                        "reason": f"Exceeds token budget ({current_tokens} + {desc_tokens} > {budget})",
+                    })
+                possible.append(item_dict)
+        elif score >= possible_threshold:
+            item_dict["tier_reason"] = f"Score {score} below strong threshold ({strong_threshold})"
+            possible.append(item_dict)
+        else:
+            rejected.append({
+                "id": cid,
+                "layer": layer,
+                "reason": f"Score {score} below possible threshold ({possible_threshold})",
+            })
+
+    # Step 5: Detect Gaps (detected stack tags without any matching candidate)
+    matched_tags: Set[str] = set()
+    for tag in clean_tags:
+        t_clean = tag.strip().lower()
+        if not t_clean:
+            continue
+        for cand in eligible:
+            cid = cand.get("id", "").lower()
+            cname = (cand.get("skill_name") or cand.get("name") or "").lower()
+            cdesc = (cand.get("meta", {}).get("description") or cand.get("description") or "").lower()
+            ctags = [str(t).lower() for t in (cand.get("tags") or [])]
+            cand_text = f"{cid} {cname} {cdesc} {' '.join(ctags)}"
+            if re.search(rf"\b{re.escape(t_clean)}\b", cand_text):
+                matched_tags.add(t_clean)
+                break
+            alt = t_clean.replace("-", "_") if "-" in t_clean else t_clean.replace("_", "-")
+            if re.search(rf"\b{re.escape(alt)}\b", cand_text):
+                matched_tags.add(t_clean)
+                break
+
+    gaps: List[str] = [t for t in clean_tags if t.strip().lower() not in matched_tags]
+
+    # Honest reporting: If nothing is strong, shortlist is empty
+    if not strong:
+        has_strong_matches = False
+        shortlist = []
+        message = "No strong match found for detected stack. Showing near misses and coverage gaps."
+    else:
+        has_strong_matches = True
+        shortlist = strong
+        message = f"Found {len(strong)} strong match{'es' if len(strong) != 1 else ''}."
 
     return RankResult(
         shortlist=shortlist,
@@ -534,6 +673,12 @@ def rank_candidates(
         budget=budget,
         installed_layer_conflicts=list(installed_layers),
         warnings=unknown_layer_warnings,
+        strong=strong,
+        possible=possible,
+        gaps=gaps,
+        has_strong_matches=has_strong_matches,
+        message=message,
+        strong_threshold=strong_threshold,
     )
 
 
@@ -543,14 +688,35 @@ def rank_candidates(
 
 def render_human(result: RankResult) -> str:
     lines: List[str] = []
-    lines.append("=== SHORTLIST (Greedy Selection) ===")
-    lines.append(f"Total Description Tokens: {result.total_description_tokens} / {result.budget}")
-    lines.append("")
-
-    if not result.shortlist:
-        lines.append("  (No candidates qualified for shortlist)")
+    if not result.has_strong_matches or not result.strong:
+        lines.append("=== NO STRONG MATCH ===")
+        lines.append(f"No skills met the threshold ({result.strong_threshold} pts) for strong recommendation.")
+        lines.append(result.message)
+        lines.append("")
+        if result.possible:
+            lines.append(f"Near Misses / Possible Skills ({len(result.possible)}):")
+            for idx, item in enumerate(result.possible, 1):
+                cid = item["id"]
+                layer = item["layer"]
+                score = item["score"]
+                tokens = item["description_tokens"]
+                desc = item["description"]
+                if len(desc) > 80:
+                    desc = desc[:77] + "..."
+                reason = item.get("tier_reason", "")
+                reason_str = f" [{reason}]" if reason else ""
+                lines.append(f"  {idx}. [{score:>3} pts] {cid:<35} [{layer:<10}] ({tokens} tok){reason_str}")
+                lines.append(f"     \"{desc}\"")
+        if result.gaps:
+            lines.append("")
+            lines.append("Coverage Gaps (Detected tags with no candidates):")
+            for g in result.gaps:
+                lines.append(f"  - {g}")
     else:
-        for idx, item in enumerate(result.shortlist, 1):
+        lines.append("=== SHORTLIST (Strong Recommendations) ===")
+        lines.append(f"Total Description Tokens: {result.total_description_tokens} / {result.budget}")
+        lines.append("")
+        for idx, item in enumerate(result.strong, 1):
             cid = item["id"]
             layer = item["layer"]
             score = item["score"]
@@ -560,6 +726,22 @@ def render_human(result: RankResult) -> str:
                 desc = desc[:77] + "..."
             lines.append(f"  {idx}. [{score:>3} pts] {cid:<35} [{layer:<10}] ({tokens} tok)")
             lines.append(f"     \"{desc}\"")
+
+        if result.possible:
+            lines.append("")
+            lines.append(f"Possible Alternatives ({len(result.possible)}):")
+            for idx, item in enumerate(result.possible, 1):
+                cid = item["id"]
+                layer = item["layer"]
+                score = item["score"]
+                tokens = item["description_tokens"]
+                lines.append(f"  - [{score:>3} pts] {cid:<35} [{layer:<10}] ({tokens} tok)")
+
+        if result.gaps:
+            lines.append("")
+            lines.append("Coverage Gaps (Detected tags with no candidates):")
+            for g in result.gaps:
+                lines.append(f"  - {g}")
 
     if result.rejected:
         lines.append("")

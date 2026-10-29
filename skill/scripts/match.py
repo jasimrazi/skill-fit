@@ -105,6 +105,7 @@ def rank_with_adaptive_floor(
     min_install_count: int,
     now_epoch: Optional[float],
     warnings: List[str],
+    strong_threshold: int = rank.DEFAULT_STRONG_THRESHOLD,
 ) -> Any:
     """Rank candidates; if min_install_count rejects all candidates, retry with floor=0."""
     rank_result = rank.rank_candidates(
@@ -114,8 +115,14 @@ def rank_with_adaptive_floor(
         budget=budget,
         min_install_count=min_install_count,
         now_epoch=now_epoch,
+        strong_threshold=strong_threshold,
     )
-    if not rank_result.shortlist and candidates and min_install_count > 0:
+    if (
+        not rank_result.shortlist
+        and not rank_result.possible
+        and candidates
+        and min_install_count > 0
+    ):
         relaxed_result = rank.rank_candidates(
             candidates=candidates,
             installed_skills=installed_skills,
@@ -123,8 +130,9 @@ def rank_with_adaptive_floor(
             budget=budget,
             min_install_count=0,
             now_epoch=now_epoch,
+            strong_threshold=strong_threshold,
         )
-        if relaxed_result.shortlist:
+        if relaxed_result.shortlist or relaxed_result.possible:
             warnings.append(
                 f"Relaxed min_install_count from {min_install_count} to 0 to surface valid matches"
             )
@@ -144,19 +152,47 @@ def enforce_output_token_budget(data: Dict[str, Any]) -> Dict[str, Any]:
     # Compact representation to trim excess tokens
     compact = copy.deepcopy(data)
 
-    # Trim signals in shortlist
-    for item in compact.get("shortlist", []):
-        if "signals" in item and isinstance(item["signals"], dict):
-            item["signals"] = {
-                k: v.get("score", v) if isinstance(v, dict) else v
-                for k, v in item["signals"].items()
-            }
-        if "description" in item and len(item["description"]) > 100:
-            item["description"] = item["description"][:97] + "..."
+    # Pass 1: Trim signals and descriptions across all candidate lists
+    for key in ("shortlist", "strong", "possible"):
+        for item in compact.get(key, []):
+            if "signals" in item and isinstance(item["signals"], dict):
+                sig = item["signals"]
+                fit_val = sig.get("fit", {}).get("total", 0) if isinstance(sig.get("fit"), dict) else 0
+                qual_val = sig.get("quality", {}).get("total", 0) if isinstance(sig.get("quality"), dict) else 0
+                pop_val = sig.get("popularity", {}).get("score", 0) if isinstance(sig.get("popularity"), dict) else 0
+                item["signals"] = {"fit": fit_val, "quality": qual_val, "pop": pop_val}
+            if "description" in item and len(item["description"]) > 80:
+                item["description"] = item["description"][:77] + "..."
 
-    # Trim rejected list details
+    # Trim lists if long
     if len(compact.get("rejected", [])) > 5:
         compact["rejected"] = compact["rejected"][:5]
+
+    if len(compact.get("possible", [])) > 5:
+        compact["possible"] = compact["possible"][:5]
+
+    serialized_compact = json.dumps(compact)
+    est_tokens = len(serialized_compact) // 4
+    if est_tokens <= MAX_OUTPUT_ESTIMATED_TOKENS:
+        compact["estimated_output_tokens"] = est_tokens
+        return compact
+
+    # Pass 2: More aggressive compression if still over budget
+    for key in ("shortlist", "strong", "possible"):
+        for item in compact.get(key, []):
+            item.pop("signals", None)
+
+    if len(compact.get("possible", [])) > 3:
+        compact["possible"] = [
+            {"id": p.get("id"), "layer": p.get("layer"), "score": p.get("score")}
+            for p in compact["possible"][:3]
+        ]
+
+    if len(compact.get("rejected", [])) > 3:
+        compact["rejected"] = [
+            {"id": r.get("id"), "reason": r.get("reason")}
+            for r in compact["rejected"][:3]
+        ]
 
     serialized_compact = json.dumps(compact)
     compact["estimated_output_tokens"] = len(serialized_compact) // 4
@@ -173,6 +209,7 @@ def match_skills(
     min_install_count: int = rank.DEFAULT_MIN_INSTALL_COUNT,
     max_queries: int = DEFAULT_MAX_LIVE_QUERIES,
     time_budget_s: float = 10.0,
+    strong_threshold: int = rank.DEFAULT_STRONG_THRESHOLD,
     now_epoch: Optional[float] = None,
 ) -> Dict[str, Any]:
     """Execute the resolution order and return deterministic shortlist payload."""
@@ -200,7 +237,12 @@ def match_skills(
                 "resolution_source": "lockfile",
                 "manifest_hash": manifest_hash,
                 "stack_tags": extracted_tags,
+                "has_strong_matches": bool(locked_skills),
+                "message": f"Resolved {len(locked_skills)} locked skill{'s' if len(locked_skills) != 1 else ''} from lockfile.",
                 "shortlist": locked_skills,
+                "strong": locked_skills,
+                "possible": [],
+                "gaps": [],
                 "rejected": [],
                 "total_description_tokens": sum(
                     s.get("description_tokens", 0) for s in locked_skills
@@ -233,13 +275,19 @@ def match_skills(
                 min_install_count=min_install_count,
                 now_epoch=now_epoch,
                 warnings=warnings,
+                strong_threshold=strong_threshold,
             )
-            if rank_result.shortlist:
+            if rank_result.shortlist or rank_result.possible:
                 output = {
                     "resolution_source": "cache",
                     "manifest_hash": manifest_hash,
                     "stack_tags": extracted_tags,
+                    "has_strong_matches": rank_result.has_strong_matches,
+                    "message": rank_result.message,
                     "shortlist": rank_result.shortlist,
+                    "strong": rank_result.strong,
+                    "possible": rank_result.possible,
+                    "gaps": rank_result.gaps,
                     "rejected": rank_result.rejected,
                     "total_description_tokens": rank_result.total_description_tokens,
                     "budget": budget,
@@ -306,13 +354,19 @@ def match_skills(
                 min_install_count=min_install_count,
                 now_epoch=now_epoch,
                 warnings=warnings,
+                strong_threshold=strong_threshold,
             )
-            if rank_result.shortlist:
+            if rank_result.shortlist or rank_result.possible:
                 output = {
                     "resolution_source": "live",
                     "manifest_hash": manifest_hash,
                     "stack_tags": extracted_tags,
+                    "has_strong_matches": rank_result.has_strong_matches,
+                    "message": rank_result.message,
                     "shortlist": rank_result.shortlist,
+                    "strong": rank_result.strong,
+                    "possible": rank_result.possible,
+                    "gaps": rank_result.gaps,
                     "rejected": rank_result.rejected,
                     "total_description_tokens": rank_result.total_description_tokens,
                     "budget": budget,
@@ -346,13 +400,19 @@ def match_skills(
             min_install_count=min_install_count,
             now_epoch=now_epoch,
             warnings=warnings,
+            strong_threshold=strong_threshold,
         )
-        if rank_result.shortlist:
+        if rank_result.shortlist or rank_result.possible:
             output = {
                 "resolution_source": "stale_cache",
                 "manifest_hash": manifest_hash,
                 "stack_tags": extracted_tags,
+                "has_strong_matches": rank_result.has_strong_matches,
+                "message": rank_result.message,
                 "shortlist": rank_result.shortlist,
+                "strong": rank_result.strong,
+                "possible": rank_result.possible,
+                "gaps": rank_result.gaps,
                 "rejected": rank_result.rejected,
                 "total_description_tokens": rank_result.total_description_tokens,
                 "budget": budget,
@@ -372,14 +432,20 @@ def match_skills(
             min_install_count=0,
             now_epoch=now_epoch,
             warnings=warnings,
+            strong_threshold=strong_threshold,
         )
-        if rank_result.shortlist:
+        if rank_result.shortlist or rank_result.possible:
             warnings.append("Resolved from bundled seed catalog (no live cache or network match)")
             output = {
                 "resolution_source": "bundled_seed",
                 "manifest_hash": manifest_hash,
                 "stack_tags": extracted_tags,
+                "has_strong_matches": rank_result.has_strong_matches,
+                "message": rank_result.message,
                 "shortlist": rank_result.shortlist,
+                "strong": rank_result.strong,
+                "possible": rank_result.possible,
+                "gaps": rank_result.gaps,
                 "rejected": rank_result.rejected,
                 "total_description_tokens": rank_result.total_description_tokens,
                 "budget": budget,
@@ -397,7 +463,12 @@ def match_skills(
         "resolution_source": source,
         "manifest_hash": manifest_hash,
         "stack_tags": extracted_tags,
+        "has_strong_matches": False,
+        "message": "No skills found or offline mode with no local cache/seed match",
         "shortlist": [],
+        "strong": [],
+        "possible": [],
+        "gaps": extracted_tags,
         "rejected": [],
         "total_description_tokens": 0,
         "budget": budget,
@@ -424,12 +495,38 @@ def render_human(result: Dict[str, Any]) -> str:
     )
     lines.append("")
 
-    shortlist = result.get("shortlist", [])
-    if not shortlist:
-        lines.append("  (No skills qualified for shortlist)")
+    has_strong = result.get("has_strong_matches", bool(result.get("shortlist")))
+
+    if not has_strong or not result.get("shortlist"):
+        lines.append("=== NO STRONG MATCH ===")
+        lines.append(result.get("message", "No skills met the threshold for strong recommendation."))
+        lines.append("")
+
+        possible = result.get("possible", [])
+        if possible:
+            lines.append(f"Near Misses / Possible Skills ({len(possible)}):")
+            for idx, item in enumerate(possible, 1):
+                cid = item.get("id", "")
+                layer = item.get("layer", "")
+                tokens = item.get("description_tokens", 0)
+                score = item.get("score", 0)
+                desc = item.get("description", "")
+                if len(desc) > 80:
+                    desc = desc[:77] + "..."
+                reason = item.get("tier_reason", "")
+                reason_str = f" [{reason}]" if reason else ""
+                lines.append(f"  {idx}. [{score:>3} pts] {cid:<35} [{layer:<10}] ({tokens} tok){reason_str}")
+                lines.append(f"     \"{desc}\"")
+
+        gaps = result.get("gaps", [])
+        if gaps:
+            lines.append("")
+            lines.append("Coverage Gaps (Detected tags with no candidates):")
+            for g in gaps:
+                lines.append(f"  - {g}")
     else:
-        lines.append("Shortlisted Skills:")
-        for idx, item in enumerate(shortlist, 1):
+        lines.append("Shortlisted Skills (Strong Recommendations):")
+        for idx, item in enumerate(result.get("shortlist", []), 1):
             cid = item.get("id", "")
             layer = item.get("layer", "")
             tokens = item.get("description_tokens", 0)
@@ -439,6 +536,40 @@ def render_human(result: Dict[str, Any]) -> str:
                 desc = desc[:77] + "..."
             lines.append(f"  {idx}. [{score:>3} pts] {cid:<35} [{layer:<10}] ({tokens} tok)")
             lines.append(f"     \"{desc}\"")
+
+        possible = result.get("possible", [])
+        if possible:
+            lines.append("")
+            lines.append(f"Possible Alternatives ({len(possible)}):")
+            for idx, item in enumerate(possible, 1):
+                cid = item.get("id", "")
+                layer = item.get("layer", "")
+                score = item.get("score", 0)
+                tokens = item.get("description_tokens", 0)
+                lines.append(f"  - [{score:>3} pts] {cid:<35} [{layer:<10}] ({tokens} tok)")
+
+        gaps = result.get("gaps", [])
+        if gaps:
+            lines.append("")
+            lines.append("Coverage Gaps (Detected tags with no candidates):")
+            for g in gaps:
+                lines.append(f"  - {g}")
+
+    rejected = result.get("rejected", [])
+    if rejected:
+        lines.append("")
+        lines.append(f"Rejected ({len(rejected)}):")
+        for r in rejected:
+            lines.append(f"  - {r.get('id', ''):<35} -> {r.get('reason', '')}")
+
+    warnings = result.get("warnings", [])
+    if warnings:
+        lines.append("")
+        lines.append("Warnings:")
+        for w in warnings:
+            lines.append(f"  ! {w}")
+
+    return "\n".join(lines)
 
     rejected = result.get("rejected", [])
     if rejected:

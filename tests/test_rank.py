@@ -101,7 +101,7 @@ def test_budget_enforcement():
     assert len(result.shortlist) == 2  # 20 + 10 = 30 tokens
 
 
-def test_install_count_never_affects_score_or_order():
+def test_popularity_weak_tiebreaker():
     # Two identical candidates except one has 1,500 installs and the other 1,500,000
     cand_high = create_candidate("repo/cand-b@skill", "framework", "react", installs=1500000)
     cand_low = create_candidate("repo/cand-a@skill", "framework", "react", installs=1500)
@@ -109,13 +109,14 @@ def test_install_count_never_affects_score_or_order():
     score_high, breakdown_high = rank.score_candidate(cand_high, ["react"])
     score_low, breakdown_low = rank.score_candidate(cand_low, ["react"])
 
-    assert score_high == score_low
-    assert "install_count" not in breakdown_high
-    assert "install_count" not in breakdown_low
+    # Popularity adds a small weak tiebreaker (max 5 pts)
+    assert score_high > score_low
+    assert score_high - score_low <= 5
+    assert breakdown_high["popularity"]["score"] > breakdown_low["popularity"]["score"]
 
-    # Ranking them together: tie is broken by ID alphabetically
+    # Ranking them together: high installs wins tiebreak
     result = rank.rank_candidates([cand_high, cand_low], stack_tags=["react"])
-    assert result.shortlist[0]["id"] == "repo/cand-a@skill"
+    assert result.shortlist[0]["id"] == "repo/cand-b@skill"
 
 
 def test_install_count_floor_filter():
