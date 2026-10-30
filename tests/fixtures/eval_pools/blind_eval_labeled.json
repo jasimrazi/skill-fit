@@ -1,0 +1,1352 @@
+[
+  {
+    "row_number": 1,
+    "stack": "FastAPI+Docker",
+    "candidate_id": "julianromli/opencode-template/python-development",
+    "source_repo": "julianromli/opencode-template",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "fastapi best practices",
+      "timestamp": "2026-10-29T08:22:29.484734+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\fastapi_docker\\response_1_fastapi_best_practices.json",
+      "repo_verified": "not_found",
+      "evidence": "404 Not Found from https://raw.githubusercontent.com/julianromli/opencode-template/HEAD/skills/python-development/SKILL.md"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 2,
+    "stack": "React+Tailwind",
+    "candidate_id": "mindrally/skills/react-native-r3f",
+    "source_repo": "mindrally/skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "react tailwind",
+      "timestamp": "2026-10-29T08:22:06.638482+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\react_tailwind\\response_2_react_tailwind.json",
+      "repo_verified": "not_found",
+      "evidence": "404 Not Found from https://raw.githubusercontent.com/mindrally/skills/HEAD/skills/react-native-r3f/SKILL.md"
+    },
+    "user_label": "not relevant"
+  },
+  {
+    "row_number": 3,
+    "stack": "Next.js",
+    "candidate_id": "jmsktm/claude-settings/deployment-automation",
+    "source_repo": "jmsktm/claude-settings",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "nextjs best practices",
+      "timestamp": "2026-10-29T08:22:16.558367+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\nextjs\\response_1_nextjs_best_practices.json",
+      "repo_verified": "not_found",
+      "evidence": "404 Not Found from https://raw.githubusercontent.com/jmsktm/claude-settings/HEAD/skills/deployment-automation/SKILL.md"
+    },
+    "user_label": "unsure"
+  },
+  {
+    "row_number": 4,
+    "stack": "Flutter+Provider+Dio",
+    "candidate_id": "giovanisp/everything-claude-code/dart-flutter-patterns",
+    "source_repo": "giovanisp/everything-claude-code",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "flutter dio",
+      "timestamp": "2026-10-29T08:21:53.462831+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\flutter_provider_dio\\response_5_flutter_dio.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 5,
+    "stack": "Flutter+Provider+Dio",
+    "candidate_id": "rimthan-lab/rimthan-plugins/flutter-developer",
+    "source_repo": "rimthan-lab/rimthan-plugins",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "flutter best practices",
+      "timestamp": "2026-10-29T08:21:48.415571+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\flutter_provider_dio\\response_1_flutter_best_practices.json",
+      "repo_verified": "not_found",
+      "evidence": "404 Not Found from https://raw.githubusercontent.com/rimthan-lab/rimthan-plugins/HEAD/skills/flutter-developer/SKILL.md"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 6,
+    "stack": "FastAPI+Docker",
+    "candidate_id": "fastapi/fastapi/fastapi",
+    "source_repo": "fastapi/fastapi",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "fastapi best practices",
+      "timestamp": "2026-10-29T08:22:29.481730+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\fastapi_docker\\response_1_fastapi_best_practices.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 7,
+    "stack": "Django+Celery",
+    "candidate_id": "dvf/opinionated-django/signals",
+    "source_repo": "dvf/opinionated-django",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "django celery",
+      "timestamp": "2026-10-29T08:22:47.815134+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 8,
+    "stack": "Django+Celery",
+    "candidate_id": "kettleofketchup/dotfiles/celery",
+    "source_repo": "kettleofketchup/dotfiles",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "django celery",
+      "timestamp": "2026-10-29T08:22:47.817251+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json",
+      "repo_verified": "not_found",
+      "evidence": "404 Not Found from https://raw.githubusercontent.com/kettleofketchup/dotfiles/HEAD/skills/celery/SKILL.md"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 9,
+    "stack": "Next.js",
+    "candidate_id": "affaan-m/ecc/react-performance",
+    "source_repo": "affaan-m/ecc",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "nextjs best practices",
+      "timestamp": "2026-10-29T08:22:16.558367+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\nextjs\\response_1_nextjs_best_practices.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 10,
+    "stack": "Next.js",
+    "candidate_id": "evloghq/evlog/review-logging-patterns",
+    "source_repo": "evloghq/evlog",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "next typescript",
+      "timestamp": "2026-10-29T08:22:20.215409+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\nextjs\\response_4_next_typescript.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "not relevant"
+  },
+  {
+    "row_number": 11,
+    "stack": "React+Tailwind",
+    "candidate_id": "asyrafhussin/agent-skills/typescript-react-patterns",
+    "source_repo": "asyrafhussin/agent-skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "react best practices",
+      "timestamp": "2026-10-29T08:22:04.088827+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\react_tailwind\\response_1_react_best_practices.json",
+      "repo_verified": "verified_exists",
+      "evidence": "200 OK from https://raw.githubusercontent.com/asyrafhussin/agent-skills/HEAD/skills/typescript-react-patterns/SKILL.md"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 12,
+    "stack": "Django+Celery",
+    "candidate_id": "zircote-plugins/agents/backend-development",
+    "source_repo": "zircote-plugins/agents",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "django best practices",
+      "timestamp": "2026-10-29T08:22:46.533930+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json",
+      "repo_verified": "verified_exists",
+      "evidence": "200 OK from https://raw.githubusercontent.com/zircote-plugins/agents/HEAD/skills/backend-development/SKILL.md"
+    },
+    "user_label": "not relevant"
+  },
+  {
+    "row_number": 13,
+    "stack": "FastAPI+Docker",
+    "candidate_id": "fzozyurt/agentskills/fastapi-enterprise",
+    "source_repo": "fzozyurt/agentskills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "fastapi sqlalchemy",
+      "timestamp": "2026-10-29T08:22:33.815401+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\fastapi_docker\\response_3_fastapi_sqlalchemy.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "unsure"
+  },
+  {
+    "row_number": 14,
+    "stack": "Next.js",
+    "candidate_id": "zebbern/claude-code-guide/playwright-skill",
+    "source_repo": "zebbern/claude-code-guide",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "next typescript",
+      "timestamp": "2026-10-29T08:22:20.222719+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\nextjs\\response_4_next_typescript.json",
+      "repo_verified": "not_found",
+      "evidence": "404 Not Found from https://raw.githubusercontent.com/zebbern/claude-code-guide/HEAD/skills/playwright-skill/SKILL.md"
+    },
+    "user_label": "not relevant"
+  },
+  {
+    "row_number": 15,
+    "stack": "FastAPI+Docker",
+    "candidate_id": "clostaunau/holiday-card/python-async-patterns",
+    "source_repo": "clostaunau/holiday-card",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "fastapi best practices",
+      "timestamp": "2026-10-29T08:22:29.483741+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\fastapi_docker\\response_1_fastapi_best_practices.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 16,
+    "stack": "React+Tailwind",
+    "candidate_id": "akillness/jeo-skills/vercel-react-best-practices",
+    "source_repo": "akillness/jeo-skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "react best practices",
+      "timestamp": "2026-10-29T08:22:04.085475+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\react_tailwind\\response_1_react_best_practices.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 17,
+    "stack": "FastAPI+Docker",
+    "candidate_id": "c0x12c/ai-toolkit/python-testing-strategies",
+    "source_repo": "c0x12c/ai-toolkit",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "fastapi patterns",
+      "timestamp": "2026-10-29T08:22:32.490840+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\fastapi_docker\\response_2_fastapi_patterns.json",
+      "repo_verified": "not_found",
+      "evidence": "404 Not Found from https://raw.githubusercontent.com/c0x12c/ai-toolkit/HEAD/skills/python-testing-strategies/SKILL.md"
+    },
+    "user_label": "unsure"
+  },
+  {
+    "row_number": 18,
+    "stack": "FastAPI+Docker",
+    "candidate_id": "eugene-ee/affaan-m-ecc/fastapi-patterns",
+    "source_repo": "eugene-ee/affaan-m-ecc",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "fastapi best practices",
+      "timestamp": "2026-10-29T08:22:29.483741+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\fastapi_docker\\response_1_fastapi_best_practices.json",
+      "repo_verified": "verified_exists",
+      "evidence": "200 OK from https://raw.githubusercontent.com/eugene-ee/affaan-m-ecc/HEAD/skills/fastapi-patterns/SKILL.md"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 19,
+    "stack": "Django+Celery",
+    "candidate_id": "420company/artemis/sentry-python-sdk",
+    "source_repo": "420company/artemis",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "django celery",
+      "timestamp": "2026-10-29T08:22:47.818179+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json",
+      "repo_verified": "not_found",
+      "evidence": "404 Not Found from https://raw.githubusercontent.com/420company/artemis/HEAD/skills/sentry-python-sdk/SKILL.md"
+    },
+    "user_label": "unsure"
+  },
+  {
+    "row_number": 20,
+    "stack": "React+Tailwind",
+    "candidate_id": "jezweb/claude-skills/tanstack-start",
+    "source_repo": "jezweb/claude-skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "react tailwind",
+      "timestamp": "2026-10-29T08:22:06.636961+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\react_tailwind\\response_2_react_tailwind.json",
+      "repo_verified": "not_found",
+      "evidence": "404 Not Found from https://raw.githubusercontent.com/jezweb/claude-skills/HEAD/skills/tanstack-start/SKILL.md"
+    },
+    "user_label": "not relevant"
+  },
+  {
+    "row_number": 21,
+    "stack": "React+Tailwind",
+    "candidate_id": "jwynia/agent-skills/electron-best-practices",
+    "source_repo": "jwynia/agent-skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "react best practices",
+      "timestamp": "2026-10-29T08:22:04.088827+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\react_tailwind\\response_1_react_best_practices.json",
+      "repo_verified": "not_found",
+      "evidence": "404 Not Found from https://raw.githubusercontent.com/jwynia/agent-skills/HEAD/skills/electron-best-practices/SKILL.md"
+    },
+    "user_label": "not relevant"
+  },
+  {
+    "row_number": 22,
+    "stack": "Next.js",
+    "candidate_id": "gohypergiant/agent-skills/accelint-tanstack-query-best-practices",
+    "source_repo": "gohypergiant/agent-skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "nextjs best practices",
+      "timestamp": "2026-10-29T08:22:16.558367+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\nextjs\\response_1_nextjs_best_practices.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "not relevant"
+  },
+  {
+    "row_number": 23,
+    "stack": "FastAPI+Docker",
+    "candidate_id": "marcioaltoe/skills/fastapi",
+    "source_repo": "marcioaltoe/skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "fastapi best practices",
+      "timestamp": "2026-10-29T08:22:29.484734+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\fastapi_docker\\response_1_fastapi_best_practices.json",
+      "repo_verified": "not_found",
+      "evidence": "404 Not Found from https://raw.githubusercontent.com/marcioaltoe/skills/HEAD/skills/fastapi/SKILL.md"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 24,
+    "stack": "Flutter+Provider+Dio",
+    "candidate_id": "somnio-software/technology-tools/flutter-best-practices",
+    "source_repo": "somnio-software/technology-tools",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "flutter best practices",
+      "timestamp": "2026-10-29T08:21:48.414569+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\flutter_provider_dio\\response_1_flutter_best_practices.json",
+      "repo_verified": "verified_exists",
+      "evidence": "200 OK from https://raw.githubusercontent.com/somnio-software/technology-tools/HEAD/skills/flutter-best-practices/SKILL.md"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 25,
+    "stack": "FastAPI+Docker",
+    "candidate_id": "skills.volces.com/fullstack-developer",
+    "source_repo": "skills.volces.com",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "fastapi docker",
+      "timestamp": "2026-10-29T08:22:36.390613+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\fastapi_docker\\response_5_fastapi_docker.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "not relevant"
+  },
+  {
+    "row_number": 26,
+    "stack": "Django+Celery",
+    "candidate_id": "speedoa1/everything-opencode/django-patterns",
+    "source_repo": "speedoa1/everything-opencode",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "django best practices",
+      "timestamp": "2026-10-29T08:22:46.533930+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json",
+      "repo_verified": "not_found",
+      "evidence": "404 Not Found from https://raw.githubusercontent.com/speedoa1/everything-opencode/HEAD/skills/django-patterns/SKILL.md"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 27,
+    "stack": "Django+Celery",
+    "candidate_id": "olino3/forge/django",
+    "source_repo": "olino3/forge",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "django best practices",
+      "timestamp": "2026-10-29T08:22:46.532934+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json",
+      "repo_verified": "not_found",
+      "evidence": "404 Not Found from https://raw.githubusercontent.com/olino3/forge/HEAD/skills/django/SKILL.md"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 28,
+    "stack": "FastAPI+Docker",
+    "candidate_id": "sickn33/agentic-awesome-skills/fastapi-templates",
+    "source_repo": "sickn33/agentic-awesome-skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "fastapi patterns",
+      "timestamp": "2026-10-29T08:22:32.490840+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\fastapi_docker\\response_2_fastapi_patterns.json",
+      "repo_verified": "verified_exists",
+      "evidence": "200 OK from https://raw.githubusercontent.com/sickn33/agentic-awesome-skills/HEAD/skills/fastapi-templates/SKILL.md"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 29,
+    "stack": "React+Tailwind",
+    "candidate_id": "nikolakaplin/tauri-react-skills/tauri-release-distribution",
+    "source_repo": "nikolakaplin/tauri-react-skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "react github actions",
+      "timestamp": "2026-10-29T08:22:07.591978+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\react_tailwind\\response_3_react_github_actions.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "not relevant"
+  },
+  {
+    "row_number": 30,
+    "stack": "FastAPI+Docker",
+    "candidate_id": "affaan-m/ecc/fastapi-patterns",
+    "source_repo": "affaan-m/ecc",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "fastapi best practices",
+      "timestamp": "2026-10-29T08:22:29.481730+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\fastapi_docker\\response_1_fastapi_best_practices.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 31,
+    "stack": "React+Tailwind",
+    "candidate_id": "lynx-community/skills/reactlynx-best-practices",
+    "source_repo": "lynx-community/skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "react best practices",
+      "timestamp": "2026-10-29T08:22:04.085475+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\react_tailwind\\response_1_react_best_practices.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "not relevant"
+  },
+  {
+    "row_number": 32,
+    "stack": "React+Tailwind",
+    "candidate_id": "mindrally/skills/expo-react-native-javascript-best-practices",
+    "source_repo": "mindrally/skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "react best practices",
+      "timestamp": "2026-10-29T08:22:04.085475+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\react_tailwind\\response_1_react_best_practices.json",
+      "repo_verified": "not_found",
+      "evidence": "404 Not Found from https://raw.githubusercontent.com/mindrally/skills/HEAD/skills/expo-react-native-javascript-best-practices/SKILL.md"
+    },
+    "user_label": "not relevant"
+  },
+  {
+    "row_number": 33,
+    "stack": "Next.js",
+    "candidate_id": "wsimmonds/claude-nextjs-skills/nextjs-advanced-routing",
+    "source_repo": "wsimmonds/claude-nextjs-skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "nextjs app router",
+      "timestamp": "2026-10-29T08:22:17.982312+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\nextjs\\response_2_nextjs_app_router.json",
+      "repo_verified": "not_found",
+      "evidence": "404 Not Found from https://raw.githubusercontent.com/wsimmonds/claude-nextjs-skills/HEAD/skills/nextjs-advanced-routing/SKILL.md"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 34,
+    "stack": "React+Tailwind",
+    "candidate_id": "margelo/react-native-skills/react-native-vision-camera",
+    "source_repo": "margelo/react-native-skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "react best practices",
+      "timestamp": "2026-10-29T08:22:04.088003+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\react_tailwind\\response_1_react_best_practices.json",
+      "repo_verified": "verified_exists",
+      "evidence": "200 OK from https://raw.githubusercontent.com/margelo/react-native-skills/HEAD/skills/react-native-vision-camera/SKILL.md"
+    },
+    "user_label": "not relevant"
+  },
+  {
+    "row_number": 35,
+    "stack": "FastAPI+Docker",
+    "candidate_id": "heyeddi-com/heyeddi-skills/composable-patterns",
+    "source_repo": "heyeddi-com/heyeddi-skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "fastapi patterns",
+      "timestamp": "2026-10-29T08:22:32.490840+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\fastapi_docker\\response_2_fastapi_patterns.json",
+      "repo_verified": "verified_exists",
+      "evidence": "200 OK from https://raw.githubusercontent.com/heyeddi-com/heyeddi-skills/HEAD/skills/composable-patterns/SKILL.md"
+    },
+    "user_label": "unsure"
+  },
+  {
+    "row_number": 36,
+    "stack": "React+Tailwind",
+    "candidate_id": "sergiodxa/agent-skills/frontend-react-router-best-practices",
+    "source_repo": "sergiodxa/agent-skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "react best practices",
+      "timestamp": "2026-10-29T08:22:04.085475+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\react_tailwind\\response_1_react_best_practices.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "not relevant"
+  },
+  {
+    "row_number": 37,
+    "stack": "Flutter+Provider+Dio",
+    "candidate_id": "abdelhakrazi/flutter-bloc-clean-architecture-skill/flutter-bloc-development",
+    "source_repo": "abdelhakrazi/flutter-bloc-clean-architecture-skill",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "flutter state management",
+      "timestamp": "2026-10-29T08:21:49.639687+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\flutter_provider_dio\\response_2_flutter_state_management.json",
+      "repo_verified": "not_found",
+      "evidence": "404 Not Found from https://raw.githubusercontent.com/abdelhakrazi/flutter-bloc-clean-architecture-skill/HEAD/skills/flutter-bloc-development/SKILL.md"
+    },
+    "user_label": "not relevant"
+  },
+  {
+    "row_number": 38,
+    "stack": "Flutter+Provider+Dio",
+    "candidate_id": "jorgecostadev/antigravity-ai-kit-for-flutter/flutter-state-management",
+    "source_repo": "jorgecostadev/antigravity-ai-kit-for-flutter",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "flutter state management",
+      "timestamp": "2026-10-29T08:21:49.638670+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\flutter_provider_dio\\response_2_flutter_state_management.json",
+      "repo_verified": "not_found",
+      "evidence": "404 Not Found from https://raw.githubusercontent.com/jorgecostadev/antigravity-ai-kit-for-flutter/HEAD/skills/flutter-state-management/SKILL.md"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 39,
+    "stack": "Next.js",
+    "candidate_id": "software-mansion-labs/skills/radon-mcp",
+    "source_repo": "software-mansion-labs/skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "react best practices",
+      "timestamp": "2026-10-29T08:22:18.995826+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\nextjs\\response_3_react_best_practices.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "not relevant"
+  },
+  {
+    "row_number": 40,
+    "stack": "Django+Celery",
+    "candidate_id": "affaan-m/ecc/django-security",
+    "source_repo": "affaan-m/ecc",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "django best practices",
+      "timestamp": "2026-10-29T08:22:46.530939+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json",
+      "repo_verified": "verified_exists",
+      "evidence": "200 OK from https://raw.githubusercontent.com/affaan-m/ecc/HEAD/skills/django-security/SKILL.md"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 41,
+    "stack": "Flutter+Provider+Dio",
+    "candidate_id": "4444j99/a-i--skills/mobile-platform-architect",
+    "source_repo": "4444j99/a-i--skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "flutter best practices",
+      "timestamp": "2026-10-29T08:21:48.415571+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\flutter_provider_dio\\response_1_flutter_best_practices.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "unsure"
+  },
+  {
+    "row_number": 42,
+    "stack": "FastAPI+Docker",
+    "candidate_id": "gnsubrahmanyam/agentic-skills/fastapi-development-best-practices",
+    "source_repo": "gnsubrahmanyam/agentic-skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "fastapi best practices",
+      "timestamp": "2026-10-29T08:22:29.481730+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\fastapi_docker\\response_1_fastapi_best_practices.json",
+      "repo_verified": "not_found",
+      "evidence": "404 Not Found from https://raw.githubusercontent.com/gnsubrahmanyam/agentic-skills/HEAD/skills/fastapi-development-best-practices/SKILL.md"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 43,
+    "stack": "React+Tailwind",
+    "candidate_id": "pproenca/dot-skills/nextjs",
+    "source_repo": "pproenca/dot-skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "react best practices",
+      "timestamp": "2026-10-29T08:22:04.088003+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\react_tailwind\\response_1_react_best_practices.json",
+      "repo_verified": "not_found",
+      "evidence": "404 Not Found from https://raw.githubusercontent.com/pproenca/dot-skills/HEAD/skills/nextjs/SKILL.md"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 44,
+    "stack": "React+Tailwind",
+    "candidate_id": "jezweb/claude-skills/shadcn-ui",
+    "source_repo": "jezweb/claude-skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "react tailwind",
+      "timestamp": "2026-10-29T08:22:06.636961+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\react_tailwind\\response_2_react_tailwind.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 45,
+    "stack": "FastAPI+Docker",
+    "candidate_id": "smithery.ai/model-deployment",
+    "source_repo": "smithery.ai",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "fastapi docker",
+      "timestamp": "2026-10-29T08:22:36.391618+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\fastapi_docker\\response_5_fastapi_docker.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "not relevant"
+  },
+  {
+    "row_number": 46,
+    "stack": "Flutter+Provider+Dio",
+    "candidate_id": "cindovahq/security-skills/flutter-security",
+    "source_repo": "cindovahq/security-skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "flutter dio",
+      "timestamp": "2026-10-29T08:21:53.460394+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\flutter_provider_dio\\response_5_flutter_dio.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 47,
+    "stack": "Flutter+Provider+Dio",
+    "candidate_id": "ariaramin/flutter-skills/flutter-dio-engineering",
+    "source_repo": "ariaramin/flutter-skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "flutter dio",
+      "timestamp": "2026-10-29T08:21:53.460394+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\flutter_provider_dio\\response_5_flutter_dio.json",
+      "repo_verified": "verified_exists",
+      "evidence": "200 OK from https://raw.githubusercontent.com/ariaramin/flutter-skills/HEAD/skills/flutter-dio-engineering/SKILL.md"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 48,
+    "stack": "Django+Celery",
+    "candidate_id": "agenticaiengineer/ai-engineer-skills/django-developer",
+    "source_repo": "agenticaiengineer/ai-engineer-skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "django best practices",
+      "timestamp": "2026-10-29T08:22:46.531939+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 49,
+    "stack": "Next.js",
+    "candidate_id": "blockmatic-icebox/basilic-skills/vercel-react",
+    "source_repo": "blockmatic-icebox/basilic-skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "nextjs best practices",
+      "timestamp": "2026-10-29T08:22:16.558367+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\nextjs\\response_1_nextjs_best_practices.json",
+      "repo_verified": "not_found",
+      "evidence": "404 Not Found from https://raw.githubusercontent.com/blockmatic-icebox/basilic-skills/HEAD/skills/vercel-react/SKILL.md"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 50,
+    "stack": "Django+Celery",
+    "candidate_id": "rennixx/missing-piece/missing-piece-django",
+    "source_repo": "rennixx/missing-piece",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "django celery",
+      "timestamp": "2026-10-29T08:22:47.817251+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 51,
+    "stack": "Django+Celery",
+    "candidate_id": "rcgsheffield/skills/django-development",
+    "source_repo": "rcgsheffield/skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "django best practices",
+      "timestamp": "2026-10-29T08:22:46.531939+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json",
+      "repo_verified": "verified_exists",
+      "evidence": "200 OK from https://raw.githubusercontent.com/rcgsheffield/skills/HEAD/skills/django-development/SKILL.md"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 52,
+    "stack": "React+Tailwind",
+    "candidate_id": "capawesome-team/skills/capacitor-app-development",
+    "source_repo": "capawesome-team/skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "react best practices",
+      "timestamp": "2026-10-29T08:22:04.088003+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\react_tailwind\\response_1_react_best_practices.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "not relevant"
+  },
+  {
+    "row_number": 53,
+    "stack": "Next.js",
+    "candidate_id": "laguagu/claude-code-nextjs-skills/nextjs-seo",
+    "source_repo": "laguagu/claude-code-nextjs-skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "nextjs app router",
+      "timestamp": "2026-10-29T08:22:17.982312+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\nextjs\\response_2_nextjs_app_router.json",
+      "repo_verified": "verified_exists",
+      "evidence": "200 OK from https://raw.githubusercontent.com/laguagu/claude-code-nextjs-skills/HEAD/skills/nextjs-seo/SKILL.md"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 54,
+    "stack": "Next.js",
+    "candidate_id": "giuseppe-trisciuoglio/developer-kit/nextjs-deployment",
+    "source_repo": "giuseppe-trisciuoglio/developer-kit",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "nextjs best practices",
+      "timestamp": "2026-10-29T08:22:16.558367+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\nextjs\\response_1_nextjs_best_practices.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 55,
+    "stack": "Next.js",
+    "candidate_id": "pydantic/skills/logfire-frontend",
+    "source_repo": "pydantic/skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "next typescript",
+      "timestamp": "2026-10-29T08:22:20.215409+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\nextjs\\response_4_next_typescript.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "not relevant"
+  },
+  {
+    "row_number": 56,
+    "stack": "FastAPI+Docker",
+    "candidate_id": "aia-11-hn-mib/mib-mockinterviewaibot/backend-development",
+    "source_repo": "aia-11-hn-mib/mib-mockinterviewaibot",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "fastapi docker",
+      "timestamp": "2026-10-29T08:22:36.391618+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\fastapi_docker\\response_5_fastapi_docker.json",
+      "repo_verified": "not_found",
+      "evidence": "404 Not Found from https://raw.githubusercontent.com/aia-11-hn-mib/mib-mockinterviewaibot/HEAD/skills/backend-development/SKILL.md"
+    },
+    "user_label": "not relevant"
+  },
+  {
+    "row_number": 57,
+    "stack": "Flutter+Provider+Dio",
+    "candidate_id": "akhlashashmi/flutter-apps-skill/flutter-apps-skill",
+    "source_repo": "akhlashashmi/flutter-apps-skill",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "flutter best practices",
+      "timestamp": "2026-10-29T08:21:48.415571+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\flutter_provider_dio\\response_1_flutter_best_practices.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 58,
+    "stack": "Django+Celery",
+    "candidate_id": "clostaunau/holiday-card/django-conventions",
+    "source_repo": "clostaunau/holiday-card",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "django best practices",
+      "timestamp": "2026-10-29T08:22:46.531939+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 59,
+    "stack": "Flutter+Provider+Dio",
+    "candidate_id": "poorgramer-zack/dart-expert-skills/configuring-github-actions",
+    "source_repo": "poorgramer-zack/dart-expert-skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "flutter best practices",
+      "timestamp": "2026-10-29T08:21:48.415571+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\flutter_provider_dio\\response_1_flutter_best_practices.json",
+      "repo_verified": "not_found",
+      "evidence": "404 Not Found from https://raw.githubusercontent.com/poorgramer-zack/dart-expert-skills/HEAD/skills/configuring-github-actions/SKILL.md"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 60,
+    "stack": "Next.js",
+    "candidate_id": "programmeranthony/expert-coding-harness/docs-lookup",
+    "source_repo": "programmeranthony/expert-coding-harness",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "next typescript",
+      "timestamp": "2026-10-29T08:22:20.223718+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\nextjs\\response_4_next_typescript.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "not relevant"
+  },
+  {
+    "row_number": 61,
+    "stack": "Next.js",
+    "candidate_id": "affaan-m/ecc/frontend-patterns",
+    "source_repo": "affaan-m/ecc",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "nextjs best practices",
+      "timestamp": "2026-10-29T08:22:16.558367+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\nextjs\\response_1_nextjs_best_practices.json",
+      "repo_verified": "verified_exists",
+      "evidence": "200 OK from https://raw.githubusercontent.com/affaan-m/ecc/HEAD/skills/frontend-patterns/SKILL.md"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 62,
+    "stack": "Django+Celery",
+    "candidate_id": "sysp0/dj-style-skill/django-celery",
+    "source_repo": "sysp0/dj-style-skill",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "django celery",
+      "timestamp": "2026-10-29T08:22:47.810120+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 63,
+    "stack": "Django+Celery",
+    "candidate_id": "cjhwong/py-clean-architecture-examples/py-clean-arch",
+    "source_repo": "cjhwong/py-clean-architecture-examples",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "django celery",
+      "timestamp": "2026-10-29T08:22:47.818179+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 64,
+    "stack": "Django+Celery",
+    "candidate_id": "mark393295827/house-maint-ai/django-security",
+    "source_repo": "mark393295827/house-maint-ai",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "django best practices",
+      "timestamp": "2026-10-29T08:22:46.531939+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json",
+      "repo_verified": "verified_exists",
+      "evidence": "200 OK from https://raw.githubusercontent.com/mark393295827/house-maint-ai/HEAD/skills/django-security/SKILL.md"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 65,
+    "stack": "Django+Celery",
+    "candidate_id": "iam-nazmul/drcr/celery",
+    "source_repo": "iam-nazmul/drcr",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "django celery",
+      "timestamp": "2026-10-29T08:22:47.816165+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 66,
+    "stack": "Flutter+Provider+Dio",
+    "candidate_id": "rodydavis/skills/signals-and-flutter-hooks",
+    "source_repo": "rodydavis/skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "flutter state management",
+      "timestamp": "2026-10-29T08:21:49.639748+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\flutter_provider_dio\\response_2_flutter_state_management.json",
+      "repo_verified": "verified_exists",
+      "evidence": "200 OK from https://raw.githubusercontent.com/rodydavis/skills/HEAD/skills/signals-and-flutter-hooks/SKILL.md"
+    },
+    "user_label": "not relevant"
+  },
+  {
+    "row_number": 67,
+    "stack": "FastAPI+Docker",
+    "candidate_id": "victorzhuk/skills/z-py-core",
+    "source_repo": "victorzhuk/skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "fastapi pydantic",
+      "timestamp": "2026-10-29T08:22:35.033945+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\fastapi_docker\\response_4_fastapi_pydantic.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "unsure"
+  },
+  {
+    "row_number": 68,
+    "stack": "Flutter+Provider+Dio",
+    "candidate_id": "thienqo/flutter-skills/flutter-ci-cd",
+    "source_repo": "thienqo/flutter-skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "flutter provider",
+      "timestamp": "2026-10-29T08:21:52.512865+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\flutter_provider_dio\\response_4_flutter_provider.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 69,
+    "stack": "Flutter+Provider+Dio",
+    "candidate_id": "eliasoulkadi/shokunin/flutter",
+    "source_repo": "eliasoulkadi/shokunin",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "flutter provider",
+      "timestamp": "2026-10-29T08:21:52.513860+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\flutter_provider_dio\\response_4_flutter_provider.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 70,
+    "stack": "React+Tailwind",
+    "candidate_id": "sonofmagic/skills/weapp-tailwindcss",
+    "source_repo": "sonofmagic/skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "react tailwind",
+      "timestamp": "2026-10-29T08:22:06.638633+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\react_tailwind\\response_2_react_tailwind.json",
+      "repo_verified": "not_found",
+      "evidence": "404 Not Found from https://raw.githubusercontent.com/sonofmagic/skills/HEAD/skills/weapp-tailwindcss/SKILL.md"
+    },
+    "user_label": "not relevant"
+  },
+  {
+    "row_number": 71,
+    "stack": "React+Tailwind",
+    "candidate_id": "cap-go/capgo-skills/ionic-design",
+    "source_repo": "cap-go/capgo-skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "react tailwind",
+      "timestamp": "2026-10-29T08:22:06.636961+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\react_tailwind\\response_2_react_tailwind.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "not relevant"
+  },
+  {
+    "row_number": 72,
+    "stack": "Next.js",
+    "candidate_id": "bartundmett/skills/storyblok-best-practices",
+    "source_repo": "bartundmett/skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "nextjs best practices",
+      "timestamp": "2026-10-29T08:22:16.558367+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\nextjs\\response_1_nextjs_best_practices.json",
+      "repo_verified": "not_found",
+      "evidence": "404 Not Found from https://raw.githubusercontent.com/bartundmett/skills/HEAD/skills/storyblok-best-practices/SKILL.md"
+    },
+    "user_label": "not relevant"
+  },
+  {
+    "row_number": 73,
+    "stack": "Next.js",
+    "candidate_id": "expo/skills/expo-web-to-native",
+    "source_repo": "expo/skills",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "nextjs app router",
+      "timestamp": "2026-10-29T08:22:17.981790+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\nextjs\\response_2_nextjs_app_router.json",
+      "repo_verified": "not_found",
+      "evidence": "404 Not Found from https://raw.githubusercontent.com/expo/skills/HEAD/skills/expo-web-to-native/SKILL.md"
+    },
+    "user_label": "not relevant"
+  },
+  {
+    "row_number": 74,
+    "stack": "Flutter+Provider+Dio",
+    "candidate_id": "devenkhatri/everything-claude-code/dart-flutter-patterns",
+    "source_repo": "devenkhatri/everything-claude-code",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "flutter dio",
+      "timestamp": "2026-10-29T08:21:53.462831+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\flutter_provider_dio\\response_5_flutter_dio.json",
+      "repo_verified": "verified_exists",
+      "evidence": "200 OK from https://raw.githubusercontent.com/devenkhatri/everything-claude-code/HEAD/skills/dart-flutter-patterns/SKILL.md"
+    },
+    "user_label": "relevant"
+  },
+  {
+    "row_number": 75,
+    "stack": "Flutter+Provider+Dio",
+    "candidate_id": "evanca/flutter-ai-rules/testing",
+    "source_repo": "evanca/flutter-ai-rules",
+    "ranker_tier": "rejected",
+    "rejection_reason": "Missing or empty skill description",
+    "provenance": {
+      "type": "captured_live",
+      "query": "flutter dart",
+      "timestamp": "2026-10-29T08:21:51.305108+00:00",
+      "source": "skills.sh/api/search",
+      "raw_response_file": "tests\\fixtures\\eval_raw\\flutter_provider_dio\\response_3_flutter_dart.json",
+      "repo_verified": "unverified_budget_cap",
+      "evidence": "Exceeded per-stack 8-request verification budget cap"
+    },
+    "user_label": "relevant"
+  }
+]

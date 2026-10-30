@@ -157,6 +157,8 @@ def score_candidate(
     query = candidate.get("found_by_query", "").lower()
     cid = candidate.get("id", "").lower()
     cname = (candidate.get("skill_name") or candidate.get("name") or "").lower()
+    if layer in ("general", ""):
+        layer = infer_functional_layer(cname, candidate.get("tags") or [])
     desc = (meta.get("description") or candidate.get("description") or "").lower()
     ctags = [str(t).lower() for t in (candidate.get("tags") or [])]
     cand_text = f"{cid} {cname} {desc} {' '.join(ctags)} {query}"
@@ -328,11 +330,42 @@ PRIMARY_FRAMEWORKS_SET: Set[str] = {
     "flutter", "django", "fastapi", "flask", "react", "next", "vue", "nuxt",
     "svelte", "sveltekit", "angular", "rails", "express", "nestjs", "fastify",
     "gin", "fiber", "echo", "axum", "actix", "spring-boot", "remix", "astro",
+    # Cross-platform / mobile wrappers that conflict with web frameworks
+    "react-native", "expo", "electron", "tauri", "capacitor", "ionic",
+    "reactlynx", "weapp", "tamagui",
 }
 
 SPECIALIZED_SERVICES_SET: Set[str] = {
     "redis", "mongodb", "kafka", "rabbitmq", "cassandra", "elasticsearch"
 }
+
+STATE_MANAGERS_SET: Set[str] = {
+    "bloc", "provider", "riverpod", "getx", "mobx", "redux", "zustand", "signals"
+}
+
+
+def infer_functional_layer(name: str, tags: Sequence[str] = ()) -> str:
+    """Infer functional layer from candidate name and tags when layer is general."""
+    n = name.lower()
+    t = " ".join(str(x) for x in tags).lower()
+    combined = f"{n} {t}"
+    if any(k in combined for k in ["test", "testing", "ci", "cd", "action", "linter", "lint"]):
+        return "testing"
+    if any(k in combined for k in ["security", "auth", "audit", "permission", "jwt"]):
+        return "security"
+    if any(k in combined for k in ["state", "provider", "bloc", "signals", "hooks", "redux", "mobx", "zustand"]):
+        return "state"
+    if any(k in combined for k in ["style", "css", "tailwind", "ui", "theme", "shadcn", "component"]):
+        return "styling"
+    if any(k in combined for k in ["docker", "deploy", "infra", "k8s", "container", "compose", "devops"]):
+        return "infra"
+    if any(k in combined for k in ["celery", "task", "worker", "queue", "redis"]):
+        return "tasks"
+    if any(k in combined for k in ["network", "dio", "http", "api", "client", "fetch"]):
+        return "network"
+    if any(k in combined for k in ["pattern", "clean-arch", "architecture", "convention", "best-practice", "guideline"]):
+        return "architecture"
+    return "general"
 
 
 def apply_hard_gates(
@@ -425,12 +458,30 @@ def apply_hard_gates(
 
         # Missing or empty description
         if not description:
-            rejected.append({
-                "id": cid,
-                "layer": layer,
-                "reason": "Missing or empty skill description",
-            })
-            continue
+            # Fallback for candidates discovered via search index without inline frontmatter
+            is_search_index = bool(
+                cand.get("provenance", {}).get("source") == "skills.sh/api/search"
+                or cand.get("provenance", {}).get("type") == "captured_live"
+                or (not cand.get("pinned_sha") and cand.get("found_by_query") and skill_name and audit_status == "clean")
+            )
+            if is_search_index and skill_name:
+                description = skill_name.replace("-", " ").replace("_", " ")
+                if isinstance(cand.get("meta"), dict):
+                    cand["meta"]["description"] = description
+                    cand["meta"]["description_tokens"] = len(description.split())
+                cand["description"] = description
+            else:
+                rejected.append({
+                    "id": cid,
+                    "layer": layer,
+                    "reason": "Missing or empty skill description",
+                })
+                continue
+
+        # Inferred functional layer if general or unassigned
+        if layer in ("general", ""):
+            layer = infer_functional_layer(skill_name, cand.get("tags", []))
+            cand["layer"] = layer
 
         # Hard Gate 6: Already installed & Layer collision with installed skill
         if skill_name in installed_names or cid in installed_names:
@@ -450,6 +501,13 @@ def apply_hard_gates(
             })
             continue
 
+        cand_self_text = " ".join([
+            cid,
+            skill_name,
+            description,
+            " ".join(str(t) for t in cand.get("tags", [])),
+        ]).lower()
+
         cand_text = " ".join([
             cid,
             skill_name,
@@ -460,9 +518,9 @@ def apply_hard_gates(
 
         # Hard Gate 3: Negative Language/Framework Constraint
         conflict_lang = None
-        for lang in PRIMARY_LANGUAGES_SET | PRIMARY_FRAMEWORKS_SET:
+        for lang in sorted(PRIMARY_LANGUAGES_SET | PRIMARY_FRAMEWORKS_SET, key=lambda x: -len(x)):
             if lang not in expanded_stack:
-                if re.search(rf"\b{re.escape(lang)}\b", cand_text):
+                if re.search(rf"\b{re.escape(lang)}\b", cand_self_text):
                     conflict_lang = lang
                     break
 
@@ -478,7 +536,7 @@ def apply_hard_gates(
         conflict_service = None
         for svc in SPECIALIZED_SERVICES_SET:
             if svc not in expanded_stack:
-                if re.search(rf"\b{re.escape(svc)}\b", cand_text):
+                if re.search(rf"\b{re.escape(svc)}\b", cand_self_text):
                     conflict_service = svc
                     break
 
@@ -490,7 +548,25 @@ def apply_hard_gates(
             })
             continue
 
-        # Hard Gate 2: Matches a detected tag by name, description, or path
+        # Check conflicting state management paradigms (e.g. bloc vs provider)
+        conflict_state = None
+        active_state = [s for s in STATE_MANAGERS_SET if s in expanded_stack]
+        if active_state:
+            for sm in sorted(STATE_MANAGERS_SET, key=lambda x: -len(x)):
+                if sm not in expanded_stack:
+                    if re.search(rf"\b{re.escape(sm)}\b", cand_self_text):
+                        conflict_state = sm
+                        break
+
+        if conflict_state:
+            rejected.append({
+                "id": cid,
+                "layer": layer,
+                "reason": f"Names conflicting state management library '{conflict_state}' absent from detected stack",
+            })
+            continue
+
+        # Hard Gate 2: Matches a detected tag by name, description, query, or path
         if clean_tags:
             matches_detected = False
             for tag in clean_tags:
@@ -574,11 +650,14 @@ def rank_candidates(
     # Step 4: Tier Categorization
     strong: List[Dict[str, Any]] = []
     possible: List[Dict[str, Any]] = []
-    selected_layers: Set[str] = set()
+    selected_layers_count: Dict[str, int] = {}
     current_tokens = 0
 
     for score, pop_score, cid, cand, signals in scored_candidates:
         layer = cand.get("layer", "general").strip().lower()
+        if layer in ("general", ""):
+            layer = infer_functional_layer(cand.get("skill_name", ""), cand.get("tags", []))
+            cand["layer"] = layer
         meta = cand.get("meta") or {}
         desc_tokens = meta.get("description_tokens") or cand.get("description_tokens") or 25
         cand_desc = (meta.get("description") or cand.get("description") or "").strip()
@@ -600,13 +679,16 @@ def rank_candidates(
             "signals": signals,
         }
 
+        layer_limit = 3 if layer in ("general", "") else 1
+        current_layer_count = selected_layers_count.get(layer, 0)
+
         if score >= strong_threshold:
-            if layer not in selected_layers and (current_tokens + desc_tokens <= budget):
-                selected_layers.add(layer)
+            if current_layer_count < layer_limit and (current_tokens + desc_tokens <= budget):
+                selected_layers_count[layer] = current_layer_count + 1
                 current_tokens += desc_tokens
                 strong.append(item_dict)
             else:
-                if layer in selected_layers:
+                if current_layer_count >= layer_limit:
                     item_dict["tier_reason"] = (
                         f"Layer collision in selection: layer '{layer}' already represented"
                     )

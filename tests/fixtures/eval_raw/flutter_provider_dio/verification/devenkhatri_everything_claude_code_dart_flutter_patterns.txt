@@ -1,0 +1,2 @@
+Status: verified_exists
+Evidence: 200 OK from https://raw.githubusercontent.com/devenkhatri/everything-claude-code/HEAD/skills/dart-flutter-patterns/SKILL.md

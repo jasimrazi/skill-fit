@@ -571,22 +571,6 @@ def render_human(result: Dict[str, Any]) -> str:
 
     return "\n".join(lines)
 
-    rejected = result.get("rejected", [])
-    if rejected:
-        lines.append("")
-        lines.append(f"Rejected ({len(rejected)}):")
-        for r in rejected:
-            lines.append(f"  - {r.get('id', ''):<35} -> {r.get('reason', '')}")
-
-    warnings = result.get("warnings", [])
-    if warnings:
-        lines.append("")
-        lines.append("Warnings:")
-        for w in warnings:
-            lines.append(f"  ! {w}")
-
-    return "\n".join(lines)
-
 
 def main(argv: Optional[List[str]] = None) -> int:
     parser = argparse.ArgumentParser(description="Skill-fit live match orchestrator")
@@ -614,9 +598,58 @@ def main(argv: Optional[List[str]] = None) -> int:
         default=10.0,
         help="Total time budget in seconds for candidate generation",
     )
+    parser.add_argument(
+        "--strong-threshold",
+        type=int,
+        default=rank.DEFAULT_STRONG_THRESHOLD,
+        help="Strong recommendation score threshold (default 70)",
+    )
+    parser.add_argument(
+        "--replay",
+        default=None,
+        help="Path to recorded candidate pool JSON file to replay offline",
+    )
     parser.add_argument("--human", action="store_true", help="Print human-readable table")
 
     args = parser.parse_args(argv)
+
+    if args.replay:
+        pool_path = Path(args.replay)
+        if not pool_path.exists():
+            print(f"Error: replay file not found: {pool_path}", file=sys.stderr)
+            return 1
+        pool_data = json.loads(pool_path.read_text(encoding="utf-8"))
+        tags = pool_data.get("tags", [])
+        candidates = pool_data.get("candidates", [])
+        rank_result = rank.rank_candidates(
+            candidates=candidates,
+            stack_tags=tags,
+            budget=args.budget,
+            min_install_count=args.min_installs,
+            strong_threshold=args.strong_threshold,
+        )
+        output = {
+            "resolution_source": "replay",
+            "manifest_hash": "replay_mode",
+            "stack_tags": tags,
+            "has_strong_matches": rank_result.has_strong_matches,
+            "message": rank_result.message,
+            "shortlist": rank_result.shortlist,
+            "strong": rank_result.strong,
+            "possible": rank_result.possible,
+            "gaps": rank_result.gaps,
+            "rejected": rank_result.rejected,
+            "total_description_tokens": rank_result.total_description_tokens,
+            "budget": args.budget,
+            "is_stale": False,
+            "warnings": rank_result.warnings,
+        }
+        budgeted = enforce_output_token_budget(output)
+        if args.human:
+            print(render_human(budgeted))
+        else:
+            print(json.dumps(budgeted, indent=2))
+        return 0
 
     result = match_skills(
         repo_path=args.repo,

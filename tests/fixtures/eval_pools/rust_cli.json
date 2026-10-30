@@ -1,0 +1,82 @@
+{
+  "stack_name": "Rust CLI",
+  "tags": ["rust", "cli", "clap"],
+  "candidates": [
+    {
+      "id": "affaan-m/ecc@rust-patterns",
+      "source_repo": "affaan-m/ecc",
+      "skill_name": "rust-patterns",
+      "layer": "language",
+      "found_by_query": "rust patterns",
+      "pinned_sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+      "install_count": 240000,
+      "tags": ["rust", "cli", "memory"],
+      "meta": {
+        "description": "Idiomatic Rust error handling with thiserror/anyhow, zero-copy borrowing, and traits.",
+        "description_tokens": 12,
+        "skill_md_lines": 170,
+        "has_references": true,
+        "has_scripts": false,
+        "last_commit": "2026-03-01T00:00:00Z",
+        "audit_status": "clean"
+      }
+    },
+    {
+      "id": "rust-cli/skills@clap-patterns",
+      "source_repo": "rust-cli/skills",
+      "skill_name": "clap-patterns",
+      "layer": "cli",
+      "found_by_query": "rust clap cli",
+      "pinned_sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+      "install_count": 160000,
+      "tags": ["rust", "clap", "cli"],
+      "meta": {
+        "description": "Clap v4 derive macros, subcommands, and typed CLI argument parsing in Rust.",
+        "description_tokens": 12,
+        "skill_md_lines": 140,
+        "has_references": true,
+        "has_scripts": false,
+        "last_commit": "2026-03-01T00:00:00Z",
+        "audit_status": "clean"
+      }
+    },
+    {
+      "id": "python/skills@click-cli",
+      "source_repo": "python/skills",
+      "skill_name": "click-cli",
+      "layer": "cli",
+      "found_by_query": "cli",
+      "pinned_sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+      "install_count": 130000,
+      "tags": ["python", "click", "cli"],
+      "meta": {
+        "description": "Click CLI argument parsers and nested subcommands in Python applications.",
+        "description_tokens": 11,
+        "skill_md_lines": 110,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": "2026-03-01T00:00:00Z",
+        "audit_status": "clean"
+      }
+    },
+    {
+      "id": "generic/skills@license-generator",
+      "source_repo": "generic/skills",
+      "skill_name": "license-generator",
+      "layer": "legal",
+      "found_by_query": "rust",
+      "pinned_sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+      "install_count": 9000,
+      "tags": ["license", "legal"],
+      "meta": {
+        "description": "Populates standard open-source MIT or Apache-2.0 LICENSE files.",
+        "description_tokens": 9,
+        "skill_md_lines": 50,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": "2026-03-01T00:00:00Z",
+        "audit_status": "clean"
+      }
+    }
+  ]
+}

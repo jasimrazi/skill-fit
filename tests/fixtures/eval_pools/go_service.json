@@ -1,0 +1,82 @@
+{
+  "stack_name": "Go service",
+  "tags": ["go", "golang"],
+  "candidates": [
+    {
+      "id": "affaan-m/ecc@golang-patterns",
+      "source_repo": "affaan-m/ecc",
+      "skill_name": "golang-patterns",
+      "layer": "backend",
+      "found_by_query": "go backend",
+      "pinned_sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+      "install_count": 280000,
+      "tags": ["go", "golang", "concurrency"],
+      "meta": {
+        "description": "Go concurrency patterns, context propagation, error wrapping, and structured logging conventions.",
+        "description_tokens": 13,
+        "skill_md_lines": 170,
+        "has_references": true,
+        "has_scripts": false,
+        "last_commit": "2026-03-01T00:00:00Z",
+        "audit_status": "clean"
+      }
+    },
+    {
+      "id": "uber-go/skills@uber-go-guide",
+      "source_repo": "uber-go/skills",
+      "skill_name": "uber-go-guide",
+      "layer": "quality",
+      "found_by_query": "golang quality",
+      "pinned_sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+      "install_count": 390000,
+      "tags": ["go", "golang", "styleguide"],
+      "meta": {
+        "description": "Uber Go style guide idiomatic conventions for mutexes, channel lifecycle, and interface design.",
+        "description_tokens": 14,
+        "skill_md_lines": 180,
+        "has_references": true,
+        "has_scripts": false,
+        "last_commit": "2026-03-01T00:00:00Z",
+        "audit_status": "clean"
+      }
+    },
+    {
+      "id": "flutter-community/skills@flutter-layered-architecture",
+      "source_repo": "flutter-community/skills",
+      "skill_name": "flutter-layered-architecture",
+      "layer": "framework",
+      "found_by_query": "go",
+      "pinned_sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+      "install_count": 4500,
+      "tags": ["flutter", "dart", "architecture"],
+      "meta": {
+        "description": "Clean screen -> provider -> repository architecture and widget modularization for Flutter.",
+        "description_tokens": 14,
+        "skill_md_lines": 140,
+        "has_references": true,
+        "has_scripts": false,
+        "last_commit": "2026-03-01T00:00:00Z",
+        "audit_status": "clean"
+      }
+    },
+    {
+      "id": "generic/skills@git-commit-helper",
+      "source_repo": "generic/skills",
+      "skill_name": "git-commit-helper",
+      "layer": "vcs",
+      "found_by_query": "go",
+      "pinned_sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+      "install_count": 25000,
+      "tags": ["git", "vcs"],
+      "meta": {
+        "description": "Conventional commit message prefix generator for git repositories.",
+        "description_tokens": 9,
+        "skill_md_lines": 65,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": "2026-03-01T00:00:00Z",
+        "audit_status": "clean"
+      }
+    }
+  ]
+}

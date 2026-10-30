@@ -1,0 +1,2 @@
+Status: verified_exists
+Evidence: 200 OK from https://raw.githubusercontent.com/margelo/react-native-skills/HEAD/skills/react-native-vision-camera/SKILL.md

@@ -1,0 +1,2 @@
+Status: not_found
+Evidence: 404 Not Found from https://raw.githubusercontent.com/speedoa1/everything-opencode/HEAD/skills/django-patterns/SKILL.md

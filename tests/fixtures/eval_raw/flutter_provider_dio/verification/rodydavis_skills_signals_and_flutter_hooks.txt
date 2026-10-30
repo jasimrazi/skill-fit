@@ -1,0 +1,2 @@
+Status: verified_exists
+Evidence: 200 OK from https://raw.githubusercontent.com/rodydavis/skills/HEAD/skills/signals-and-flutter-hooks/SKILL.md

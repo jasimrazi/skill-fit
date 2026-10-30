@@ -1,0 +1,82 @@
+{
+  "stack_name": "Rails",
+  "tags": ["rails", "ruby"],
+  "candidates": [
+    {
+      "id": "affaan-m/ecc@rails-patterns",
+      "source_repo": "affaan-m/ecc",
+      "skill_name": "rails-patterns",
+      "layer": "framework",
+      "found_by_query": "rails patterns",
+      "pinned_sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+      "install_count": 190000,
+      "tags": ["rails", "ruby", "mvc"],
+      "meta": {
+        "description": "Rails model fat/skinny controllers, service objects, and Active Record query scoping conventions.",
+        "description_tokens": 14,
+        "skill_md_lines": 160,
+        "has_references": true,
+        "has_scripts": false,
+        "last_commit": "2026-03-01T00:00:00Z",
+        "audit_status": "clean"
+      }
+    },
+    {
+      "id": "thoughtbot/skills@factory-bot-best-practices",
+      "source_repo": "thoughtbot/skills",
+      "skill_name": "factory-bot-best-practices",
+      "layer": "testing",
+      "found_by_query": "rails testing",
+      "pinned_sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+      "install_count": 140000,
+      "tags": ["rails", "ruby", "testing"],
+      "meta": {
+        "description": "FactoryBot test fixtures discipline and build_stubbed strategies for Rails specs.",
+        "description_tokens": 12,
+        "skill_md_lines": 130,
+        "has_references": true,
+        "has_scripts": false,
+        "last_commit": "2026-03-01T00:00:00Z",
+        "audit_status": "clean"
+      }
+    },
+    {
+      "id": "django/skills@django-orm-patterns",
+      "source_repo": "django/skills",
+      "skill_name": "django-orm-patterns",
+      "layer": "orm",
+      "found_by_query": "rails",
+      "pinned_sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+      "install_count": 110000,
+      "tags": ["python", "django", "orm"],
+      "meta": {
+        "description": "Django ORM select_related and prefetch_related query optimizations.",
+        "description_tokens": 10,
+        "skill_md_lines": 120,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": "2026-03-01T00:00:00Z",
+        "audit_status": "clean"
+      }
+    },
+    {
+      "id": "generic/skills@changelog-updater",
+      "source_repo": "generic/skills",
+      "skill_name": "changelog-updater",
+      "layer": "docs",
+      "found_by_query": "rails",
+      "pinned_sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+      "install_count": 8000,
+      "tags": ["changelog", "docs"],
+      "meta": {
+        "description": "Appends git release notes to CHANGELOG.md file.",
+        "description_tokens": 8,
+        "skill_md_lines": 55,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": "2026-03-01T00:00:00Z",
+        "audit_status": "clean"
+      }
+    }
+  ]
+}

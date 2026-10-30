@@ -1,0 +1,2 @@
+Status: verified_exists
+Evidence: 200 OK from https://raw.githubusercontent.com/rcgsheffield/skills/HEAD/skills/django-development/SKILL.md

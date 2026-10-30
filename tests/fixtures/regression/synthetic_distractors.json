@@ -1,0 +1,245 @@
+[
+  {
+    "case": "failure_a_go_linter_for_flutter",
+    "provenance": "synthetic",
+    "stack_name": "Flutter+Provider+Dio",
+    "stack_tags": ["flutter", "dart", "provider", "dio"],
+    "expected_outcome": "rejected",
+    "expected_reason_substr": "conflicting language",
+    "candidate": {
+      "id": "golang-org/skills@go-linter",
+      "source_repo": "golang-org/skills",
+      "skill_name": "go-linter",
+      "layer": "lint",
+      "found_by_query": "flutter",
+      "pinned_sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+      "install_count": 85000,
+      "tags": ["go", "golang", "lint"],
+      "meta": {
+        "description": "Strict Go formatting, vet checks, and static analysis linters for golang services.",
+        "description_tokens": 13,
+        "skill_md_lines": 110,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": "2026-03-01T00:00:00Z",
+        "audit_status": "clean"
+      }
+    }
+  },
+  {
+    "case": "failure_b_redis_for_django",
+    "provenance": "synthetic",
+    "stack_name": "Django+Celery",
+    "stack_tags": ["django", "python", "celery"],
+    "expected_outcome": "rejected",
+    "expected_reason_substr": "technology 'redis' absent",
+    "candidate": {
+      "id": "redis-org/skills@redis-best-practices",
+      "source_repo": "redis-org/skills",
+      "skill_name": "redis-best-practices",
+      "layer": "database",
+      "found_by_query": "celery",
+      "pinned_sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+      "install_count": 120000,
+      "tags": ["redis", "cache"],
+      "meta": {
+        "description": "Redis caching strategies, key expiration policies, and connection pool sizing.",
+        "description_tokens": 12,
+        "skill_md_lines": 150,
+        "has_references": true,
+        "has_scripts": false,
+        "last_commit": "2026-03-01T00:00:00Z",
+        "audit_status": "clean"
+      }
+    }
+  },
+  {
+    "case": "failure_c_floating_head_unverified",
+    "provenance": "synthetic",
+    "stack_name": "Flutter+Provider+Dio",
+    "stack_tags": ["flutter", "dart", "provider", "dio"],
+    "expected_outcome": "rejected",
+    "expected_reason_substr": "floating HEAD",
+    "candidate": {
+      "id": "unverified/skills@fake-flutter-tool",
+      "source_repo": "unverified/skills",
+      "skill_name": "fake-flutter-tool",
+      "layer": "framework",
+      "found_by_query": "flutter",
+      "pinned_sha": "HEAD",
+      "install_count": 1200,
+      "tags": ["flutter"],
+      "meta": {
+        "description": "Unverified flutter skill pointing to floating HEAD commit.",
+        "description_tokens": 10,
+        "skill_md_lines": 80,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": "2026-03-01T00:00:00Z",
+        "audit_status": "clean"
+      }
+    }
+  },
+  {
+    "case": "spring_boot_docker_for_fastapi",
+    "provenance": "synthetic",
+    "stack_name": "FastAPI+Docker",
+    "stack_tags": ["fastapi", "python", "docker"],
+    "expected_outcome": "rejected",
+    "expected_reason_substr": "conflicting language",
+    "candidate": {
+      "id": "spring/skills@spring-boot-docker",
+      "source_repo": "spring/skills",
+      "skill_name": "spring-boot-docker",
+      "layer": "backend",
+      "found_by_query": "docker",
+      "pinned_sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+      "install_count": 82000,
+      "tags": ["java", "spring", "docker"],
+      "meta": {
+        "description": "Containerizing Spring Boot Java enterprise microservices using layered JARs.",
+        "description_tokens": 12,
+        "skill_md_lines": 130,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": "2026-03-01T00:00:00Z",
+        "audit_status": "clean"
+      }
+    }
+  },
+  {
+    "case": "sidekiq_for_django",
+    "provenance": "synthetic",
+    "stack_name": "Django+Celery",
+    "stack_tags": ["django", "python", "celery"],
+    "expected_outcome": "rejected",
+    "expected_reason_substr": "conflicting language",
+    "candidate": {
+      "id": "rails/skills@sidekiq-patterns",
+      "source_repo": "rails/skills",
+      "skill_name": "sidekiq-patterns",
+      "layer": "worker",
+      "found_by_query": "celery",
+      "pinned_sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+      "install_count": 92000,
+      "tags": ["ruby", "rails", "sidekiq"],
+      "meta": {
+        "description": "Sidekiq worker queues, Redis connection concurrency, and retry patterns in Ruby on Rails.",
+        "description_tokens": 14,
+        "skill_md_lines": 140,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": "2026-03-01T00:00:00Z",
+        "audit_status": "clean"
+      }
+    }
+  },
+  {
+    "case": "flutter_for_go_service",
+    "provenance": "synthetic",
+    "stack_name": "Go service",
+    "stack_tags": ["go", "golang"],
+    "expected_outcome": "rejected",
+    "expected_reason_substr": "conflicting language",
+    "candidate": {
+      "id": "flutter-community/skills@flutter-layered-architecture",
+      "source_repo": "flutter-community/skills",
+      "skill_name": "flutter-layered-architecture",
+      "layer": "framework",
+      "found_by_query": "go",
+      "pinned_sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+      "install_count": 4500,
+      "tags": ["flutter", "dart", "architecture"],
+      "meta": {
+        "description": "Clean screen -> provider -> repository architecture and widget modularization for Flutter.",
+        "description_tokens": 14,
+        "skill_md_lines": 140,
+        "has_references": true,
+        "has_scripts": false,
+        "last_commit": "2026-03-01T00:00:00Z",
+        "audit_status": "clean"
+      }
+    }
+  },
+  {
+    "case": "vue_for_nextjs",
+    "provenance": "synthetic",
+    "stack_name": "Next.js",
+    "stack_tags": ["next", "nextjs", "react", "typescript"],
+    "expected_outcome": "rejected",
+    "expected_reason_substr": "conflicting language",
+    "candidate": {
+      "id": "vuejs/skills@vue-best-practices",
+      "source_repo": "vuejs/skills",
+      "skill_name": "vue-best-practices",
+      "layer": "framework",
+      "found_by_query": "next",
+      "pinned_sha": "1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62",
+      "install_count": 95000,
+      "tags": ["vue", "javascript"],
+      "meta": {
+        "description": "Vue 3 Composition API idioms and reactivity performance patterns.",
+        "description_tokens": 11,
+        "skill_md_lines": 140,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": "2026-03-01T00:00:00Z",
+        "audit_status": "clean"
+      }
+    }
+  },
+  {
+    "case": "django_for_rails",
+    "provenance": "synthetic",
+    "stack_name": "Rails",
+    "stack_tags": ["rails", "ruby"],
+    "expected_outcome": "rejected",
+    "expected_reason_substr": "conflicting language",
+    "candidate": {
+      "id": "django/skills@django-orm-patterns",
+      "source_repo": "django/skills",
+      "skill_name": "django-orm-patterns",
+      "layer": "orm",
+      "found_by_query": "rails",
+      "pinned_sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+      "install_count": 110000,
+      "tags": ["python", "django", "orm"],
+      "meta": {
+        "description": "Django ORM select_related and prefetch_related query optimizations.",
+        "description_tokens": 10,
+        "skill_md_lines": 120,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": "2026-03-01T00:00:00Z",
+        "audit_status": "clean"
+      }
+    }
+  },
+  {
+    "case": "python_click_for_rust_cli",
+    "provenance": "synthetic",
+    "stack_name": "Rust CLI",
+    "stack_tags": ["rust", "cli", "clap"],
+    "expected_outcome": "rejected",
+    "expected_reason_substr": "conflicting language",
+    "candidate": {
+      "id": "python/skills@click-cli",
+      "source_repo": "python/skills",
+      "skill_name": "click-cli",
+      "layer": "cli",
+      "found_by_query": "cli",
+      "pinned_sha": "25278e7d7b6cf6e6a4e7a6c8e10f14ff22f0eb5b",
+      "install_count": 130000,
+      "tags": ["python", "click", "cli"],
+      "meta": {
+        "description": "Click CLI argument parsers and nested subcommands in Python applications.",
+        "description_tokens": 11,
+        "skill_md_lines": 110,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": "2026-03-01T00:00:00Z",
+        "audit_status": "clean"
+      }
+    }
+  }
+]

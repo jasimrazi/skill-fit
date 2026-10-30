@@ -1,0 +1,2 @@
+Status: verified_exists
+Evidence: 200 OK from https://raw.githubusercontent.com/heyeddi-com/heyeddi-skills/HEAD/skills/composable-patterns/SKILL.md

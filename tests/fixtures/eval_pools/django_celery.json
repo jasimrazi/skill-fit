@@ -1,0 +1,5113 @@
+{
+  "stack_name": "Django+Celery",
+  "tags": [
+    "django",
+    "python",
+    "celery"
+  ],
+  "candidate_count": 195,
+  "sampling_seed": 42,
+  "sampled_count": 15,
+  "candidates": [
+    {
+      "id": "ahmetcdincer/django-skills/django-best-practices",
+      "source_repo": "ahmetcdincer/django-skills",
+      "skill_name": "django-best-practices",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 67,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.529934+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "baekenough/oh-my-customcode/django-best-practices",
+      "source_repo": "baekenough/oh-my-customcode",
+      "skill_name": "django-best-practices",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 7,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.529934+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "suraj1089/django-best-practices/django-best-practices",
+      "source_repo": "suraj1089/django-best-practices",
+      "skill_name": "django-best-practices",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 4,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.529934+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "smithery.ai/django-best-practices",
+      "source_repo": "smithery.ai",
+      "skill_name": "django-best-practices",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.529934+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "loopyluci/skills/django-rest-api-best-practices",
+      "source_repo": "loopyluci/skills",
+      "skill_name": "django-rest-api-best-practices",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.530939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "affaan-m/ecc/django-patterns",
+      "source_repo": "affaan-m/ecc",
+      "skill_name": "django-patterns",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 13258,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.530939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "affaan-m/ecc/django-security",
+      "source_repo": "affaan-m/ecc",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 12481,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.530939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json",
+        "repo_verified": "verified_exists",
+        "evidence": "200 OK from https://raw.githubusercontent.com/affaan-m/ecc/HEAD/skills/django-security/SKILL.md"
+      }
+    },
+    {
+      "id": "affaan-m/ecc/database-migrations",
+      "source_repo": "affaan-m/ecc",
+      "skill_name": "database-migrations",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 12041,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.530939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "vintasoftware/django-ai-plugins/django-expert",
+      "source_repo": "vintasoftware/django-ai-plugins",
+      "skill_name": "django-expert",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 5754,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.530939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "mrgoonie/claudekit-skills/backend-development",
+      "source_repo": "mrgoonie/claudekit-skills",
+      "skill_name": "backend-development",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 2299,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.530939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "vintasoftware/django-ai-plugins/django-celery-expert",
+      "source_repo": "vintasoftware/django-ai-plugins",
+      "skill_name": "django-celery-expert",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 1142,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.530939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "mindrally/skills/django-python",
+      "source_repo": "mindrally/skills",
+      "skill_name": "django-python",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 942,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.530939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "mindrally/skills/web-development",
+      "source_repo": "mindrally/skills",
+      "skill_name": "web-development",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 822,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.530939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "microsoft/debugpy/django",
+      "source_repo": "microsoft/debugpy",
+      "skill_name": "django",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 46,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.530939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "siviter-xyz/dot-agent/backend-engineer",
+      "source_repo": "siviter-xyz/dot-agent",
+      "skill_name": "backend-engineer",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 342,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.530939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "moizibnyousaf/ai-agent-skills/python-development",
+      "source_repo": "moizibnyousaf/ai-agent-skills",
+      "skill_name": "python-development",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 310,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.530939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "pproenca/dot-skills/django-recommender-search-backend-patterns",
+      "source_repo": "pproenca/dot-skills",
+      "skill_name": "django-recommender-search-backend-patterns",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 124,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.530939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "midudev/autoskills/django-expert",
+      "source_repo": "midudev/autoskills",
+      "skill_name": "django-expert",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 59,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.530939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "snakeo/claude-debug-and-refactor-skills-plugin/refactordjango",
+      "source_repo": "snakeo/claude-debug-and-refactor-skills-plugin",
+      "skill_name": "refactor:django",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 45,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.530939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "waldencui/claude-code-django/celery-patterns",
+      "source_repo": "waldencui/claude-code-django",
+      "skill_name": "celery-patterns",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 38,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.530939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "agusabas/django-skills/django-celery-expert",
+      "source_repo": "agusabas/django-skills",
+      "skill_name": "django-celery-expert",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 18,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.530939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "vstorm-co/production-stack-skills/production-fastapi",
+      "source_repo": "vstorm-co/production-stack-skills",
+      "skill_name": "production-fastapi",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 35,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.531939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "clostaunau/holiday-card/django-conventions",
+      "source_repo": "clostaunau/holiday-card",
+      "skill_name": "django-conventions",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 17,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.531939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json",
+        "repo_verified": "unverified_budget_cap",
+        "evidence": "Exceeded per-stack 8-request verification budget cap"
+      }
+    },
+    {
+      "id": "agusabas/django-skills/refactordjango",
+      "source_repo": "agusabas/django-skills",
+      "skill_name": "refactordjango",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 30,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.531939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "mohamedmandour10/agentic-django/django-migrations",
+      "source_repo": "mohamedmandour10/agentic-django",
+      "skill_name": "django-migrations",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 15,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.531939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "vstorm-co/production-stack-skills/production-postgres",
+      "source_repo": "vstorm-co/production-stack-skills",
+      "skill_name": "production-postgres",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 25,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.531939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "agenticaiengineer/ai-engineer-skills/django-developer",
+      "source_repo": "agenticaiengineer/ai-engineer-skills",
+      "skill_name": "django-developer",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 12,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.531939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json",
+        "repo_verified": "unverified_budget_cap",
+        "evidence": "Exceeded per-stack 8-request verification budget cap"
+      }
+    },
+    {
+      "id": "tusharkrbarman/skills-for-open-code/django-security",
+      "source_repo": "tusharkrbarman/skills-for-open-code",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 12,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.531939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "rcgsheffield/skills/django-development",
+      "source_repo": "rcgsheffield/skills",
+      "skill_name": "django-development",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 12,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.531939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json",
+        "repo_verified": "verified_exists",
+        "evidence": "200 OK from https://raw.githubusercontent.com/rcgsheffield/skills/HEAD/skills/django-development/SKILL.md"
+      }
+    },
+    {
+      "id": "vibeeval/vibecosystem/django-patterns",
+      "source_repo": "vibeeval/vibecosystem",
+      "skill_name": "django-patterns",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 12,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.531939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "tusharkrbarman/skills-for-open-code/django-patterns",
+      "source_repo": "tusharkrbarman/skills-for-open-code",
+      "skill_name": "django-patterns",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 12,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.531939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "manikosto/claude-code-python-stack/django-patterns",
+      "source_repo": "manikosto/claude-code-python-stack",
+      "skill_name": "django-patterns",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 12,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.531939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "vibeeval/vibecosystem/django-security",
+      "source_repo": "vibeeval/vibecosystem",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 11,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.531939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "binjuhor/shadcn-lar/backend-development",
+      "source_repo": "binjuhor/shadcn-lar",
+      "skill_name": "backend-development",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 21,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.531939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "binhmuc/autobot-review/backend-development",
+      "source_repo": "binhmuc/autobot-review",
+      "skill_name": "backend-development",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 20,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.531939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "mark393295827/house-maint-ai/django-security",
+      "source_repo": "mark393295827/house-maint-ai",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 10,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.531939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json",
+        "repo_verified": "verified_exists",
+        "evidence": "200 OK from https://raw.githubusercontent.com/mark393295827/house-maint-ai/HEAD/skills/django-security/SKILL.md"
+      }
+    },
+    {
+      "id": "manikosto/claude-code-python-stack/django-security",
+      "source_repo": "manikosto/claude-code-python-stack",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 10,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.531939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "masterfermin02/laravel-agent-skill/laravel-best-practices",
+      "source_repo": "masterfermin02/laravel-agent-skill",
+      "skill_name": "laravel-best-practices",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 17,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.531939+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "clostaunau/holiday-card/python-async-patterns",
+      "source_repo": "clostaunau/holiday-card",
+      "skill_name": "python-async-patterns",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 16,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.532934+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "angelmic/everything-claude-code-ios/django-security",
+      "source_repo": "angelmic/everything-claude-code-ios",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 8,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.532934+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "yuen30/my-skills/django-expert",
+      "source_repo": "yuen30/my-skills",
+      "skill_name": "Django Expert",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 8,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.532934+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "angelmic/everything-claude-code-ios/django-patterns",
+      "source_repo": "angelmic/everything-claude-code-ios",
+      "skill_name": "django-patterns",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 8,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.532934+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "the1studio/theone-training-skills/backend-development",
+      "source_repo": "the1studio/theone-training-skills",
+      "skill_name": "backend-development",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 15,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.532934+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "tusharkrbarman/skills-for-open-code/database-migrations",
+      "source_repo": "tusharkrbarman/skills-for-open-code",
+      "skill_name": "database-migrations",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 13,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.532934+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "manikosto/claude-code-python-stack/database-migrations",
+      "source_repo": "manikosto/claude-code-python-stack",
+      "skill_name": "database-migrations",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 13,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.532934+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "spardutti/claude-skills/drf-best-practices",
+      "source_repo": "spardutti/claude-skills",
+      "skill_name": "drf-best-practices",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 12,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.532934+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "lloredia/everything-claude-code/django-security",
+      "source_repo": "lloredia/everything-claude-code",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 6,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.532934+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "eugene-ee/affaan-m-ecc/django-security",
+      "source_repo": "eugene-ee/affaan-m-ecc",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 6,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.532934+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "lloredia/everything-claude-code/django-patterns",
+      "source_repo": "lloredia/everything-claude-code",
+      "skill_name": "django-patterns",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 6,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.532934+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "eugene-ee/affaan-m-ecc/django-patterns",
+      "source_repo": "eugene-ee/affaan-m-ecc",
+      "skill_name": "django-patterns",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 6,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.532934+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "moodmnky-llc/mood-mnky-command/python-development",
+      "source_repo": "moodmnky-llc/mood-mnky-command",
+      "skill_name": "python-development",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 11,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.532934+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "julianromli/opencode-template/python-development",
+      "source_repo": "julianromli/opencode-template",
+      "skill_name": "python-development",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 10,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.532934+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "wollfoo/setup-factory/backend-development",
+      "source_repo": "wollfoo/setup-factory",
+      "skill_name": "backend-development",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 10,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.532934+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "nilecui/skillsbase/backend-development",
+      "source_repo": "nilecui/skillsbase",
+      "skill_name": "backend-development",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 10,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.532934+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "wsvincent/django-skills/django",
+      "source_repo": "wsvincent/django-skills",
+      "skill_name": "django",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 5,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.532934+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "kgx/ai-everything-claude-code/django-security",
+      "source_repo": "kgx/ai-everything-claude-code",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 5,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.532934+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "defuj/opencode-agent-kit/django-security",
+      "source_repo": "defuj/opencode-agent-kit",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 5,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.532934+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "olino3/forge/django",
+      "source_repo": "olino3/forge",
+      "skill_name": "django",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 5,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.532934+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json",
+        "repo_verified": "not_found",
+        "evidence": "404 Not Found from https://raw.githubusercontent.com/olino3/forge/HEAD/skills/django/SKILL.md"
+      }
+    },
+    {
+      "id": "kgx/ai-everything-claude-code/django-patterns",
+      "source_repo": "kgx/ai-everything-claude-code",
+      "skill_name": "django-patterns",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 5,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.533930+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "defuj/opencode-agent-kit/django-patterns",
+      "source_repo": "defuj/opencode-agent-kit",
+      "skill_name": "django-patterns",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 5,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.533930+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "projanvil/mindforge/python-development",
+      "source_repo": "projanvil/mindforge",
+      "skill_name": "python-development",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 9,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.533930+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "angelmic/everything-claude-code-ios/database-migrations",
+      "source_repo": "angelmic/everything-claude-code-ios",
+      "skill_name": "database-migrations",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 8,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.533930+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "zircote-plugins/agents/backend-development",
+      "source_repo": "zircote-plugins/agents",
+      "skill_name": "backend-development",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 8,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.533930+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json",
+        "repo_verified": "verified_exists",
+        "evidence": "200 OK from https://raw.githubusercontent.com/zircote-plugins/agents/HEAD/skills/backend-development/SKILL.md"
+      }
+    },
+    {
+      "id": "mamba-mental/agent-skill-manager/backend-development",
+      "source_repo": "mamba-mental/agent-skill-manager",
+      "skill_name": "backend-development",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 8,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.533930+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "oiler/claude-skills/python-expert",
+      "source_repo": "oiler/claude-skills",
+      "skill_name": "python-expert",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 8,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.533930+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "felipe3dfx/skills/django-expert",
+      "source_repo": "felipe3dfx/skills",
+      "skill_name": "django-expert",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 4,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.533930+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "charlesmsiegel/tg/django-simplifier",
+      "source_repo": "charlesmsiegel/tg",
+      "skill_name": "django-simplifier",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 4,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.533930+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "ysyecust/everything-claude-code/django-security",
+      "source_repo": "ysyecust/everything-claude-code",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 4,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.533930+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "sehoon787/my-codex/django-security",
+      "source_repo": "sehoon787/my-codex",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 4,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.533930+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "ffsshhttiikk/opencode-agents-skills/django",
+      "source_repo": "ffsshhttiikk/opencode-agents-skills",
+      "skill_name": "django",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 4,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.533930+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "speedoa1/everything-opencode/django-patterns",
+      "source_repo": "speedoa1/everything-opencode",
+      "skill_name": "django-patterns",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 4,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.533930+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json",
+        "repo_verified": "not_found",
+        "evidence": "404 Not Found from https://raw.githubusercontent.com/speedoa1/everything-opencode/HEAD/skills/django-patterns/SKILL.md"
+      }
+    },
+    {
+      "id": "ysyecust/everything-claude-code/django-patterns",
+      "source_repo": "ysyecust/everything-claude-code",
+      "skill_name": "django-patterns",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 4,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.533930+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "sehoon787/my-codex/django-patterns",
+      "source_repo": "sehoon787/my-codex",
+      "skill_name": "django-patterns",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 4,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.533930+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "mit-network/everything-claude-code/django-security",
+      "source_repo": "mit-network/everything-claude-code",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 3,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.533930+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "luohaothu/everything-codex/django-security",
+      "source_repo": "luohaothu/everything-codex",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 3,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.533930+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "dragonview/everything-claude-code-zh/django-security",
+      "source_repo": "dragonview/everything-claude-code-zh",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 3,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.533930+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "mit-network/everything-claude-code/django-patterns",
+      "source_repo": "mit-network/everything-claude-code",
+      "skill_name": "django-patterns",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 3,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.534931+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "luohaothu/everything-codex/django-patterns",
+      "source_repo": "luohaothu/everything-codex",
+      "skill_name": "django-patterns",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 3,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.534931+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "kunanonj/ai-skills-hub/django-patterns",
+      "source_repo": "kunanonj/ai-skills-hub",
+      "skill_name": "django-patterns",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 3,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.534931+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "kprsnt2/mylocalcli/django",
+      "source_repo": "kprsnt2/mylocalcli",
+      "skill_name": "django",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.534931+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "juanelojga/aiecommerce/django-expert",
+      "source_repo": "juanelojga/aiecommerce",
+      "skill_name": "django-expert",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.534931+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "arrkwen/skillhub/django-expert",
+      "source_repo": "arrkwen/skillhub",
+      "skill_name": "django-expert",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.535237+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "unrealandychan/clean-code-skill/django-security",
+      "source_repo": "unrealandychan/clean-code-skill",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.535237+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "partha7364/everything-claude-code/django-security",
+      "source_repo": "partha7364/everything-claude-code",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.535237+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "mturac/everything-openai-codex/django-security",
+      "source_repo": "mturac/everything-openai-codex",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.535237+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "lidge-jun/cli-jaw-skills/django-security",
+      "source_repo": "lidge-jun/cli-jaw-skills",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.535237+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "krishnakanthb13/everything-antigravity/django-security",
+      "source_repo": "krishnakanthb13/everything-antigravity",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.535237+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "khetansarvesh/sarvesh-harness-helper/django-security",
+      "source_repo": "khetansarvesh/sarvesh-harness-helper",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.535237+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "jamkris/everything-gemini-code/django-security",
+      "source_repo": "jamkris/everything-gemini-code",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.535237+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "fmarzochi/egc/django-security",
+      "source_repo": "fmarzochi/egc",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.535237+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "comeonoliver/skillshub/django-security",
+      "source_repo": "comeonoliver/skillshub",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.535237+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "adamreger/ecc-antigravity/django-security",
+      "source_repo": "adamreger/ecc-antigravity",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.535237+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "omkarop0808/neofuture/django-security",
+      "source_repo": "omkarop0808/neofuture",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.535237+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "ultr4nerd/claude-code-django-expert/django-review",
+      "source_repo": "ultr4nerd/claude-code-django-expert",
+      "skill_name": "django-review",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.535237+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "ultr4nerd/claude-code-django-expert/django-new-model",
+      "source_repo": "ultr4nerd/claude-code-django-expert",
+      "skill_name": "django-new-model",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.535237+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "ultr4nerd/claude-code-django-expert/django-new-app",
+      "source_repo": "ultr4nerd/claude-code-django-expert",
+      "skill_name": "django-new-app",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.535237+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "unrealandychan/clean-code-skill/django-patterns",
+      "source_repo": "unrealandychan/clean-code-skill",
+      "skill_name": "django-patterns",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.535237+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "partha7364/everything-claude-code/django-patterns",
+      "source_repo": "partha7364/everything-claude-code",
+      "skill_name": "django-patterns",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.535237+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "omkarop0808/neofuture/django-patterns",
+      "source_repo": "omkarop0808/neofuture",
+      "skill_name": "django-patterns",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.535237+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "mark393295827/house-maint-ai/django-patterns",
+      "source_repo": "mark393295827/house-maint-ai",
+      "skill_name": "django-patterns",
+      "layer": "general",
+      "found_by_query": "django best practices",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django best practices",
+        "timestamp": "2026-10-29T08:22:46.535237+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_1_django_best_practices.json"
+      }
+    },
+    {
+      "id": "affaan-m/ecc/django-celery",
+      "source_repo": "affaan-m/ecc",
+      "skill_name": "django-celery",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 7088,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.809159+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "codeatcode/oss-ai-skills/django-celery",
+      "source_repo": "codeatcode/oss-ai-skills",
+      "skill_name": "django-celery",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 14,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.810120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "eugene-ee/affaan-m-ecc/django-celery",
+      "source_repo": "eugene-ee/affaan-m-ecc",
+      "skill_name": "django-celery",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 6,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.810120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "defuj/opencode-agent-kit/django-celery",
+      "source_repo": "defuj/opencode-agent-kit",
+      "skill_name": "django-celery",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 5,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.810120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "ristemingov/django-claude-setup/django-celery",
+      "source_repo": "ristemingov/django-claude-setup",
+      "skill_name": "django-celery",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 4,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.810120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "ysyecust/everything-claude-code/django-celery",
+      "source_repo": "ysyecust/everything-claude-code",
+      "skill_name": "django-celery",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.810120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "unrealandychan/clean-code-skill/django-celery",
+      "source_repo": "unrealandychan/clean-code-skill",
+      "skill_name": "django-celery",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.810120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "mturac/everything-openai-codex/django-celery",
+      "source_repo": "mturac/everything-openai-codex",
+      "skill_name": "django-celery",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.810120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "sysp0/dj-style-skill/django-celery",
+      "source_repo": "sysp0/dj-style-skill",
+      "skill_name": "django-celery",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.810120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json",
+        "repo_verified": "unverified_budget_cap",
+        "evidence": "Exceeded per-stack 8-request verification budget cap"
+      }
+    },
+    {
+      "id": "rockrashit19/ecc/django-celery",
+      "source_repo": "rockrashit19/ecc",
+      "skill_name": "django-celery",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.810120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "pey-sjitech/ecc/django-celery",
+      "source_repo": "pey-sjitech/ecc",
+      "skill_name": "django-celery",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.810120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "giovanisp/everything-claude-code/django-celery",
+      "source_repo": "giovanisp/everything-claude-code",
+      "skill_name": "django-celery",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.810120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "danielnguyenfinhub/ecc/django-celery",
+      "source_repo": "danielnguyenfinhub/ecc",
+      "skill_name": "django-celery",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.810120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "cloudblower/ecc-antigravity/django-celery",
+      "source_repo": "cloudblower/ecc-antigravity",
+      "skill_name": "django-celery",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.810120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "mhbzhy-lost/claude-personal-config/django-celery-integration",
+      "source_repo": "mhbzhy-lost/claude-personal-config",
+      "skill_name": "django-celery-integration",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.810120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "getsentry/sentry-agent-skills/sentry-python-sdk",
+      "source_repo": "getsentry/sentry-agent-skills",
+      "skill_name": "sentry-python-sdk",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 339,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.810120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "bobmatnyc/claude-mpm-skills/celery",
+      "source_repo": "bobmatnyc/claude-mpm-skills",
+      "skill_name": "celery",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 458,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.810120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "sickn33/agentic-awesome-skills/django-pro",
+      "source_repo": "sickn33/agentic-awesome-skills",
+      "skill_name": "django-pro",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 340,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.810120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "rmyndharis/antigravity-skills/django-pro",
+      "source_repo": "rmyndharis/antigravity-skills",
+      "skill_name": "django-pro",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 34,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.810120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "mohamedmandour10/agentic-django/django-business-logic",
+      "source_repo": "mohamedmandour10/agentic-django",
+      "skill_name": "django-business-logic",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 18,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.810120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "autter-dev/autter-skills/otel-python-style",
+      "source_repo": "autter-dev/autter-skills",
+      "skill_name": "otel-python-style",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 29,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.810120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "dvf/opinionated-django/dj-pytest",
+      "source_repo": "dvf/opinionated-django",
+      "skill_name": "dj-pytest",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 24,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.810120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "dvf/opinionated-django/dj-architecture",
+      "source_repo": "dvf/opinionated-django",
+      "skill_name": "dj-architecture",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 23,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.811120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "dvf/opinionated-django/dj-signals",
+      "source_repo": "dvf/opinionated-django",
+      "skill_name": "dj-signals",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 22,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.811120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "dvf/opinionated-django/dj-services",
+      "source_repo": "dvf/opinionated-django",
+      "skill_name": "dj-services",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 22,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.811120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "itsimonfredlingjack/codex-dev-plugin/django-pro",
+      "source_repo": "itsimonfredlingjack/codex-dev-plugin",
+      "skill_name": "django-pro",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 10,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.811120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "viewflow/seedkit/django-seedkit",
+      "source_repo": "viewflow/seedkit",
+      "skill_name": "django-seedkit",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 8,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.811120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "davila7/claude-code-templates/django-pro",
+      "source_repo": "davila7/claude-code-templates",
+      "skill_name": "django-pro",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 8,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.811120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "ristemingov/django-claude-setup/django-deployment",
+      "source_repo": "ristemingov/django-claude-setup",
+      "skill_name": "django-deployment",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 7,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.811120+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "vanman2024/ai-dev-marketplace/celery-config-patterns",
+      "source_repo": "vanman2024/ai-dev-marketplace",
+      "skill_name": "celery-config-patterns",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 7,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.811562+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "ashbrener/opinionated-django/dj-pytest",
+      "source_repo": "ashbrener/opinionated-django",
+      "skill_name": "dj-pytest",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 12,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.811562+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "ashbrener/opinionated-django/dj-architecture",
+      "source_repo": "ashbrener/opinionated-django",
+      "skill_name": "dj-architecture",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 12,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.811562+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "ashbrener/opinionated-django/dj-signals",
+      "source_repo": "ashbrener/opinionated-django",
+      "skill_name": "dj-signals",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 12,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.811562+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "doanchienthangdev/omgkit/building-django-apps",
+      "source_repo": "doanchienthangdev/omgkit",
+      "skill_name": "building-django-apps",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 12,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.811562+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "ashbrener/opinionated-django/dj-tasks",
+      "source_repo": "ashbrener/opinionated-django",
+      "skill_name": "dj-tasks",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 12,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.813526+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "ashbrener/opinionated-django/dj-services",
+      "source_repo": "ashbrener/opinionated-django",
+      "skill_name": "dj-services",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 12,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.814077+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "dvf/opinionated-django/architecture",
+      "source_repo": "dvf/opinionated-django",
+      "skill_name": "architecture",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 11,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.814211+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "dvf/opinionated-django/services",
+      "source_repo": "dvf/opinionated-django",
+      "skill_name": "services",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 11,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.814211+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "dvf/opinionated-django/pytest",
+      "source_repo": "dvf/opinionated-django",
+      "skill_name": "pytest",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 10,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.815134+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "dvf/opinionated-django/signals",
+      "source_repo": "dvf/opinionated-django",
+      "skill_name": "signals",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 10,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.815134+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json",
+        "repo_verified": "unverified_budget_cap",
+        "evidence": "Exceeded per-stack 8-request verification budget cap"
+      }
+    },
+    {
+      "id": "orcaqubits/agentic-commerce-skills-plugins/python-django",
+      "source_repo": "orcaqubits/agentic-commerce-skills-plugins",
+      "skill_name": "python-django",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 10,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.815134+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "skeletorflet/opencode-kit/django-patterns",
+      "source_repo": "skeletorflet/opencode-kit",
+      "skill_name": "django-patterns",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 5,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.815134+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "smithery.ai/django-pro",
+      "source_repo": "smithery.ai",
+      "skill_name": "django-pro",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 4,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.815134+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "fulit103/django-clean-architecture/django-clean-architecture",
+      "source_repo": "fulit103/django-clean-architecture",
+      "skill_name": "django-clean-architecture",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 4,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.815134+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "hainamchung/agent-assistant/django-pro",
+      "source_repo": "hainamchung/agent-assistant",
+      "skill_name": "django-pro",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 3,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.815134+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "clubmediterranee/ai-core/django-pro",
+      "source_repo": "clubmediterranee/ai-core",
+      "skill_name": "django-pro",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 3,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.816121+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "mathewgeejo/agent-skills/django-pro",
+      "source_repo": "mathewgeejo/agent-skills",
+      "skill_name": "django-pro",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.816165+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "comeonoliver/skillshub/django-pro",
+      "source_repo": "comeonoliver/skillshub",
+      "skill_name": "django-pro",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.816165+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "cindovahq/security-skills/django-security",
+      "source_repo": "cindovahq/security-skills",
+      "skill_name": "django-security",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.816165+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "tranhieutt/software_development_department/django-patterns",
+      "source_repo": "tranhieutt/software_development_department",
+      "skill_name": "django-patterns",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.816165+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "mhbzhy-lost/claude-personal-config/celery-scheduling",
+      "source_repo": "mhbzhy-lost/claude-personal-config",
+      "skill_name": "celery-scheduling",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.816165+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "iam-nazmul/drcr/celery",
+      "source_repo": "iam-nazmul/drcr",
+      "skill_name": "celery",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.816165+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json",
+        "repo_verified": "unverified_budget_cap",
+        "evidence": "Exceeded per-stack 8-request verification budget cap"
+      }
+    },
+    {
+      "id": "newmindsgroup/ai-agent-skills-library/django-pro",
+      "source_repo": "newmindsgroup/ai-agent-skills-library",
+      "skill_name": "django-pro",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.816165+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "mishit18/claude-code-templates/django-pro",
+      "source_repo": "mishit18/claude-code-templates",
+      "skill_name": "django-pro",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.816165+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "laithalenooz/claude/django-pro",
+      "source_repo": "laithalenooz/claude",
+      "skill_name": "django-pro",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.816165+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "kignleon/joesmith-website/django-pro",
+      "source_repo": "kignleon/joesmith-website",
+      "skill_name": "django-pro",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.816165+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "dokhacgiakhoa/agent-skills-4-vibe-coding-cli/django-pro",
+      "source_repo": "dokhacgiakhoa/agent-skills-4-vibe-coding-cli",
+      "skill_name": "django-pro",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.816165+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "aiskillstore/marketplace/django-pro",
+      "source_repo": "aiskillstore/marketplace",
+      "skill_name": "django-pro",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.816165+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "0xzahed/antigravity-skills/django-pro",
+      "source_repo": "0xzahed/antigravity-skills",
+      "skill_name": "django-pro",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.816165+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "charlesmsiegel/coding-skills/django-code-doctor",
+      "source_repo": "charlesmsiegel/coding-skills",
+      "skill_name": "django-code-doctor",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.816165+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "gmarte/claude-code-django/celery-patterns",
+      "source_repo": "gmarte/claude-code-django",
+      "skill_name": "celery-patterns",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.816165+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "cavaldos/opencode-kit/django-patterns",
+      "source_repo": "cavaldos/opencode-kit",
+      "skill_name": "django-patterns",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.816165+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "haj1t/senior-dev-squad-skills/django-pro",
+      "source_repo": "haj1t/senior-dev-squad-skills",
+      "skill_name": "django-pro",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.817177+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "kettleofketchup/dotfiles/celery",
+      "source_repo": "kettleofketchup/dotfiles",
+      "skill_name": "celery",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.817251+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json",
+        "repo_verified": "not_found",
+        "evidence": "404 Not Found from https://raw.githubusercontent.com/kettleofketchup/dotfiles/HEAD/skills/celery/SKILL.md"
+      }
+    },
+    {
+      "id": "ekinertac/opinionated-django/django-signals",
+      "source_repo": "ekinertac/opinionated-django",
+      "skill_name": "django-signals",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.817251+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "ekinertac/opinionated-django/django-scaffold",
+      "source_repo": "ekinertac/opinionated-django",
+      "skill_name": "django-scaffold",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.817251+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "ekinertac/opinionated-django/django-docker",
+      "source_repo": "ekinertac/opinionated-django",
+      "skill_name": "django-docker",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.817251+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "iam-nazmul/drcr/django-channels",
+      "source_repo": "iam-nazmul/drcr",
+      "skill_name": "django-channels",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.817251+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "usmanasifbutt/agent-skills/django-backend-engineering",
+      "source_repo": "usmanasifbutt/agent-skills",
+      "skill_name": "django-backend-engineering",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.817251+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "tomevault-io/tomes/celery",
+      "source_repo": "tomevault-io/tomes",
+      "skill_name": "celery",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.817251+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "abhisheksharma-17/skills-graph/celery",
+      "source_repo": "abhisheksharma-17/skills-graph",
+      "skill_name": "celery",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.817251+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "vanman2024/ai-dev-marketplace/beat-scheduling",
+      "source_repo": "vanman2024/ai-dev-marketplace",
+      "skill_name": "beat-scheduling",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 6,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.817251+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "vanman2024/ai-dev-marketplace/framework-integrations",
+      "source_repo": "vanman2024/ai-dev-marketplace",
+      "skill_name": "framework-integrations",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 5,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.817251+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "rennixx/missing-piece/missing-piece-django",
+      "source_repo": "rennixx/missing-piece",
+      "skill_name": "missing-piece-django",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 5,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.817251+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json",
+        "repo_verified": "unverified_budget_cap",
+        "evidence": "Exceeded per-stack 8-request verification budget cap"
+      }
+    },
+    {
+      "id": "ali-fani/django-unfold-skills/unfold-integrations",
+      "source_repo": "ali-fani/django-unfold-skills",
+      "skill_name": "unfold-integrations",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 3,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.817251+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "robustarush/seedkit/seedkit",
+      "source_repo": "robustarush/seedkit",
+      "skill_name": "seedkit",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 3,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.817251+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "yurake/skills/python-backend",
+      "source_repo": "yurake/skills",
+      "skill_name": "python-backend",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 3,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.817251+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "robustarush/seedkit/seedkit-slim",
+      "source_repo": "robustarush/seedkit",
+      "skill_name": "seedkit-slim",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.817251+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "viewflow/seedkit/seedkit",
+      "source_repo": "viewflow/seedkit",
+      "skill_name": "seedkit",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.817251+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "mobinhasanghasemi/backend-skill/backend-architect-neural",
+      "source_repo": "mobinhasanghasemi/backend-skill",
+      "skill_name": "backend-architect-neural",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 2,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.817251+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "mansheman/batitong/testing-batitong",
+      "source_repo": "mansheman/batitong",
+      "skill_name": "testing-batitong",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.817251+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "iam-nazmul/drcr/guardrails",
+      "source_repo": "iam-nazmul/drcr",
+      "skill_name": "guardrails",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.817251+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "appverk/av-marketplace/developer-plugins-integration",
+      "source_repo": "appverk/av-marketplace",
+      "skill_name": "developer-plugins-integration",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.818179+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "ccoalm/ccl-skills/python-service-dev",
+      "source_repo": "ccoalm/ccl-skills",
+      "skill_name": "python-service-dev",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.818179+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "jzferrell26/dm-skills/python-weapon",
+      "source_repo": "jzferrell26/dm-skills",
+      "skill_name": "python-weapon",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.818179+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "viewflow/seedkit/seedkit-slim",
+      "source_repo": "viewflow/seedkit",
+      "skill_name": "seedkit-slim",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.818179+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "anantbhandarkar/make-it-right/mir-backend-python",
+      "source_repo": "anantbhandarkar/make-it-right",
+      "skill_name": "mir-backend-python",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.818179+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "djude1/argus_websitediagnosticplatform/argus-project",
+      "source_repo": "djude1/argus_websitediagnosticplatform",
+      "skill_name": "argus-project",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.818179+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "cjhwong/py-clean-architecture-examples/py-clean-arch",
+      "source_repo": "cjhwong/py-clean-architecture-examples",
+      "skill_name": "py-clean-arch",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.818179+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json",
+        "repo_verified": "unverified_budget_cap",
+        "evidence": "Exceeded per-stack 8-request verification budget cap"
+      }
+    },
+    {
+      "id": "420company/artemis/sentry-python-sdk",
+      "source_repo": "420company/artemis",
+      "skill_name": "sentry-python-sdk",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.818179+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json",
+        "repo_verified": "not_found",
+        "evidence": "404 Not Found from https://raw.githubusercontent.com/420company/artemis/HEAD/skills/sentry-python-sdk/SKILL.md"
+      }
+    },
+    {
+      "id": "miratcan/claude-skills/code-like-djangonaut",
+      "source_repo": "miratcan/claude-skills",
+      "skill_name": "code-like-djangonaut",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.818179+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "sales-skills/sales/sales-saleor",
+      "source_repo": "sales-skills/sales",
+      "skill_name": "sales-saleor",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.818179+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "spotdraft/oncall-investigator-skills/re-trigger-contract-executed-webhook-bulk-timeout",
+      "source_repo": "spotdraft/oncall-investigator-skills",
+      "skill_name": "re-trigger-contract-executed-webhook-bulk-timeout",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.818179+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "anantbhandarkar/make-it-right/mir-backend-python-flask",
+      "source_repo": "anantbhandarkar/make-it-right",
+      "skill_name": "mir-backend-python-flask",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 1,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.818179+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    },
+    {
+      "id": "getsentry/sentry-for-ai/sentry-python-sdk",
+      "source_repo": "getsentry/sentry-for-ai",
+      "skill_name": "sentry-python-sdk",
+      "layer": "general",
+      "found_by_query": "django celery",
+      "install_count": 2575,
+      "pinned_sha": null,
+      "tags": [],
+      "meta": {
+        "description": "",
+        "description_tokens": 0,
+        "skill_md_lines": 150,
+        "has_references": false,
+        "has_scripts": false,
+        "last_commit": null,
+        "audit_status": "clean"
+      },
+      "provenance": {
+        "type": "captured_live",
+        "query": "django celery",
+        "timestamp": "2026-10-29T08:22:47.818179+00:00",
+        "source": "skills.sh/api/search",
+        "raw_response_file": "tests\\fixtures\\eval_raw\\django_celery\\response_2_django_celery.json"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+Status: verified_exists
+Evidence: 200 OK from https://raw.githubusercontent.com/sickn33/agentic-awesome-skills/HEAD/skills/fastapi-templates/SKILL.md

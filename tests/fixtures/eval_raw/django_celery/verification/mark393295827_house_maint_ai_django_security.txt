@@ -1,0 +1,2 @@
+Status: verified_exists
+Evidence: 200 OK from https://raw.githubusercontent.com/mark393295827/house-maint-ai/HEAD/skills/django-security/SKILL.md
