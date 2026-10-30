@@ -53,10 +53,11 @@ Two invisible issues cause severe token waste and prompt bloat in agentic coding
 
 | Script | Job |
 |---|---|
-| `match.py` | 5-step resolution: lockfile → cache → live search → stale fallback → seed catalog. Returns a ranked shortlist within a token budget. Live search times out at 20 s and degrades gracefully. |
-| `rank.py` | Scores candidates by stack tag overlap, install count, description length (idle cost), and age. |
-| `registry.py` | Adapter: `skills.sh` public API primary, `npx skills find` fallback, GitHub raw for metadata. |
-| `install.py` | Calls `npx skills add` with SHA pinning for reproducibility. Requires explicit per-skill approval. |
+| `match.py` | 5-step resolution: lockfile → candidate cache → parallel live search → stale fallback → bundled seed catalog. Returns a fit-first ranked shortlist within a token budget. Times out at 20s and degrades gracefully. |
+| `rank.py` | Applies deterministic hard gates (real SHA, tag match, conflicting framework/paradigm filters, install floor) and scores candidates with fit-first formula, quality signals, and weak popularity tiebreaker (max 5 pts). Groups into Strong, Possible, Gaps, and Rejected tiers with honest "no strong match" reporting. |
+| `registry.py` | Coordinator and adapters: `skills.sh` public API (primary), `npx skills find` (fallback), GitHub raw for metadata. Parallel worker pool with bounded concurrency (max 4 workers). |
+| `replay.py` | Offline replay and evaluation harness: evaluates candidate pools and computes precision@3, junk rate, and coverage without network access. |
+| `install.py` | Calls `npx skills add` with commit SHA pinning and SHA-256 post-install content verification. Requires explicit per-skill approval. |
 
 ## Design principles
 
@@ -180,7 +181,9 @@ External skill recommendations (Act 2) are treated strictly as untrusted display
 - Architecture hints come from folder names and are marked with a confidence score.
 - Skill locations are searched on a best-effort basis. Use `--skills-dir` for non-standard setups.
 - Developed for Claude Code. Other agents that read the Agent Skills format may work, but they are untested.
-- **Live search can time out.** The matching phase has a 20-second total wall-clock limit. On timeout it degrades to stale cache or seed catalog, but the shortlist may be less relevant than a live result. Do not rely on `match.py` for latency-sensitive workflows.
+- **Live search can time out.** The matching phase has a 20-second total wall-clock limit. On timeout it degrades gracefully to stale cache or seed catalog, reporting partial status and warnings.
+- **Search index schemas.** Upstream registry search (`skills.sh/api/search`) returns candidate IDs, repo sources, and install counts without inline frontmatter descriptions. Metadata frontmatter fetches to raw GitHub are subject to unauthenticated rate limits (60 req/hr).
+- **Cross-platform distinctions.** Heuristics filter cross-platform wrappers (e.g. `react-native`, `expo`, `tauri`) from web stacks, and competing state management libraries (e.g. `bloc` when `provider` is detected). On uncommon frameworks, review suggestions before installing.
 
 ## Roadmap
 
